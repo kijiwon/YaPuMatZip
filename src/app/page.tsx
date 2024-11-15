@@ -8,10 +8,10 @@ export default function Home() {
       <div className=" absolute inset-0 bg-ball-park opacity-70 sm:bg-cover lg:bg-center "></div>
       <header className=" relative flex flex-col justify-center items-center  text-white mt-[120px] mb-[130px]">
         <FaMapMarkedAlt
-          size={58}
+          size={60}
           className=" drop-shadow-[0_3px_2.0px_rgba(0,0,0,0.9)] "
         />
-        <h1 className="font-bold  font-kbo tracking-wider text-[60px] drop-shadow-[0_3px_2.0px_rgba(0,0,0,0.9)]">
+        <h1 className="font-bold  font-kbo tracking-wider text-[62px] drop-shadow-[0_3px_2.0px_rgba(0,0,0,0.9)]">
           야구장
           <br />
           맛지도

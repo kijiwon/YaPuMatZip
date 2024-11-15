@@ -34,7 +34,7 @@ export default function TeamButton({
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
       className={`  text-[26px] rounded-lg w-[220px]  h-[80px] ${
-        isHovered ? "  bg-[#f3f3f378] " : "bg-white "
+        isHovered ? "  bg-[#f3f3f34a] " : "bg-white "
       } `}
     >
       {isHovered ? (
