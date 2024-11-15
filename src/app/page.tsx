@@ -19,22 +19,47 @@ export default function Home() {
       </header>
       <div className=" relative font-paper_logy grid grid-rows-2 gap-16 place-items-center">
         <div className=" grid grid-cols-4 gap-6">
-          <TeamButton textcolor="text-kia-red" text="kia" />
-          <TeamButton textcolor=" text-samsung-blue" text="삼성" />
           <TeamButton
-            textcolor=" text-lg-red"
-            text="lg"
-            sub_textcolor="text-doosan-navy"
-            sub_text="두산"
+            teamcolor="text-kia-red"
+            team="kia"
+            path="champions-field"
           />
-          <TeamButton textcolor=" text-red-600" text="KT" />
+          <TeamButton
+            teamcolor=" text-samsung-blue"
+            team="삼성"
+            path="lions-park"
+          />
+          <TeamButton
+            teamcolor=" text-lg-red"
+            team="lg"
+            sub_teamcolor="text-doosan-navy"
+            sub_team="두산"
+            path="seoul-baseball-stadium"
+          />
+          <TeamButton teamcolor=" text-red-600" team="KT" path="wiz-park" />
         </div>
         <div className=" grid grid-cols-5 gap-6">
-          <TeamButton textcolor=" text-ssg-red" text="ssg" />
-          <TeamButton textcolor=" text-lotte-red" text="롯데" />
-          <TeamButton textcolor=" text-hanwha-orange" text="한화" />
-          <TeamButton textcolor=" text-nc-blue" text="nc" />
-          <TeamButton textcolor=" text-kiwoom-burgundy" text="키움" />
+          <TeamButton
+            teamcolor=" text-ssg-red"
+            team="ssg"
+            path="landers-field"
+          />
+          <TeamButton
+            teamcolor=" text-lotte-red"
+            team="롯데"
+            path="sajik-baseball-stadium"
+          />
+          <TeamButton
+            teamcolor=" text-hanwha-orange"
+            team="한화"
+            path="baseball-dream-park"
+          />
+          <TeamButton teamcolor=" text-nc-blue" team="nc" path="nc-park" />
+          <TeamButton
+            teamcolor=" text-kiwoom-burgundy"
+            team="키움"
+            path="gocheok-sky-dome"
+          />
         </div>
       </div>
     </div>

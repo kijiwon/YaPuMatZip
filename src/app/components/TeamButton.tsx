@@ -1,23 +1,38 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 interface Props {
-  textcolor: string;
-  text: string;
-  sub_textcolor?: string;
-  sub_text?: string;
+  teamcolor: string;
+  team: string;
+  sub_teamcolor?: string;
+  sub_team?: string;
+  path: string;
 }
 
 export default function TeamButton({
-  textcolor,
-  text,
-  sub_text,
-  sub_textcolor,
+  teamcolor,
+  team,
+  sub_team,
+  sub_teamcolor,
+  path,
 }: Props) {
+  const router = useRouter();
+
+  const onClickButton = () => {
+    router.push(`/${path}`);
+  };
+
   return (
-    <button className=" bg-white  text-[24px] rounded-lg  p-1 w-[120px] ">
-      <span className={`${textcolor}`}>{text.toUpperCase()}</span>
-      {sub_text && (
+    <button
+      onClick={onClickButton}
+      className=" bg-white  text-[24px] rounded-lg  p-1 w-[120px] "
+    >
+      <span className={`${teamcolor}`}>{team.toUpperCase()}</span>
+      {sub_team && (
         <>
           <span className="text-black">/</span>
-          <span className={`${sub_textcolor}`}>{sub_text.toUpperCase()}</span>
+          <span className={`${sub_teamcolor}`}>{sub_team.toUpperCase()}</span>
         </>
       )}
     </button>
