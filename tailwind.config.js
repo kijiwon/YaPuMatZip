@@ -29,13 +29,15 @@ module.exports = {
         "nc-dip-blue": "#071d3d",
         "nc-blue": "#1d477d",
         "nc-gold": "#c7a079",
-        "kiwoom-burgundy": "#570514",
+        "kiwoom-burgundy": "#660016",
       },
       backgroundImage: {
         "ball-park": "url(/ballpark.png)",
       },
       fontFamily: {
         kbo: "KBO-Dia-Gothic_bold",
+        s_core: "S-CoreDream-3Light",
+        paper_logy: "Paperlogy-8ExtraBold",
       },
     },
   },
