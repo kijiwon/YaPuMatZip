@@ -38,7 +38,11 @@ export default function KakaoMap() {
                   title: data[i].place_name,
                 });
 
-                marker.setMap(map);
+                const infowindow = new kakao.maps.InfoWindow({
+                  position: marker.getPosition(),
+                  content: marker.getTitle(),
+                });
+                infowindow.open(map, marker);
               }
             }
           },
@@ -54,7 +58,7 @@ export default function KakaoMap() {
   return (
     <div>
       {isLoading ? (
-        <div ref={mapRef} id="map" className=" w-[500px] h-[350px]"></div>
+        <div ref={mapRef} id="map" className=" w-full h-[500px]"></div>
       ) : (
         <div>loading...</div>
       )}
