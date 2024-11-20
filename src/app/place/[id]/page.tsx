@@ -10,8 +10,8 @@ export default async function Page({
 
   return (
     <div className="h-[100vh] bg-red-300">
-      team page
-      <div className=" border-2">
+      {id}
+      <div>
         <KakaoMap id={id} />
       </div>
     </div>

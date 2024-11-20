@@ -22,7 +22,7 @@ export default function KakaoMap({ id }: { id: string }) {
               ballparkData[0].lat,
               ballparkData[0].lng
             ), // 지도의 중심좌표
-            level: 4, // 지도의 확대 레벨
+            level: 5, // 지도의 확대 레벨
           };
           const map = new window.kakao.maps.Map(mapContainer, mapOption);
           const ps = new kakao.maps.services.Places(map);
@@ -69,7 +69,7 @@ export default function KakaoMap({ id }: { id: string }) {
       {isLoading ? (
         <div>loading...</div>
       ) : (
-        <div ref={mapRef} id="map" className=" w-full h-[500px]"></div>
+        <div ref={mapRef} id="map" className=" w-[400px] h-[500px]"></div>
       )}
     </div>
   );
