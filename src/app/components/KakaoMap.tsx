@@ -36,13 +36,19 @@ export default function KakaoMap() {
                     Number(data[i].x)
                   ),
                   title: data[i].place_name,
+                  clickable: true,
                 });
+
+                const iwContent = `<div>${marker.getTitle()}</div>`;
 
                 const infowindow = new kakao.maps.InfoWindow({
                   position: marker.getPosition(),
-                  content: marker.getTitle(),
+                  content: iwContent,
+                  removable: true,
                 });
-                infowindow.open(map, marker);
+                kakao.maps.event.addListener(marker, "click", () => {
+                  infowindow.open(map, marker);
+                });
               }
             }
           },
