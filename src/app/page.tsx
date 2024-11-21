@@ -11,8 +11,8 @@ export default function Home() {
           size={60}
           className=" drop-shadow-[0_3px_2.0px_rgba(0,0,0,0.9)] "
         />
-        <h1 className="font-bold  font-kbo tracking-wider text-[62px] drop-shadow-[0_3px_2.0px_rgba(0,0,0,0.9)]">
-          야구장
+        <h1 className="font-bold text-center  font-kbo tracking-wider text-[62px] drop-shadow-[0_3px_2.0px_rgba(0,0,0,0.9)]">
+          야구푸드
           <br />
           맛지도
         </h1>

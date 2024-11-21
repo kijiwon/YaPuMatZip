@@ -1,0 +1,102 @@
+[
+  {
+    "id": "champions-field",
+    "name": "광주-기아 챔피언스 필드",
+    "teams": ["KIA 타이거즈"],
+    "team_short": ["KIA"],
+    "team_short_color": ["kia"],
+    "coordinates": {
+      "lat": 35.17,
+      "lng": 126.89
+    }
+  },
+  {
+    "id": "lions-park",
+    "name": "대구 삼성 라이온즈파크",
+    "teams": ["삼성 라이온즈"],
+    "team_short": ["삼성"],
+    "team_short_color": ["samsung"],
+    "coordinates": {
+      "lat": 35.84,
+      "lng": 128.68
+    }
+  },
+  {
+    "id": "seoul-baseball-stadium",
+    "name": "잠실종합운동장",
+    "teams": ["LG 트윈스", "두산 베어스"],
+    "team_short": ["LG", "두산"],
+    "team_short_color": ["lg", "doosan"],
+    "coordinates": {
+      "lat": 37.51,
+      "lng": 127.07
+    }
+  },
+  {
+    "id": "wiz-park",
+    "name": "수원 KT위즈파크",
+    "teams": ["KT 위즈"],
+    "team_short": ["KT"],
+    "team_short_color": ["kt"],
+    "coordinates": {
+      "lat": 37.3,
+      "lng": 127.01
+    }
+  },
+  {
+    "id": "landers-field",
+    "name": "인천 SSG랜더스 필드",
+    "teams": ["SSG 랜더스"],
+    "team_short": ["SSG"],
+    "team_short_color": ["ssg"],
+    "coordinates": {
+      "lat": 37.44,
+      "lng": 126.69
+    }
+  },
+
+  {
+    "id": "sajik-baseball-stadium",
+    "name": "부산 사직 종합운동장",
+    "teams": ["롯데 자이언츠"],
+    "team_short": ["롯데"],
+    "team_short_color": ["lotte"],
+    "coordinates": {
+      "lat": 35.19,
+      "lng": 129.06
+    }
+  },
+  {
+    "id": "baseball-dream-park",
+    "name": "베이스볼 드림파크",
+    "teams": ["한화 이글스"],
+    "team_short": ["한화"],
+    "team_short_color": ["hanwha"],
+    "coordinates": {
+      "lat": 36.32,
+      "lng": 127.43
+    }
+  },
+  {
+    "id": "nc-park",
+    "name": "창원 NC파크",
+    "teams": ["NC 다이노스"],
+    "team_short": ["NC"],
+    "team_short_color": ["nc"],
+    "coordinates": {
+      "lat": 35.22,
+      "lng": 128.58
+    }
+  },
+  {
+    "id": "gocheok-sky-dome",
+    "name": "고척 스카이돔",
+    "teams": ["키움 히어로즈"],
+    "team_short": ["키움"],
+    "team_short_color": ["kiwoom"],
+    "coordinates": {
+      "lat": 37.5,
+      "lng": 126.87
+    }
+  }
+]
