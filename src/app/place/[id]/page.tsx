@@ -12,11 +12,11 @@ export default async function Page({
   const stadium: StadiumType[] = StadiumData.filter((item) => item.id === id);
 
   return (
-    <div className="h-[100vh] bg-red-300">
+    <div className=" h-[100vh] ">
       {stadium[0].name}
-      <div>
+      {/* <div>
         <KakaoMap stadium={stadium[0]} />
-      </div>
+      </div> */}
     </div>
   );
 }

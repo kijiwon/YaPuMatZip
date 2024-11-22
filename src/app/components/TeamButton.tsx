@@ -23,8 +23,6 @@ export default function TeamButton({
 }: Props) {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
-  const main_text_color = `${team_color}-main`;
-  const sub_text_color = sub_team_color && `${sub_team_color}-main`;
 
   const onClickButton = () => {
     router.push(`/place/${path}`);
@@ -41,18 +39,18 @@ export default function TeamButton({
     >
       {isHovered ? (
         <div
-          className={` text-${main_text_color}  flex flex-row justify-center items-center text-center  text-[25px] drop-shadow-[0_8px_2px_rgba(0,0,0,0.2)]`}
+          className={` text-${team_color}-main  flex flex-row justify-center items-center text-center  text-[25px] drop-shadow-[0_8px_2px_rgba(0,0,0,0.2)]`}
         >
           <FaMapMarkerAlt />
           {stadium}
         </div>
       ) : (
         <>
-          <span className={` text-${main_text_color}`}>{team}</span>
+          <span className={` text-${team_color}-main`}>{team}</span>
           {sub_team && (
             <>
               <span className="text-black">/</span>
-              <span className={` text-${sub_text_color}`}>{sub_team}</span>
+              <span className={` text-${sub_team_color}-main`}>{sub_team}</span>
             </>
           )}
         </>
