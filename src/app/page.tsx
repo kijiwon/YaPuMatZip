@@ -1,8 +1,12 @@
 import TeamButton from "./components/TeamButton";
 import "./globals.css";
 import { FaMapMarkedAlt } from "react-icons/fa";
+import StadiumData from "@/data/stadiums.json";
 
 export default function Home() {
+  const topTeam = StadiumData.slice(0, 4);
+  const downTeam = StadiumData.slice(4);
+
   return (
     <div className=" relative  h-[100vh] flex flex-col items-center">
       <div className=" absolute inset-0 bg-ball-park opacity-70 sm:bg-cover lg:bg-center "></div>
@@ -19,64 +23,35 @@ export default function Home() {
       </header>
       <div className=" relative font-paper_logy grid grid-rows-2 gap-16 place-items-center">
         <div className=" grid grid-cols-4 gap-16">
-          <TeamButton
-            teamcolor="text-kia-red"
-            team="kia"
-            path="champions-field"
-            stadium="챔피언스필드"
-          />
-          <TeamButton
-            teamcolor=" text-samsung-blue"
-            team="삼성"
-            path="lions-park"
-            stadium="라이온즈파크"
-          />
-          <TeamButton
-            teamcolor=" text-lg-red"
-            team="lg"
-            sub_teamcolor="text-doosan-navy"
-            sub_team="두산"
-            path="seoul-baseball-stadium"
-            stadium="서울종합운동장"
-          />
-          <TeamButton
-            teamcolor=" text-red-600"
-            team="KT"
-            path="wiz-park"
-            stadium="위즈파크"
-          />
+          {topTeam.map((i) =>
+            i.teams.length === 2 ? (
+              <TeamButton
+                team={i.team_short[0]}
+                team_color={i.team_short_color[0]}
+                path={i.id}
+                stadium={i.name}
+                sub_team={i.team_short[1]}
+                sub_team_color={i.team_short_color[1]}
+              />
+            ) : (
+              <TeamButton
+                team={i.team_short[0]}
+                team_color={i.team_short_color[0]}
+                path={i.id}
+                stadium={i.name}
+              />
+            )
+          )}
         </div>
         <div className=" grid grid-cols-5 gap-16">
-          <TeamButton
-            teamcolor=" text-ssg-red"
-            team="ssg"
-            path="landers-field"
-            stadium="랜더스필드"
-          />
-          <TeamButton
-            teamcolor=" text-lotte-red"
-            team="롯데"
-            path="sajik-baseball-stadium"
-            stadium="사직 야구장"
-          />
-          <TeamButton
-            teamcolor=" text-hanwha-orange"
-            team="한화"
-            path="baseball-dream-park"
-            stadium="베이스볼 드림파크"
-          />
-          <TeamButton
-            teamcolor=" text-nc-blue"
-            team="nc"
-            path="nc-park"
-            stadium="창원 nc 파크"
-          />
-          <TeamButton
-            teamcolor=" text-kiwoom-burgundy"
-            team="키움"
-            path="gocheok-sky-dome"
-            stadium="고척 스카이돔"
-          />
+          {downTeam.map((i) => (
+            <TeamButton
+              team={i.team_short[0]}
+              team_color={i.team_short_color[0]}
+              path={i.id}
+              stadium={i.name}
+            />
+          ))}
         </div>
       </div>
     </div>

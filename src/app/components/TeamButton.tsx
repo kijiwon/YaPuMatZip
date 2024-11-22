@@ -5,24 +5,26 @@ import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 interface Props {
-  teamcolor: string;
+  team_color: string;
   team: string;
-  sub_teamcolor?: string;
+  sub_team_color?: string;
   sub_team?: string;
   path: string;
   stadium: string;
 }
 
 export default function TeamButton({
-  teamcolor,
+  team_color,
   team,
   sub_team,
-  sub_teamcolor,
+  sub_team_color,
   path,
   stadium,
 }: Props) {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
+  const main_text_color = `${team_color}-main`;
+  const sub_text_color = sub_team_color && `${sub_team_color}-main`;
 
   const onClickButton = () => {
     router.push(`/place/${path}`);
@@ -33,26 +35,24 @@ export default function TeamButton({
       onClick={onClickButton}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
-      className={`  text-[26px] rounded-lg w-[220px]  h-[80px] ${
+      className={`  text-[26px] rounded-lg w-[230px]  h-[84px] ${
         isHovered ? "  bg-[#f3f3f34a] " : "bg-white "
       } `}
     >
       {isHovered ? (
         <div
-          className={`${teamcolor}  flex flex-row justify-center items-center  text-[23px] drop-shadow-[0_8px_2px_rgba(0,0,0,0.2)]`}
+          className={` text-${main_text_color}  flex flex-row justify-center items-center text-center  text-[25px] drop-shadow-[0_8px_2px_rgba(0,0,0,0.2)]`}
         >
           <FaMapMarkerAlt />
           {stadium}
         </div>
       ) : (
         <>
-          <span className={`${teamcolor}`}>{team.toUpperCase()}</span>
+          <span className={` text-${main_text_color}`}>{team}</span>
           {sub_team && (
             <>
               <span className="text-black">/</span>
-              <span className={`${sub_teamcolor}`}>
-                {sub_team.toUpperCase()}
-              </span>
+              <span className={` text-${sub_text_color}`}>{sub_team}</span>
             </>
           )}
         </>
