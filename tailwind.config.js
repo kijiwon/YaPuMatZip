@@ -13,6 +13,7 @@ module.exports = {
         foreground: "var(--foreground)",
         "main-blue": "#002561",
         "main-red": "#ed1c23",
+        "main-light-blue": "#00afef",
         "kia-main": "#EA0029",
         "kia-sub": "#06141F",
         "samsung-main": "#074CA1",
@@ -38,6 +39,7 @@ module.exports = {
       backgroundImage: {
         "ball-park": "url(/ballpark.png)",
       },
+
       fontFamily: {
         kbo: "KBO-Dia-Gothic_bold",
         s_core: "S-CoreDream-3Light",

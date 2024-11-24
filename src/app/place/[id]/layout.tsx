@@ -1,3 +1,4 @@
+import Header from "@/app/components/Header";
 import NavBar from "@/app/components/NavBar";
 
 export default function PlaceLayout({
@@ -7,6 +8,7 @@ export default function PlaceLayout({
 }) {
   return (
     <div>
+      <Header />
       <NavBar />
       {children}
     </div>

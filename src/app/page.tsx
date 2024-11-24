@@ -18,7 +18,7 @@ export default function Home() {
         <h1 className="font-bold text-center  font-kbo tracking-wider text-[62px] drop-shadow-[0_3px_2.0px_rgba(0,0,0,0.9)]">
           야구푸드
           <br />
-          맛지도
+          맛ZIP
         </h1>
       </header>
       <div className=" relative font-paper_logy grid grid-rows-2 gap-16 place-items-center">
