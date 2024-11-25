@@ -11,27 +11,100 @@ export type Database = {
     Tables: {
       "ballpark-info": {
         Row: {
-          id: string
+          id: number
           lat: number
           lng: number
           stadium: string
+          stadium_id: string
           team: string
         }
         Insert: {
-          id: string
+          id?: number
           lat: number
           lng: number
           stadium: string
+          stadium_id: string
           team: string
         }
         Update: {
-          id?: string
+          id?: number
           lat?: number
           lng?: number
           stadium?: string
+          stadium_id?: string
           team?: string
         }
         Relationships: []
+      }
+      recommended_menus: {
+        Row: {
+          id: number
+          menu_name: string
+          place_id: string
+          price: string
+        }
+        Insert: {
+          id?: number
+          menu_name: string
+          place_id: string
+          price: string
+        }
+        Update: {
+          id?: number
+          menu_name?: string
+          place_id?: string
+          price?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recommended_menus_place_id_fkey"
+            columns: ["place_id"]
+            isOneToOne: false
+            referencedRelation: "yapu-place"
+            referencedColumns: ["name"]
+          },
+        ]
+      }
+      "yapu-place": {
+        Row: {
+          id: number
+          info: string | null
+          inside_stadium: boolean | null
+          lat: number | null
+          lng: number | null
+          location: string
+          name: string
+          stadium_id: string
+        }
+        Insert: {
+          id?: number
+          info?: string | null
+          inside_stadium?: boolean | null
+          lat?: number | null
+          lng?: number | null
+          location: string
+          name: string
+          stadium_id: string
+        }
+        Update: {
+          id?: number
+          info?: string | null
+          inside_stadium?: boolean | null
+          lat?: number | null
+          lng?: number | null
+          location?: string
+          name?: string
+          stadium_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "yapu-place_stadium_id_fkey"
+            columns: ["stadium_id"]
+            isOneToOne: false
+            referencedRelation: "ballpark-info"
+            referencedColumns: ["stadium_id"]
+          },
+        ]
       }
     }
     Views: {

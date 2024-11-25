@@ -1,20 +1,20 @@
 'use client'
 import { useState } from "react"
-import { getBallparkInfo } from "../api/ballpark-info"
 import { Database } from "../../../database.types"
 import { useEffect } from "react"
+import { getYapuPlaceInfo } from "../api/yapu-place-info"
 
-type TypeBallpark = Database['public']['Tables']['ballpark-info']['Row']
+type TypeYapuPlace = Database['public']['Tables']['yapu-place']['Row']
 
-export const useBallparkData =(id:string) =>{
+export const useYapuPlaceData =(id:string) =>{
     const [isLoading, setIsLoading] = useState(true);
-    const [ballparkData, setBallparkData] = useState<TypeBallpark[]>([]);
+    const [yapuPlaceData, setYapuPlaceData] = useState<TypeYapuPlace[]>([]);
 
     const onGetData = async(id:string)=>{
         setIsLoading(true);
         try{
-         const ballparkInfokData = await getBallparkInfo(id);
-         if(ballparkData) setBallparkData(ballparkInfokData!);
+         const yapuPlaceInfoData = await getYapuPlaceInfo(id);
+         if(yapuPlaceInfoData) setYapuPlaceData(yapuPlaceInfoData!);
         } catch(error){
             console.log(error);
         } finally{
@@ -26,6 +26,6 @@ export const useBallparkData =(id:string) =>{
         onGetData(id)
      },[])
 
-     return {isLoading,ballparkData};
+     return {isLoading,yapuPlaceData};
 }
 

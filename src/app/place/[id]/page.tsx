@@ -1,7 +1,8 @@
-import KakaoMap from "@/app/components/KakaoMap";
+// import KakaoMap from "@/app/components/KakaoMap";
 import "../../globals.css";
 import { StadiumType } from "@/types/stadium";
 import StadiumData from "@/data/stadiums.json";
+import PlaceLists from "@/app/components/PlaceLists";
 
 export default async function Page({
   params,
@@ -17,6 +18,7 @@ export default async function Page({
       {/* <div>
         <KakaoMap stadium={stadium[0]} />
       </div> */}
+      <PlaceLists stadium={stadium[0]} />
     </div>
   );
 }
