@@ -26,6 +26,7 @@ export default function Home() {
           {topTeam.map((i) =>
             i.teams.length === 2 ? (
               <TeamButton
+                key={i.id}
                 team={i.team_short[0]}
                 team_color={i.team_short_color[0]}
                 path={i.id}
@@ -35,6 +36,7 @@ export default function Home() {
               />
             ) : (
               <TeamButton
+                key={i.id}
                 team={i.team_short[0]}
                 team_color={i.team_short_color[0]}
                 path={i.id}
@@ -46,6 +48,7 @@ export default function Home() {
         <div className=" grid grid-cols-5 gap-16">
           {downTeam.map((i) => (
             <TeamButton
+              key={i.id}
               team={i.team_short[0]}
               team_color={i.team_short_color[0]}
               path={i.id}
