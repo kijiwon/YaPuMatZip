@@ -67,6 +67,7 @@ export type Database = {
       }
       "yapu-place": {
         Row: {
+          food_type: string
           id: number
           info: string | null
           inside_stadium: boolean | null
@@ -77,6 +78,7 @@ export type Database = {
           stadium_id: string
         }
         Insert: {
+          food_type: string
           id?: number
           info?: string | null
           inside_stadium?: boolean | null
@@ -87,6 +89,7 @@ export type Database = {
           stadium_id: string
         }
         Update: {
+          food_type?: string
           id?: number
           info?: string | null
           inside_stadium?: boolean | null

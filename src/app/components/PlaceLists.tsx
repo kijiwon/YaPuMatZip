@@ -1,11 +1,18 @@
 "use client";
 import { StadiumType } from "@/types/stadium";
 import { useYapuPlaceData } from "../hooks/useYapuPlaceData";
+import PlaceItem from "./PlaceItem";
 
 export default function PlaceLists({ stadium }: { stadium: StadiumType }) {
-  const { yapuPlaceData } = useYapuPlaceData(stadium.id);
+  const { isLoading, yapuPlaceData } = useYapuPlaceData(stadium.id);
 
-  console.log(yapuPlaceData);
-
-  return <div></div>;
+  return (
+    <div>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <PlaceItem yapuPlaceData={yapuPlaceData} />
+      )}
+    </div>
+  );
 }

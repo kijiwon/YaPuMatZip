@@ -10,7 +10,7 @@ export default function NavBar() {
   const filteredData = StadiumData.filter((i) => i.id !== params.id);
 
   return (
-    <nav className=" flex flex-row justify-center items-end  h-[100px]  pb-[5px] font-paper_logy  border-b-[1.5px] border-gray-200">
+    <nav className=" flex flex-row justify-center items-end  h-[50px]  pb-[5px] font-paper_logy  border-b-[1.5px] border-gray-200">
       {filteredData.map((i) => (
         <button
           key={i.id}
