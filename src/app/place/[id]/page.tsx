@@ -16,7 +16,7 @@ export default async function Page({
     <div className=" w-full h-[100vh] flex flex-col items-center mt-[10px] ">
       <div className="w-[70%] font-kbo  mb-[30px]">
         <p
-          className={` text-[26px] tracking-wider  text-${stadium[0].team_short_color[0]}-main`}
+          className={` text-[26px] tracking-wider text-${stadium[0].team_short_color[0]}-main`}
         >
           {stadium[0].teams[0]}
           {stadium[0].teams.length == 2 && (

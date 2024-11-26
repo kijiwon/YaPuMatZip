@@ -11,7 +11,7 @@ export default function PlaceLists({ stadium }: { stadium: StadiumType }) {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <PlaceItem yapuPlaceData={yapuPlaceData} />
+        <PlaceItem yapuPlaceData={yapuPlaceData} stadium={stadium} />
       )}
     </div>
   );

@@ -1,25 +1,43 @@
+import { StadiumType } from "@/types/stadium";
 import { Database } from "../../../database.types";
 
 type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];
 
 export default function PlaceItem({
   yapuPlaceData,
+  stadium,
 }: {
   yapuPlaceData: TypeYapuPlace[];
+  stadium: StadiumType;
 }) {
   //   const insideStadium = yapuPlaceData.filter((i) => i.inside_stadium === true);
-
+  console.log(stadium);
   return (
     <ul>
       {yapuPlaceData.map((i) => (
         <li
           key={i.id}
-          className="border-2 mb-[10px] p-[14px] pl-[26px] pr-[20px] flex flex-row justify-start items-center text-[20px] font-s_core"
+          className={`w-[800px] cursor-pointer shadow-inner  border-2 mb-[16px] p-[16px] rounded-[10px] pl-[26px] pr-[20px] flex flex-row justify-start items-center text-[18px] font-s_core hover:shadow-lg`}
         >
           <p className="text-[30px] mr-[10px]">{i.food_type}</p>
-          <p>{i.name}</p>
-          <p>{i.inside_stadium ? "구장내" : "구장밖"}</p>
-          <p className=" ml-auto">{i.info}</p>
+          <p className="font-s_core_bold">{i.name}</p>
+          {i.info ? (
+            <p className=" mr-[10px] ml-[10px] rounded-lg bg-main-light-blue text-[15px] p-[5px] text-white">
+              {i.info}
+            </p>
+          ) : null}
+
+          <p className=" ml-auto ">
+            {i.inside_stadium ? (
+              <span className="bg-main-blue text-white p-[10px] rounded-[10px]">
+                구장안
+              </span>
+            ) : (
+              <span className="bg-main-red text-white p-[10px] rounded-[10px]">
+                구장밖
+              </span>
+            )}
+          </p>
         </li>
       ))}
     </ul>
