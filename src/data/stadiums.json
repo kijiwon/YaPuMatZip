@@ -6,8 +6,8 @@
     "team_short": ["KIA"],
     "team_short_color": ["kia"],
     "coordinates": {
-      "lat": 35.17,
-      "lng": 126.89
+      "lat": 35.1694249627668,
+      "lng": 126.888805470329
     }
   },
   {
@@ -17,8 +17,8 @@
     "team_short": ["삼성"],
     "team_short_color": ["samsung"],
     "coordinates": {
-      "lat": 35.84,
-      "lng": 128.68
+      "lat": 35.8411289243023,
+      "lng": 128.681236372268
     }
   },
   {
@@ -28,8 +28,8 @@
     "team_short": ["LG", "두산"],
     "team_short_color": ["lg", "doosan"],
     "coordinates": {
-      "lat": 37.51,
-      "lng": 127.07
+      "lat": 37.5161987797456,
+      "lng": 127.075940589715
     }
   },
   {
@@ -39,8 +39,8 @@
     "team_short": ["KT"],
     "team_short_color": ["kt"],
     "coordinates": {
-      "lat": 37.3,
-      "lng": 127.01
+      "lat": 37.2997632112014,
+      "lng": 127.00963497161865
     }
   },
   {
@@ -50,8 +50,8 @@
     "team_short": ["SSG"],
     "team_short_color": ["ssg"],
     "coordinates": {
-      "lat": 37.44,
-      "lng": 126.69
+      "lat": 37.4350819826381,
+      "lng": 126.690759830613
     }
   },
 
@@ -62,8 +62,8 @@
     "team_short": ["롯데"],
     "team_short_color": ["lotte"],
     "coordinates": {
-      "lat": 35.19,
-      "lng": 129.06
+      "lat": 35.194366802896,
+      "lng": 129.059900885997
     }
   },
   {
@@ -73,8 +73,8 @@
     "team_short": ["한화"],
     "team_short_color": ["hanwha"],
     "coordinates": {
-      "lat": 36.32,
-      "lng": 127.43
+      "lat": 36.3173370007388,
+      "lng": 127.428013823451
     }
   },
   {
@@ -84,8 +84,8 @@
     "team_short": ["NC"],
     "team_short_color": ["nc"],
     "coordinates": {
-      "lat": 35.22,
-      "lng": 128.58
+      "lat": 35.2219848625101,
+      "lng": 128.579580117268
     }
   },
   {
@@ -95,8 +95,8 @@
     "team_short": ["키움"],
     "team_short_color": ["kiwoom"],
     "coordinates": {
-      "lat": 37.5,
-      "lng": 126.87
+      "lat": 37.4982125677913,
+      "lng": 126.867088741096
     }
   }
 ]

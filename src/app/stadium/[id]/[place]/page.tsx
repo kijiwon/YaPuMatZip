@@ -5,12 +5,15 @@ import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDatailData } from "@/app/hooks/useYapuPlaceData";
 import { usePathname, useRouter } from "next/navigation";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import stadiums from "@/data/stadiums.json";
 
 export default function PlacePage() {
   const path = usePathname();
   const stadiumId = decodeURI(path).split("/")[2];
   const placename = decodeURI(path).split("/")[3];
   const router = useRouter();
+
+  const stadiumData = stadiums.filter((i) => i.id === stadiumId);
 
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
     stadiumId,
@@ -36,7 +39,10 @@ export default function PlacePage() {
             <div>{yapuPlaceDetailData[0].name}</div>
             <div>{yapuPlaceDetailData[0].location}</div>
             {!yapuPlaceDetailData[0].inside_stadium && (
-              <KakaoMap place={yapuPlaceDetailData[0]} />
+              <KakaoMap
+                place={yapuPlaceDetailData[0]}
+                stadium={stadiumData[0]}
+              />
             )}
             {isMenuLoading ? (
               <div>loading...</div>
