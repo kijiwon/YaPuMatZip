@@ -2,10 +2,12 @@
 
 import { useRef } from "react";
 import { useEffect } from "react";
-import { StadiumType } from "@/types/stadium";
 import { useState } from "react";
+import { Database } from "../../../database.types";
 
-export default function KakaoMap({ stadium }: { stadium: StadiumType }) {
+type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];
+
+export default function KakaoMap({ place }: { place: TypeYapuPlace }) {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -28,51 +30,23 @@ export default function KakaoMap({ stadium }: { stadium: StadiumType }) {
     kakao.maps.load(() => {
       // 지도 초기화
       const mapOption = {
-        center: new kakao.maps.LatLng(
-          stadium.coordinates.lat,
-          stadium.coordinates.lng
-        ),
-        level: 5,
+        center: new kakao.maps.LatLng(place.lat!, place.lng!),
+        level: 2,
       };
       const map = new kakao.maps.Map(mapRef.current!, mapOption);
 
-      // 장소 검색
-      const ps = new kakao.maps.services.Places(map);
-      ps.categorySearch(
-        "FD6",
-        (data, status) => {
-          if (status === kakao.maps.services.Status.OK) {
-            data.forEach((place) => {
-              const marker = new kakao.maps.Marker({
-                map,
-                position: new kakao.maps.LatLng(
-                  Number(place.y),
-                  Number(place.x)
-                ),
-                title: place.place_name,
-                clickable: true,
-              });
-
-              const infowindow = new kakao.maps.InfoWindow({
-                content: `<div>${place.place_name}</div>`,
-                removable: true,
-              });
-
-              kakao.maps.event.addListener(marker, "click", () => {
-                infowindow.open(map, marker);
-              });
-            });
-          }
-        },
-        { useMapBounds: true }
-      );
+      // 마커 생성
+      const marker = new kakao.maps.Marker({
+        position: map.getCenter(),
+      });
+      marker.setMap(map);
     });
-  }, [isLoaded, stadium]);
+  }, [isLoaded, place]);
 
   return (
     <div>
       {isLoaded ? (
-        <div ref={mapRef} className=" w-[400px] h-[500px]"></div>
+        <div ref={mapRef} className=" w-[50%] h-[200px]"></div>
       ) : (
         <div>loading...</div>
       )}

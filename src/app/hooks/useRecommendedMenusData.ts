@@ -8,18 +8,18 @@ import { getRecommendedMenusInfo } from "../api/recommended-menus-info"
 type TypeRecommendedMenus = Database['public']['Tables']['recommended-menus']['Row']
 
 export const useRecommededMenusData =(id:string) =>{
-    const [isLoading, setIsLoading] = useState(true);
+    const [isMenuLoading, setIsMenuLoading] = useState(true);
     const [recommendedMenusData, setRecommendedMenusData] = useState<TypeRecommendedMenus[]>([]);
 
     const onGetData = async(id:string)=>{
-        setIsLoading(true);
+        setIsMenuLoading(true);
         try{
          const recommendedMenusInfoData = await getRecommendedMenusInfo(id);
          if(recommendedMenusInfoData) setRecommendedMenusData(recommendedMenusInfoData!);
         } catch(error){
             console.log(error);
         } finally{
-            setIsLoading(false);
+            setIsMenuLoading(false);
         }
      }
 
@@ -27,6 +27,6 @@ export const useRecommededMenusData =(id:string) =>{
         onGetData(id)
      },[])
 
-     return {isLoading,recommendedMenusData};
+     return {isMenuLoading,recommendedMenusData};
 }
 
