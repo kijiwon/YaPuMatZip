@@ -1,5 +1,6 @@
 "use client";
 
+import "../../../globals.css";
 import KakaoMap from "@/app/components/KakaoMap";
 import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDatailData } from "@/app/hooks/useYapuPlaceData";
@@ -35,28 +36,49 @@ export default function PlacePage() {
         {isPlaceLoading ? (
           <div>loading...</div>
         ) : (
-          <>
-            <div>{yapuPlaceDetailData[0].name}</div>
-            <div>{yapuPlaceDetailData[0].location}</div>
-            {!yapuPlaceDetailData[0].inside_stadium && (
-              <KakaoMap
-                place={yapuPlaceDetailData[0]}
-                stadium={stadiumData[0]}
-              />
-            )}
-            {isMenuLoading ? (
-              <div>loading...</div>
-            ) : (
+          <div className="flex flex-col">
+            <section className="mb-[30px]">
               <div>
-                {recommendedMenusData.map((i) => (
-                  <p key={i.menu_name}>
-                    <span>{i.menu_name}</span>
-                    <span>{i.price}</span>
-                  </p>
-                ))}
+                <h1 className="flex flex-row justify-center items-center font-paper_logy text-[32px] text-center">
+                  <span className="mr-[5px]">
+                    {yapuPlaceDetailData[0].food_type}
+                  </span>
+                  <span>{yapuPlaceDetailData[0].name}</span>
+                </h1>
               </div>
-            )}
-          </>
+              <p className="font-s_core font-bold text-[18px] mt-[30px] mb-[10px]">
+                위치 : {yapuPlaceDetailData[0].location}
+              </p>
+              <p className="font-s_core flex text-[18px] flex-row items-center mb-[10px]">
+                <span className="mr-[20px]">
+                  {yapuPlaceDetailData[0].is_delivery_or_takeout_available}
+                </span>
+                <span>{yapuPlaceDetailData[0].info}</span>
+              </p>
+              {!yapuPlaceDetailData[0].inside_stadium && (
+                <KakaoMap
+                  place={yapuPlaceDetailData[0]}
+                  stadium={stadiumData[0]}
+                />
+              )}
+            </section>
+            <hr className="w-[100%] border-b-1 border-dashed border-gray-400 " />
+            <section className="mt-[40px]">
+              {isMenuLoading ? (
+                <div>loading...</div>
+              ) : (
+                <div className=" flex flex-col ">
+                  <p className="text-[20px] text-center">📋추천 메뉴</p>
+                  {recommendedMenusData.map((i) => (
+                    <p key={i.menu_name} className=" flex flex-col">
+                      <span>{i.menu_name}</span>
+                      <span className="ml-auto">{i.price}</span>
+                    </p>
+                  ))}
+                </div>
+              )}
+            </section>
+          </div>
         )}
       </div>
     </div>

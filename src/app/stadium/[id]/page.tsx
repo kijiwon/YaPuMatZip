@@ -1,4 +1,3 @@
-// import KakaoMap from "@/app/components/KakaoMap";
 import "../../globals.css";
 import { StadiumType } from "@/types/stadium";
 import StadiumData from "@/data/stadiums.json";

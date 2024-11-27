@@ -49,7 +49,6 @@ export default function KakaoMap({
         stadium.coordinates.lat!,
         stadium.coordinates.lng!
       );
-
       // 마커 생성
       const placeMarker = new kakao.maps.Marker({
         position: placePosition,
@@ -80,7 +79,10 @@ export default function KakaoMap({
   return (
     <div>
       {isLoaded ? (
-        <div ref={mapRef} className=" w-[70%] h-[320px]"></div>
+        <div
+          ref={mapRef}
+          className="w-[80%] h-[280px] ml-auto mr-auto  border-4 "
+        ></div>
       ) : (
         <div>loading...</div>
       )}
