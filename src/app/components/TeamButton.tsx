@@ -25,7 +25,7 @@ export default function TeamButton({
   const [isHovered, setIsHovered] = useState(false);
 
   const onClickButton = () => {
-    router.push(`/place/${path}`);
+    router.push(`/stadium/${path}`);
   };
 
   return (

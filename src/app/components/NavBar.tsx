@@ -15,7 +15,7 @@ export default function NavBar() {
         <button
           key={i.id}
           className=" w-[100px] mr-[20px] ml-[20px] text-[18px]"
-          onClick={() => router.push(`/place/${i.id}`)}
+          onClick={() => router.push(`/stadium/${i.id}`)}
         >
           ⚾️
           <span className={` text-${i.team_short_color[0]}-main ml-[5px]`}>

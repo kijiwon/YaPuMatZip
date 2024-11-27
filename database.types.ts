@@ -36,7 +36,7 @@ export type Database = {
         }
         Relationships: []
       }
-      recommended_menus: {
+      "recommended-menus": {
         Row: {
           id: number
           menu_name: string
