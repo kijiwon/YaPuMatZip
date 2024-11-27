@@ -19,11 +19,11 @@ export default function PlaceItem({
           key={i.id}
           className={`w-[800px] cursor-pointer shadow-inner  border-2 mb-[16px] p-[16px] rounded-[10px] pl-[26px] pr-[20px] flex flex-row justify-start items-center text-[18px] font-s_core hover:shadow-lg`}
         >
-          <p className="text-[30px] mr-[10px]">{i.food_type}</p>
+          <p className="text-[30px] mr-[18px]">{i.food_type}</p>
           <p className="font-s_core_bold">{i.name}</p>
-          {i.info ? (
+          {i.is_delivery_or_takeout_available ? (
             <p className=" mr-[10px] ml-[10px] rounded-lg bg-main-light-blue text-[15px] p-[5px] text-white">
-              {i.info}
+              {i.is_delivery_or_takeout_available}
             </p>
           ) : null}
 

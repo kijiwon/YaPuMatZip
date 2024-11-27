@@ -71,6 +71,7 @@ export type Database = {
           id: number
           info: string | null
           inside_stadium: boolean | null
+          is_delivery_or_takeout_available: string | null
           lat: number | null
           lng: number | null
           location: string
@@ -82,6 +83,7 @@ export type Database = {
           id?: number
           info?: string | null
           inside_stadium?: boolean | null
+          is_delivery_or_takeout_available?: string | null
           lat?: number | null
           lng?: number | null
           location: string
@@ -93,6 +95,7 @@ export type Database = {
           id?: number
           info?: string | null
           inside_stadium?: boolean | null
+          is_delivery_or_takeout_available?: string | null
           lat?: number | null
           lng?: number | null
           location?: string

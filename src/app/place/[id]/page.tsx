@@ -30,7 +30,18 @@ export default async function Page({
         </p>
         <p className=" mt-[10px] text-[18px]">구장: {stadium[0].name}</p>
       </div>
-      <PlaceLists stadium={stadium[0]} />
+      {stadium[0].id === "baseball-dream-park" ? (
+        <div className=" font-paper_logy text-center tracking-wider">
+          <h1 className=" text-[30px] text-main-red mb-[20px]">
+            2025년 신구장 오픈 예정으로 데이터가 존재하지 않습니다.
+          </h1>
+          <p className=" text-[16px]  ">
+            개막 후 빠르게 업데이트 할 예정이니 조금만 기다려 주세요🙏
+          </p>
+        </div>
+      ) : (
+        <PlaceLists stadium={stadium[0]} />
+      )}
     </div>
   );
 }
