@@ -81,7 +81,7 @@ export default function KakaoMap({
       {isLoaded ? (
         <div
           ref={mapRef}
-          className="w-[80%] h-[280px] ml-auto mr-auto  border-4 "
+          className="w-[80%] h-[280px] ml-auto mr-auto  border-2 rounded-md "
         ></div>
       ) : (
         <div>loading...</div>

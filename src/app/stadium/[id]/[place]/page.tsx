@@ -67,14 +67,23 @@ export default function PlacePage() {
               {isMenuLoading ? (
                 <div>loading...</div>
               ) : (
-                <div className=" flex flex-col ">
-                  <p className="text-[20px] text-center">📋추천 메뉴</p>
-                  {recommendedMenusData.map((i) => (
-                    <p key={i.menu_name} className=" flex flex-col">
-                      <span>{i.menu_name}</span>
-                      <span className="ml-auto">{i.price}</span>
-                    </p>
-                  ))}
+                <div className=" flex flex-col items-center ">
+                  <p className="text-center font-paper_logy text-[26px] mb-[20px]">
+                    📋추천 메뉴
+                  </p>
+                  <ul className=" w-[70%] border-b-2  pt-[40px] pr-[20px] pl-[20px] pb-[20px] mb-[20px] rounded-lg text-[#3d211a] bg-[#fff2d2]">
+                    {recommendedMenusData.map((i) => (
+                      <li
+                        key={i.menu_name}
+                        className="border-b-[1px] border-dashed border-[#3d211a]  flex flex-col mb-[20px] pb-[5px] text-[18px] text-bold "
+                      >
+                        <span className="font-s_core">{i.menu_name}</span>
+                        <span className="ml-auto mt-[10px] font-s_core">
+                          {i.price}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </section>
