@@ -1,7 +1,7 @@
 "use client";
 
 import "../../../globals.css";
-import KakaoMap from "@/app/components/KakaoMap";
+import KakaoMap from "@/components/KakaoMap";
 import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDatailData } from "@/app/hooks/useYapuPlaceData";
 import { usePathname, useRouter } from "next/navigation";

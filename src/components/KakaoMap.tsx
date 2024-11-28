@@ -4,7 +4,7 @@ import "./kakaomap.css";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Database } from "../../../database.types";
+import { Database } from "../../database.types";
 import { StadiumType } from "@/types/stadium";
 
 type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];

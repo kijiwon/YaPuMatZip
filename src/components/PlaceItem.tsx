@@ -1,7 +1,7 @@
 "use client";
 
 import { StadiumType } from "@/types/stadium";
-import { Database } from "../../../database.types";
+import { Database } from "../../database.types";
 import { useRouter } from "next/navigation";
 
 type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];
@@ -13,11 +13,8 @@ export default function PlaceItem({
   yapuPlaceData: TypeYapuPlace[];
   stadium: StadiumType;
 }) {
-  //   const insideStadium = yapuPlaceData.filter((i) => i.inside_stadium === true);
-  console.log(stadium);
   const router = useRouter();
   const handleClickPlace = (place_name: string) => {
-    console.log(place_name);
     router.push(`/stadium/${stadium.id}/${place_name}`);
   };
 

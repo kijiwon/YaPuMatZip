@@ -1,4 +1,4 @@
-import TeamButton from "./components/TeamButton";
+import TeamButton from "../components/TeamButton";
 import "./globals.css";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import StadiumData from "@/data/stadiums.json";
