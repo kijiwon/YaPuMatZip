@@ -23,37 +23,13 @@ export default function Home() {
       </header>
       <div className=" relative font-paper_logy grid grid-rows-2 gap-16 place-items-center">
         <div className=" grid grid-cols-4 gap-16">
-          {topTeam.map((i) =>
-            i.teams.length === 2 ? (
-              <TeamButton
-                key={i.id}
-                team={i.team_short[0]}
-                team_color={i.team_short_color[0]}
-                path={i.id}
-                stadium={i.name}
-                sub_team={i.team_short[1]}
-                sub_team_color={i.team_short_color[1]}
-              />
-            ) : (
-              <TeamButton
-                key={i.id}
-                team={i.team_short[0]}
-                team_color={i.team_short_color[0]}
-                path={i.id}
-                stadium={i.name}
-              />
-            )
-          )}
+          {topTeam.map((i) => (
+            <TeamButton key={i.id} stadium={i} />
+          ))}
         </div>
         <div className=" grid grid-cols-5 gap-16">
           {downTeam.map((i) => (
-            <TeamButton
-              key={i.id}
-              team={i.team_short[0]}
-              team_color={i.team_short_color[0]}
-              path={i.id}
-              stadium={i.name}
-            />
+            <TeamButton key={i.id} stadium={i} />
           ))}
         </div>
       </div>

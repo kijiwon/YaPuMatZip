@@ -1,31 +1,19 @@
 "use client";
 
+import { useStadiumStore } from "@/stores/stadium-store";
+import { StadiumType } from "@/types/stadium";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-interface Props {
-  team_color: string;
-  team: string;
-  sub_team_color?: string;
-  sub_team?: string;
-  path: string;
-  stadium: string;
-}
-
-export default function TeamButton({
-  team_color,
-  team,
-  sub_team,
-  sub_team_color,
-  path,
-  stadium,
-}: Props) {
+export default function TeamButton({ stadium }: { stadium: StadiumType }) {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
+  const { setSelectedStadium } = useStadiumStore();
 
   const onClickButton = () => {
-    router.push(`/stadium/${path}`);
+    setSelectedStadium(stadium);
+    router.push(`/stadium/${stadium.id}`);
   };
 
   return (
@@ -39,18 +27,22 @@ export default function TeamButton({
     >
       {isHovered ? (
         <div
-          className={` text-${team_color}-main  flex flex-row justify-center items-center text-center  text-[25px] drop-shadow-[0_8px_2px_rgba(0,0,0,0.2)]`}
+          className={` text-${stadium.team_short_color[0]}-main  flex flex-row justify-center items-center text-center  text-[25px] drop-shadow-[0_8px_2px_rgba(0,0,0,0.2)]`}
         >
           <FaMapMarkerAlt />
-          {stadium}
+          {stadium.name}
         </div>
       ) : (
         <>
-          <span className={` text-${team_color}-main`}>{team}</span>
-          {sub_team && (
+          <span className={` text-${stadium.team_short_color[0]}-main`}>
+            {stadium.team_short[0]}
+          </span>
+          {stadium.teams.length === 2 && (
             <>
               <span className="text-black">/</span>
-              <span className={` text-${sub_team_color}-main`}>{sub_team}</span>
+              <span className={` text-${stadium.team_short_color[1]}-main`}>
+                {stadium.team_short[1]}
+              </span>
             </>
           )}
         </>

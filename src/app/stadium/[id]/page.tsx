@@ -1,35 +1,34 @@
+"use client";
+
+import { useStadiumStore } from "@/stores/stadium-store";
 import "../../globals.css";
-import { StadiumType } from "@/types/stadium";
-import StadiumData from "@/data/stadiums.json";
+
 import PlaceLists from "@/app/components/PlaceLists";
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const id = (await params).id;
-  const stadium: StadiumType[] = StadiumData.filter((item) => item.id === id);
+export default function Page() {
+  const { selectedStadium } = useStadiumStore();
 
   return (
     <div className="  mt-[20px] ">
       <div className="w-[70%] font-kbo  mb-[30px]">
         <p
-          className={` text-[26px] tracking-wider text-${stadium[0].team_short_color[0]}-main`}
+          className={` text-[26px] tracking-wider text-${selectedStadium?.team_short_color[0]}-main`}
         >
-          {stadium[0].teams[0]}
-          {stadium[0].teams.length == 2 && (
+          {selectedStadium?.teams[0]}
+          {selectedStadium?.teams.length == 2 && (
             <>
               <span className="text-black">/</span>
-              <span className={`text-${stadium[0].team_short_color[1]}-main`}>
-                {stadium[0].teams[1]}
+              <span
+                className={`text-${selectedStadium?.team_short_color[1]}-main`}
+              >
+                {selectedStadium?.teams[1]}
               </span>
             </>
           )}
         </p>
-        <p className=" mt-[10px] text-[18px]">구장: {stadium[0].name}</p>
+        <p className=" mt-[10px] text-[18px]">구장: {selectedStadium?.name}</p>
       </div>
-      {stadium[0].id === "baseball-dream-park" ? (
+      {selectedStadium?.id === "baseball-dream-park" ? (
         <div className=" font-paper_logy text-center tracking-wider">
           <h1 className=" text-[30px] text-main-red mb-[20px]">
             2025년 신구장 오픈 예정으로 데이터가 존재하지 않습니다.
@@ -39,7 +38,7 @@ export default async function Page({
           </p>
         </div>
       ) : (
-        <PlaceLists stadium={stadium[0]} />
+        <PlaceLists stadium={selectedStadium!} />
       )}
     </div>
   );

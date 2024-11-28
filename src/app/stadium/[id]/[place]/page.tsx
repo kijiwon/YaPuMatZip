@@ -6,20 +6,21 @@ import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDatailData } from "@/app/hooks/useYapuPlaceData";
 import { usePathname, useRouter } from "next/navigation";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import stadiums from "@/data/stadiums.json";
+
+import { useStadiumStore } from "@/stores/stadium-store";
 
 export default function PlacePage() {
   const path = usePathname();
   const stadiumId = decodeURI(path).split("/")[2];
   const placename = decodeURI(path).split("/")[3];
   const router = useRouter();
-
-  const stadiumData = stadiums.filter((i) => i.id === stadiumId);
+  const { selectedStadium } = useStadiumStore();
 
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
     stadiumId,
     placename
   );
+
   const { isMenuLoading, recommendedMenusData } =
     useRecommededMenusData(placename);
 
@@ -55,10 +56,10 @@ export default function PlacePage() {
                 </span>
                 <span>{yapuPlaceDetailData[0].info}</span>
               </p>
-              {!yapuPlaceDetailData[0].inside_stadium && (
+              {!yapuPlaceDetailData[0].inside_stadium && selectedStadium && (
                 <KakaoMap
                   place={yapuPlaceDetailData[0]}
-                  stadium={stadiumData[0]}
+                  stadium={selectedStadium}
                 />
               )}
             </section>

@@ -1,12 +1,13 @@
 "use client";
 
 import StadiumData from "@/data/stadiums.json";
+import { useStadiumStore } from "@/stores/stadium-store";
 import { useParams, useRouter } from "next/navigation";
 
 export default function NavBar() {
   const params = useParams();
   const router = useRouter();
-
+  const { setSelectedStadium } = useStadiumStore();
   const filteredData = StadiumData.filter((i) => i.id !== params.id);
 
   return (
@@ -15,7 +16,10 @@ export default function NavBar() {
         <button
           key={i.id}
           className=" w-[100px] mr-[20px] ml-[20px] text-[18px]"
-          onClick={() => router.push(`/stadium/${i.id}`)}
+          onClick={() => {
+            setSelectedStadium(i);
+            router.push(`/stadium/${i.id}`);
+          }}
         >
           ⚾️
           <span className={` text-${i.team_short_color[0]}-main ml-[5px]`}>
