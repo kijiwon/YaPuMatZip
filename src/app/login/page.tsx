@@ -1,3 +1,9 @@
+import Modal from "@/ui/modal";
+
 export default function Login() {
-  return <div>login</div>;
+  return (
+    <div>
+      <Modal />
+    </div>
+  );
 }

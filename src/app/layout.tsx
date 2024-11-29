@@ -8,8 +8,8 @@ export default function RootLayout({
   return (
     <html lang="kr">
       <body>
-        {auth}
-        {children}
+        <div className=" absolute">{auth}</div>
+        <div>{children}</div>
       </body>
     </html>
   );

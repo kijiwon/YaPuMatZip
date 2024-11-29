@@ -8,8 +8,8 @@ export default function Page() {
   const { selectedStadium } = useStadiumStore();
 
   return (
-    <div className="  mt-[20px] ">
-      <div className="w-[70%] font-kbo  mb-[30px]">
+    <div className=" mt-[20px]">
+      <div className="w-[70%] font-kbo mb-[30px]">
         <p
           className={` text-[26px] tracking-wider text-${selectedStadium?.team_short_color[0]}-main`}
         >

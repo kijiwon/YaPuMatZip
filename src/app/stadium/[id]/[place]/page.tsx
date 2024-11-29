@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 import { useStadiumStore } from "@/stores/stadium-store";
+import { useEffect } from "react";
 
 export default function PlacePage() {
   const path = usePathname();
@@ -24,10 +25,24 @@ export default function PlacePage() {
   const { isMenuLoading, recommendedMenusData } =
     useRecommededMenusData(placename);
 
+  // 로그인 페이지 뒤로가기 제어
+  useEffect(() => {
+    const handlePopState = () => {
+      if (window.location.pathname === "/login") {
+        router.replace(`/stadium/${stadiumId}`);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [router]);
+
   return (
     <div className="w-[70%] mt-[20px]">
       <button
-        onClick={() => router.back()}
+        onClick={() => router.replace(`/stadium/${stadiumId}`)}
         className="flex flex-row items-center mb-[30px] text-[18px] font-paper_logy"
       >
         <IoMdArrowRoundBack />

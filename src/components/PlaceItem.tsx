@@ -3,6 +3,7 @@
 import { StadiumType } from "@/types/stadium";
 import { Database } from "../../database.types";
 import { useRouter } from "next/navigation";
+import { usePlaceStore } from "@/stores/place-store";
 
 type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];
 
@@ -14,7 +15,9 @@ export default function PlaceItem({
   stadium: StadiumType;
 }) {
   const router = useRouter();
+  const { setSelectedPlace } = usePlaceStore();
   const handleClickPlace = (place_name: string) => {
+    setSelectedPlace(place_name as string);
     router.push(`/stadium/${stadium.id}/${place_name}`);
   };
 
