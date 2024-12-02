@@ -13,8 +13,10 @@ export default function Header() {
   const supabase = createSupabaseBrowserClient();
   const getUser = async () => {
     const user = await supabase.auth.getUser();
-    setUserName(user.data.user?.user_metadata.name);
-    setIsLoggedIn(true);
+    if (user) {
+      setUserName(user.data.user?.user_metadata.name);
+      setIsLoggedIn(true);
+    }
   };
 
   const handleLogout = () => {
@@ -28,7 +30,7 @@ export default function Header() {
   return (
     <header className=" pt-[10px] w-[80%] ml-auto mr-auto mb-[10px]  flex flex-row justify-between  items-center">
       <img src="/logo.png" alt="logo" className=" w-[90px] " />
-      {isLoggedIn ? (
+      {isLoggedIn && userName ? (
         <div>
           <p>{userName}</p>
           <button onClick={handleLogout}>로그아웃</button>

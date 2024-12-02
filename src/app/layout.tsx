@@ -1,14 +1,14 @@
 export default function RootLayout({
   children,
-  auth,
+  signup,
 }: Readonly<{
   children: React.ReactNode;
-  auth: React.ReactNode;
+  signup: React.ReactNode;
 }>) {
   return (
     <html lang="kr">
       <body>
-        <div className=" absolute">{auth}</div>
+        <div className=" absolute">{signup}</div>
         <div>{children}</div>
       </body>
     </html>

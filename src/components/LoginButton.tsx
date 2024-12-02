@@ -5,6 +5,7 @@ export function GoogleLoginButton({ location }: { location: string }) {
   return (
     <div>
       구글 로그인 버튼
+      <script src="https://accounts.google.com/gsi/client" async></script>
       <button onClick={() => signInWithGoogle(location)}>로그인</button>
     </div>
   );
