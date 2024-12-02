@@ -1,6 +1,6 @@
 "use client";
 
-import GoogleLoginButton from "@/components/GoogleLoginButton";
+import { GoogleLoginButton, KakaoLoginButton } from "@/components/LoginButton";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -13,6 +13,7 @@ export default function Modal() {
       <button onClick={() => router.back()}>뒤로가기</button>
       <div>
         <GoogleLoginButton location={uri} />
+        <KakaoLoginButton location={uri} />
       </div>
     </div>
   );
