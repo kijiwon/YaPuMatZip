@@ -45,6 +45,7 @@ module.exports = {
         s_core: "S-CoreDream-3Light",
         paper_logy: "Paperlogy-8ExtraBold",
         s_core_bold: "S-CoreDream-3Light-bold",
+        roboto: "Roboto",
       },
     },
   },

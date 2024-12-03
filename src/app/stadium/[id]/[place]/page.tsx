@@ -4,32 +4,35 @@ import "../../../globals.css";
 import KakaoMap from "@/components/KakaoMap";
 import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDatailData } from "@/app/hooks/useYapuPlaceData";
-import { usePathname, useRouter } from "next/navigation";
-import { IoMdArrowRoundBack } from "react-icons/io";
-
 import { useStadiumStore } from "@/stores/stadium-store";
+import { usePlaceStore } from "@/stores/place-store";
+import BackButton from "@/components/BackButton";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function PlacePage() {
-  const path = usePathname();
-  const stadiumId = decodeURI(path).split("/")[2];
-  const placename = decodeURI(path).split("/")[3];
-  const router = useRouter();
   const { selectedStadium } = useStadiumStore();
-
+  const { selectedPlace, clearSelectedPlace } = usePlaceStore();
+  const router = useRouter();
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
-    stadiumId,
-    placename
+    selectedStadium?.id as string,
+    selectedPlace as string
   );
 
-  const { isMenuLoading, recommendedMenusData } =
-    useRecommededMenusData(placename);
+  const { isMenuLoading, recommendedMenusData } = useRecommededMenusData(
+    selectedPlace as string
+  );
+
+  const handleBackButton = () => {
+    clearSelectedPlace();
+    router.replace(`/stadium/${selectedStadium?.id}`);
+  };
 
   // 로그인 페이지 뒤로가기 제어
   useEffect(() => {
     const handlePopState = () => {
       if (window.location.pathname === "/login") {
-        router.replace(`/stadium/${stadiumId}`);
+        router.replace(`/stadium/${selectedStadium?.id}`);
       }
     };
     window.addEventListener("popstate", handlePopState);
@@ -38,16 +41,9 @@ export default function PlacePage() {
       window.removeEventListener("popstate", handlePopState);
     };
   }, [router]);
-
   return (
     <div className="w-[70%] mt-[20px]">
-      <button
-        onClick={() => router.replace(`/stadium/${stadiumId}`)}
-        className="flex flex-row items-center mb-[30px] text-[18px] font-paper_logy"
-      >
-        <IoMdArrowRoundBack />
-        뒤로가기
-      </button>
+      <BackButton fn={handleBackButton} />
       <div>
         {isPlaceLoading ? (
           <div>loading...</div>
