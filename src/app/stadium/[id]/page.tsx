@@ -3,10 +3,12 @@
 import "../../globals.css";
 import { useStadiumStore } from "@/stores/stadium-store";
 import PlaceLists from "@/components/PlaceLists";
+import { usePlaceStore } from "@/stores/place-store";
 
 export default function Page() {
   const { selectedStadium } = useStadiumStore();
-
+  const { selectedPlace } = usePlaceStore();
+  console.log(">>id page", selectedPlace);
   return (
     <div className=" mt-[20px]">
       <div className="w-[70%] font-kbo mb-[30px]">

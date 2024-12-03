@@ -9,11 +9,13 @@ import { usePlaceStore } from "@/stores/place-store";
 import BackButton from "@/components/BackButton";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function PlacePage() {
   const { selectedStadium } = useStadiumStore();
   const { selectedPlace, clearSelectedPlace } = usePlaceStore();
   const router = useRouter();
+  const [isClickedBack, setIsClickedBack] = useState(false);
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
     selectedStadium?.id as string,
     selectedPlace as string
@@ -28,19 +30,15 @@ export default function PlacePage() {
     router.replace(`/stadium/${selectedStadium?.id}`);
   };
 
-  // 로그인 페이지 뒤로가기 제어
+  // 브라우저 뒤로가기 제어
   useEffect(() => {
     const handlePopState = () => {
-      if (window.location.pathname === "/login") {
-        router.replace(`/stadium/${selectedStadium?.id}`);
-      }
+      setIsClickedBack(true);
+      clearSelectedPlace();
     };
     window.addEventListener("popstate", handlePopState);
+  }, [isClickedBack]);
 
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [router]);
   return (
     <div className="w-[70%] mt-[20px]">
       <BackButton fn={handleBackButton} />

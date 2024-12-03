@@ -1,9 +1,17 @@
 "use client";
 import { signInWithGoogle, signInWithKakao } from "@/app/api/login";
+import { usePlaceStore } from "@/stores/place-store";
+import { useStadiumStore } from "@/stores/stadium-store";
 import { BiSolidMessageRounded } from "react-icons/bi";
-const location = decodeURI(window.location.href);
 
 export function GoogleLoginButton() {
+  const { selectedStadium } = useStadiumStore();
+  const { selectedPlace } = usePlaceStore();
+
+  const location = selectedPlace
+    ? `/stadium/${selectedStadium?.id}/${selectedPlace}`
+    : `/stadium/${selectedStadium?.id}`;
+
   return (
     <button
       className="h-[52px] flex flex-row items-center pl-[13px] bg-[#4285F4] rounded-[12px]"
@@ -17,6 +25,13 @@ export function GoogleLoginButton() {
   );
 }
 export function KakaoLoginButton() {
+  const { selectedStadium } = useStadiumStore();
+  const { selectedPlace } = usePlaceStore();
+
+  const location = selectedPlace
+    ? `/stadium/${selectedStadium?.id}/${selectedPlace}`
+    : `/stadium/${selectedStadium?.id}`;
+  console.log(location);
   return (
     <button
       className="h-[52px] flex flex-row items-center pl-[22px]  bg-[#FEE500] rounded-[12px]  "
