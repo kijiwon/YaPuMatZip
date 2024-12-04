@@ -32,7 +32,7 @@ export const useYapuPlaceData =(id:string) =>{
 export const useYapuPlaceDatailData =(id:string,name:string) =>{
     const [isPlaceLoading, setIsPlaceLoading] = useState(true);
     const [yapuPlaceDetailData, setYapuPlaceDetailData] = useState<TypeYapuPlace[]>([]);
-
+    
     const onGetData = async(id:string, name:string)=>{
         setIsPlaceLoading(true);
         try{

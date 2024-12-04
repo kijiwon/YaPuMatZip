@@ -8,7 +8,7 @@ import { useStadiumStore } from "@/stores/stadium-store";
 import { usePlaceStore } from "@/stores/place-store";
 import BackButton from "@/components/BackButton";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function PlacePage() {
@@ -16,13 +16,17 @@ export default function PlacePage() {
   const { selectedPlace, clearSelectedPlace } = usePlaceStore();
   const router = useRouter();
   const [isClickedBack, setIsClickedBack] = useState(false);
+  const path = usePathname();
+  const stadiumId = decodeURI(path).split("/")[2];
+  const placename = decodeURI(path).split("/")[3];
+
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
-    selectedStadium?.id as string,
-    selectedPlace as string
+    selectedStadium?.id! || stadiumId,
+    selectedPlace! || placename
   );
 
   const { isMenuLoading, recommendedMenusData } = useRecommededMenusData(
-    selectedPlace as string
+    selectedPlace! || placename
   );
 
   const handleBackButton = () => {
@@ -30,53 +34,62 @@ export default function PlacePage() {
     router.replace(`/stadium/${selectedStadium?.id}`);
   };
 
+  useEffect(() => {
+    console.log(">>placeName", placename);
+    console.log(">>stadiumName", stadiumId);
+  }, []);
+
   // 브라우저 뒤로가기 제어
   useEffect(() => {
     const handlePopState = () => {
+      console.log("뒤로가기 감지");
       setIsClickedBack(true);
       clearSelectedPlace();
     };
     window.addEventListener("popstate", handlePopState);
+    setIsClickedBack(false);
   }, [isClickedBack]);
+
+  if (isPlaceLoading || isMenuLoading) {
+    return <div>loading...</div>;
+  }
 
   return (
     <div className="w-[70%] mt-[20px]">
       <BackButton fn={handleBackButton} />
       <div>
-        {isPlaceLoading ? (
-          <div>loading...</div>
-        ) : (
+        {yapuPlaceDetailData[0] && (
           <div className="flex flex-col">
             <section className="mb-[30px]">
               <div>
                 <h1 className="flex flex-row justify-center items-center font-paper_logy text-[32px] text-center">
                   <span className="mr-[5px]">
-                    {yapuPlaceDetailData[0].food_type}
+                    {yapuPlaceDetailData[0]?.food_type}
                   </span>
-                  <span>{yapuPlaceDetailData[0].name}</span>
+                  <span>{yapuPlaceDetailData[0]?.name}</span>
                 </h1>
               </div>
               <p className="font-s_core font-bold text-[18px] mt-[30px] mb-[10px]">
-                위치 : {yapuPlaceDetailData[0].location}
+                위치 : {yapuPlaceDetailData[0]?.location}
               </p>
               <p className="font-s_core flex text-[18px] flex-row items-center mb-[10px]">
                 <span className="mr-[20px]">
-                  {yapuPlaceDetailData[0].is_delivery_or_takeout_available}
+                  {yapuPlaceDetailData[0]?.is_delivery_or_takeout_available}
                 </span>
-                <span>{yapuPlaceDetailData[0].info}</span>
+                <span>{yapuPlaceDetailData[0]?.info}</span>
               </p>
-              {!yapuPlaceDetailData[0].inside_stadium && selectedStadium && (
-                <KakaoMap
-                  place={yapuPlaceDetailData[0]}
-                  stadium={selectedStadium}
-                />
-              )}
+              {!yapuPlaceDetailData[0]?.inside_stadium &&
+                selectedStadium &&
+                yapuPlaceDetailData[0] && (
+                  <KakaoMap
+                    place={yapuPlaceDetailData[0]!}
+                    stadium={selectedStadium!}
+                  />
+                )}
             </section>
             <hr className="w-[100%] border-b-1 border-dashed border-gray-400 " />
             <section className="mt-[40px]">
-              {isMenuLoading ? (
-                <div>loading...</div>
-              ) : (
+              {!isMenuLoading && (
                 <div className=" flex flex-col items-center ">
                   <p className="text-center font-paper_logy text-[26px] mb-[20px]">
                     📋추천 메뉴

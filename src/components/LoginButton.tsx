@@ -9,8 +9,8 @@ export function GoogleLoginButton() {
   const { selectedPlace } = usePlaceStore();
 
   const location = selectedPlace
-    ? `/stadium/${selectedStadium?.id}/${selectedPlace}`
-    : `/stadium/${selectedStadium?.id}`;
+    ? `${window.location.origin}/stadium/${selectedStadium?.id}/${selectedPlace}`
+    : `${window.location.origin}/stadium/${selectedStadium?.id}`;
 
   return (
     <button
@@ -29,9 +29,9 @@ export function KakaoLoginButton() {
   const { selectedPlace } = usePlaceStore();
 
   const location = selectedPlace
-    ? `/stadium/${selectedStadium?.id}/${selectedPlace}`
-    : `/stadium/${selectedStadium?.id}`;
-  console.log(location);
+    ? `${window.location.origin}/stadium/${selectedStadium?.id}/${selectedPlace}`
+    : `${window.location.origin}/stadium/${selectedStadium?.id}`;
+
   return (
     <button
       className="h-[52px] flex flex-row items-center pl-[22px]  bg-[#FEE500] rounded-[12px]  "

@@ -1,9 +1,9 @@
-'use server'
 import { createSupabaseBrowserClient } from "../lib/client/supabase";
 
 const supabase = createSupabaseBrowserClient();
 
-export async function signInWithGoogle(location:string){ 
+export async function signInWithGoogle(location:string){
+    console.log(location) 
    const {error} = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options:{
