@@ -2,37 +2,41 @@
 
 import { signOut } from "@/app/api/login";
 import { createSupabaseBrowserClient } from "@/app/lib/client/supabase";
+import { useUserStore } from "@/stores/user-store";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export default function Header() {
+  const { loggedInUser, setLoggedInUser, clearLoggedInUser } = useUserStore();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState("");
   const router = useRouter();
   const supabase = createSupabaseBrowserClient();
+
   const getUser = async () => {
     const user = await supabase.auth.getUser();
     if (user) {
-      setUserName(user.data.user?.user_metadata.name);
+      setLoggedInUser(user.data.user?.user_metadata.name);
       setIsLoggedIn(true);
     }
   };
 
   const handleLogout = () => {
     signOut();
+    clearLoggedInUser();
     setIsLoggedIn(false);
   };
 
   useEffect(() => {
     getUser();
-  }, [userName]);
+  }, [router]);
+
   return (
     <header className=" pt-[10px] w-[80%] ml-auto mr-auto mb-[10px]  flex flex-row justify-between  items-center">
       <img src="/logo.png" alt="logo" className=" w-[90px] " />
-      {isLoggedIn && userName ? (
+      {isLoggedIn && loggedInUser ? (
         <div>
-          <p>{userName}</p>
+          <p>{loggedInUser}</p>
           <button onClick={handleLogout}>로그아웃</button>
         </div>
       ) : (
