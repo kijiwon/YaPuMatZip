@@ -19,6 +19,7 @@ export default function PlacePage() {
   const path = usePathname();
   const stadiumId = decodeURI(path).split("/")[2];
   const placename = decodeURI(path).split("/")[3];
+  const [comment, setComment] = useState("");
 
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
     selectedStadium?.id! || stadiumId,
@@ -34,10 +35,9 @@ export default function PlacePage() {
     router.replace(`/stadium/${selectedStadium?.id}`);
   };
 
-  useEffect(() => {
-    console.log(">>placeName", placename);
-    console.log(">>stadiumName", stadiumId);
-  }, []);
+  const onChangeComment = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setComment(e.target.value);
+  };
 
   // 브라우저 뒤로가기 제어
   useEffect(() => {
@@ -112,6 +112,13 @@ export default function PlacePage() {
             </section>
           </div>
         )}
+      </div>
+      <hr />
+      <div>
+        <div>
+          <p>댓글</p>
+          <input type="text" value={comment} onChange={onChangeComment} />
+        </div>
       </div>
     </div>
   );
