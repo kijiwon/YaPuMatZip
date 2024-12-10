@@ -1,7 +1,7 @@
 "use client";
 
 import { signOut } from "@/app/api/login";
-import { createSupabaseBrowserClient } from "@/app/lib/client/supabase";
+import { createSupabaseBrowserClient } from "@/app/utils/client/supabase";
 import { useUserStore } from "@/stores/user-store";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -17,6 +17,7 @@ export default function Header() {
     const user = await supabase.auth.getUser();
     if (user) {
       setLoggedInUser(user.data.user?.user_metadata.name);
+      console.log(user.data.user);
       setIsLoggedIn(true);
     }
   };
@@ -41,7 +42,7 @@ export default function Header() {
         </div>
       ) : (
         <button
-          onClick={() => router.push("/login")}
+          onClick={() => router.push("/auth")}
           className=" w-[110px] h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy text-[20px] hover:bg-main-light-blue  "
         >
           로그인

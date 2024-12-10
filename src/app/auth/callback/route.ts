@@ -1,4 +1,4 @@
-import { createSupabaseBrowserClient } from '@/app/lib/client/supabase';
+import { createSupabaseBrowserClient } from '@/app/utils/client/supabase';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {

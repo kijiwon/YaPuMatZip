@@ -1,6 +1,6 @@
 'use client'
 
-import { createSupabaseBrowserClient } from "../lib/client/supabase"
+import { createSupabaseBrowserClient } from "../utils/client/supabase"
 
 export const getYapuPlaceInfo = async(id:string)=>{
     const supabase = createSupabaseBrowserClient();

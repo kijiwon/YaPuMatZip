@@ -10,10 +10,16 @@ import BackButton from "@/components/BackButton";
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import { useUserStore } from "@/stores/user-store";
+import { useRef } from "react";
+import CommentsList from "@/components/CommentsList";
 
 export default function PlacePage() {
   const { selectedStadium } = useStadiumStore();
   const { selectedPlace, clearSelectedPlace } = usePlaceStore();
+  const { loggedInUser } = useUserStore();
+
+  const commentRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const [isClickedBack, setIsClickedBack] = useState(false);
   const path = usePathname();
@@ -36,6 +42,12 @@ export default function PlacePage() {
   };
 
   const onChangeComment = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (commentRef.current !== null) {
+      if (!loggedInUser) {
+        alert("로그인 후 이용해주세요🙏");
+        return;
+      }
+    }
     setComment(e.target.value);
   };
 
@@ -60,7 +72,7 @@ export default function PlacePage() {
       <div>
         {yapuPlaceDetailData[0] && (
           <div className="flex flex-col">
-            <section className="mb-[30px]">
+            <section className="mb-[20px]">
               <div>
                 <h1 className="flex flex-row justify-center items-center font-paper_logy text-[32px] text-center">
                   <span className="mr-[5px]">
@@ -114,11 +126,21 @@ export default function PlacePage() {
         )}
       </div>
       <hr />
-      <div>
-        <div>
-          <p>댓글</p>
-          <input type="text" value={comment} onChange={onChangeComment} />
+      <div className="mt-[20px]">
+        <div className="flex flex-col">
+          <p className="font-kbo text-[18px]">댓글</p>
+          <div>
+            <input
+              className="border-2 rounded-sm w-[300px] mb-[20px]"
+              ref={commentRef}
+              type="text"
+              value={comment}
+              onChange={onChangeComment}
+            />
+            <button>제출</button>
+          </div>
         </div>
+        <CommentsList />
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export default function BackButton({ fn }: Props) {
   };
   return (
     <button
-      className="flex flex-row items-center mb-[30px] text-[18px] font-paper_logy"
+      className="flex flex-row items-center mb-[10px] text-[18px] font-paper_logy"
       onClick={fn ? fn : onClickButton}
     >
       <IoMdArrowRoundBack />
