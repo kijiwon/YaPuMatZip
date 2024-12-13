@@ -36,6 +36,41 @@ export type Database = {
         }
         Relationships: []
       }
+      comments: {
+        Row: {
+          comment: string
+          created_at: string
+          deleted_at: string | null
+          id: number
+          place: string
+          user_id: string
+        }
+        Insert: {
+          comment: string
+          created_at?: string
+          deleted_at?: string | null
+          id?: number
+          place: string
+          user_id?: string
+        }
+        Update: {
+          comment?: string
+          created_at?: string
+          deleted_at?: string | null
+          id?: number
+          place?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comments_place_fkey"
+            columns: ["place"]
+            isOneToOne: false
+            referencedRelation: "yapu-place"
+            referencedColumns: ["name"]
+          },
+        ]
+      }
       "recommended-menus": {
         Row: {
           id: number

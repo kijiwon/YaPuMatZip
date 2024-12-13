@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useUserStore } from "@/stores/user-store";
 import { useRef } from "react";
 import CommentsList from "@/components/CommentsList";
+import { getComments } from "@/app/api/comments";
 
 export default function PlacePage() {
   const { selectedStadium } = useStadiumStore();
@@ -26,6 +27,11 @@ export default function PlacePage() {
   const stadiumId = decodeURI(path).split("/")[2];
   const placename = decodeURI(path).split("/")[3];
   const [comment, setComment] = useState("");
+
+  const handleGetComments = async (placename: string) => {
+    const data = await getComments(placename);
+    console.log(data);
+  };
 
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
     selectedStadium?.id! || stadiumId,
@@ -61,6 +67,10 @@ export default function PlacePage() {
     window.addEventListener("popstate", handlePopState);
     setIsClickedBack(false);
   }, [isClickedBack]);
+
+  useEffect(() => {
+    handleGetComments(placename);
+  }, []);
 
   if (isPlaceLoading || isMenuLoading) {
     return <div>loading...</div>;
