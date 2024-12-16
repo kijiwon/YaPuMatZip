@@ -1,11 +1,9 @@
 "use server"
+import { createServerSideClient } from "../utils/server";
 
-import { createSupabaseBrowserClient } from "../utils/client/supabase";
+const supabase = await createServerSideClient();
 
-const supabase = createSupabaseBrowserClient();
-
-export async function signInWithGoogle(location:string){
-    console.log(location); 
+export async function signInWithGoogle(){
    const {error} = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options:{
@@ -20,8 +18,7 @@ export async function signInWithGoogle(location:string){
 
 }
 
-export async function signInWithKakao(location:string){
-    console.log(location);  
+export async function signInWithKakao(){ 
    const {error} = await supabase.auth.signInWithOAuth({
     provider:'kakao',
     options:{
@@ -38,6 +35,6 @@ export async function signInWithKakao(location:string){
 }
 
 export async function signOut(){
-    const {error} =await supabase.auth.signOut();
+    const {error} = await supabase.auth.signOut();
     if(error) console.log(error);
 }

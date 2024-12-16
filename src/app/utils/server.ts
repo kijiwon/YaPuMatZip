@@ -3,7 +3,7 @@ import { Database } from '../../../database.types'
 import { NextRequest, NextResponse } from 'next/server';
 import {getCookie, setCookie} from 'cookies-next';
 
-export const createServerSideClient= async ()=> {
+export const createServerSideClient= async (serverComponent = false)=> {
 
   return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -12,9 +12,11 @@ export const createServerSideClient= async ()=> {
       cookies: {
         get:(key) => getCookie(key),
         set:(key, value, options) => {
+          if(serverComponent) return; // server component의 경우 쿠키 조작 막기
           setCookie(key, value, options);
         },
         remove: (key, options)=>{
+          if(serverComponent) return;
           setCookie(key,'',options);
         }
       },
@@ -22,6 +24,10 @@ export const createServerSideClient= async ()=> {
   )
 }
 
+// RSC
+export const createServerSideClientRSC = async () => {
+  return createServerSideClient(true);
+};
 
 // middleware
 export const createServerSideMiddleware = async(req:NextRequest, res:NextResponse) => {
