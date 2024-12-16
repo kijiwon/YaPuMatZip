@@ -1,6 +1,6 @@
 "use client";
 
-import { signOut } from "@/app/api/login";
+import { signOut } from "@/app/login/actions";
 import { createSupabaseBrowserClient } from "@/app/utils/client/supabase";
 import { useUserStore } from "@/stores/user-store";
 import { useRouter } from "next/navigation";

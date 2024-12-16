@@ -1,5 +1,5 @@
 "use client";
-import { signInWithGoogle, signInWithKakao } from "@/app/api/login";
+import { signInWithGoogle, signInWithKakao } from "@/app/login/actions";
 import { usePlaceStore } from "@/stores/place-store";
 import { useStadiumStore } from "@/stores/stadium-store";
 

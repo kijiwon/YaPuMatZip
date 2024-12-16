@@ -1,3 +1,5 @@
+"use server"
+
 import { createSupabaseBrowserClient } from "../utils/client/supabase";
 
 const supabase = createSupabaseBrowserClient();
