@@ -1,15 +1,15 @@
-import { createSupabaseBrowserClient } from '@/app/utils/client/supabase';
+import { createServerSideClient } from '@/app/utils/server';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
   const next = searchParams.get('next') ?? '/';
-
+console.log('>>next',next);
   if (code) {
-    const supabase = createSupabaseBrowserClient();
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
-    console.log(error)
+    const supabase = createServerSideClient();
+    const { error } = supabase.auth.exchangeCodeForSession(code);
+    console.log('>>error',error)
     if (!error) {
       const forwardedHost = request.headers.get('x-forwarded-host');
       const isLocalEnv = process.env.NODE_ENV === 'development';

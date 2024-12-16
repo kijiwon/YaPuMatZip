@@ -2,15 +2,13 @@
 import { signInWithGoogle, signInWithKakao } from "@/app/api/login";
 import { usePlaceStore } from "@/stores/place-store";
 import { useStadiumStore } from "@/stores/stadium-store";
-import { useParams } from "next/navigation";
+
 import { BiSolidMessageRounded } from "react-icons/bi";
 
 export function GoogleLoginButton() {
   const { selectedStadium } = useStadiumStore();
   const { selectedPlace } = usePlaceStore();
 
-  const { id, place } = useParams();
-  console.log("path>>", decodeURIComponent(place as string));
   const location = selectedPlace
     ? `${process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO}/stadium/${selectedStadium?.id}/${selectedPlace}`
     : `${process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO}/stadium/${selectedStadium?.id}`;

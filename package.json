@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@supabase/ssr": "^0.1.0",
-    "@supabase/supabase-js": "^2.47.3",
+    "@supabase/supabase-js": "^2.47.8",
     "@types/dom-speech-recognition": "^0.0.4",
     "cookies-next": "^5.0.2",
     "next": "15.0.3",

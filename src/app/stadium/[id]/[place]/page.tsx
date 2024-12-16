@@ -29,12 +29,16 @@ export default function PlacePage() {
   const [comment, setComment] = useState("");
 
   const handleGetComments = async (placename: string) => {
-    const data = await getComments(placename);
-    console.log(data);
+    try {
+      const data = await getComments(placename);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
-    selectedStadium?.id! || stadiumId,
+    (selectedStadium?.id as string) || stadiumId,
     selectedPlace! || placename
   );
 
