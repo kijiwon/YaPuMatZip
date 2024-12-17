@@ -1,9 +1,9 @@
 "use client";
 
 import { StadiumType } from "@/types/stadium";
-import { Database } from "../../database.types";
 import { useRouter } from "next/navigation";
 import { usePlaceStore } from "@/stores/place-store";
+import { Database } from "../../../../database.types";
 
 type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];
 

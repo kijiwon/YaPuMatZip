@@ -1,5 +1,5 @@
 import { createServerSideClientRSC } from "@/app/utils/server";
-import { HeaderLoginButton, HeaderLogoutButton } from "./HeaderButton";
+import { HeaderLoginButton, HeaderLogoutButton } from "./LoginButtons";
 
 export default async function Header() {
   const supabase = await createServerSideClientRSC();

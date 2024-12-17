@@ -2,7 +2,7 @@
 
 import "../../globals.css";
 import { useStadiumStore } from "@/stores/stadium-store";
-import PlaceLists from "@/components/PlaceLists";
+import PlaceLists from "@/app/stadium/[id]/PlaceLists";
 
 export default function Page() {
   const { selectedStadium } = useStadiumStore();

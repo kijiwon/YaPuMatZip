@@ -1,4 +1,4 @@
-import { GoogleLoginButton, KakaoLoginButton } from "@/components/LoginButton";
+import { GoogleLoginButton, KakaoLoginButton } from "@/components/LoginButtons";
 import BackButton from "./BackButton";
 
 export default function Modal() {

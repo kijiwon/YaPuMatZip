@@ -10,7 +10,6 @@ import BackButton from "@/components/BackButton";
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { useUserStore } from "@/stores/user-store";
 import { useRef } from "react";
 import CommentsList from "@/components/CommentsList";
 import { getComments } from "@/app/api/comments";
@@ -18,7 +17,6 @@ import { getComments } from "@/app/api/comments";
 export default function PlacePage() {
   const { selectedStadium } = useStadiumStore();
   const { selectedPlace, clearSelectedPlace } = usePlaceStore();
-  const { loggedInUser } = useUserStore();
 
   const commentRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
