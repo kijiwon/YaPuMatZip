@@ -2,24 +2,26 @@ import { createServerClient } from '@supabase/ssr'
 import { Database } from '../../../database.types'
 import { NextRequest, NextResponse } from 'next/server';
 import {getCookie, setCookie} from 'cookies-next';
+import { cookies } from 'next/headers';
 
 export const createServerSideClient= async (serverComponent = false)=> {
+  const cookieStore = await cookies();
 
   return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
-      cookies: {
-        get:(key) => getCookie(key),
-        set:(key, value, options) => {
-          if(serverComponent) return; // server component의 경우 쿠키 조작 막기
-          setCookie(key, value, options);
-        },
-        remove: (key, options)=>{
+      cookies:{
+        get: (key)=> cookieStore.get(key)?.value,
+        set: (key, value, options) => {
           if(serverComponent) return;
-          setCookie(key,'',options);
+          cookieStore.set(key, value, options)
+        },
+        remove: (key, options) => {
+          if(serverComponent) return;
+          cookieStore.set(key, '', {...options, maxAge: -1}) //  maxAge: -1->쿠키 삭제
         }
-      },
+      }
     }
   )
 }
@@ -31,7 +33,8 @@ export const createServerSideClientRSC = async () => {
 
 // middleware
 export const createServerSideMiddleware = async(req:NextRequest, res:NextResponse) => {
-
+  const {nextUrl} = req;
+  console.log('>>nextUrl',nextUrl);
   return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -47,4 +50,5 @@ export const createServerSideMiddleware = async(req:NextRequest, res:NextRespons
       },
     }
   )
+  
 }

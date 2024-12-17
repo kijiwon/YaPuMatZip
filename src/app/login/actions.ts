@@ -1,8 +1,9 @@
 'use client'
-import { createServerSideClient } from "../utils/server";
+import { createSupabaseBrowserClient } from "../utils/client/supabase";
+
 
 export async function signInWithGoogle(){
-    const supabase = await createServerSideClient();
+    const supabase = await createSupabaseBrowserClient();
     const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options:{
@@ -18,7 +19,7 @@ export async function signInWithGoogle(){
 }
 
 export async function signInWithKakao(){ 
-    const supabase = await createServerSideClient();
+    const supabase = await createSupabaseBrowserClient();
    const {error} = await supabase.auth.signInWithOAuth({
     provider:'kakao',
     options:{
@@ -35,7 +36,7 @@ export async function signInWithKakao(){
 }
 
 export async function signOut(){
-    const supabase = await createServerSideClient();
+    const supabase = await createSupabaseBrowserClient();
     const {error} = await supabase.auth.signOut();
     if(error) console.log(error);
 }
