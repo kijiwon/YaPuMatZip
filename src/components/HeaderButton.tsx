@@ -1,52 +1,26 @@
 "use client";
 
 import { signOut } from "@/app/login/actions";
-import { createSupabaseBrowserClient } from "@/app/utils/client/supabase";
-import { useUserStore } from "@/stores/user-store";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { useEffect } from "react";
 
-export default function HeaderButton() {
-  const { loggedInUser, setLoggedInUser, clearLoggedInUser } = useUserStore();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export function HeaderLoginButton() {
   const router = useRouter();
-  const supabase = createSupabaseBrowserClient();
-
-  const getUser = async () => {
-    const user = await supabase.auth.getUser();
-    if (user) {
-      setLoggedInUser(user.data.user?.user_metadata.name);
-      console.log(user.data.user);
-      setIsLoggedIn(true);
-    }
-  };
-
-  const handleLogout = () => {
-    signOut();
-    clearLoggedInUser();
-    setIsLoggedIn(false);
-  };
-
-  useEffect(() => {
-    getUser();
-  }, [router]);
 
   return (
-    <>
-      {isLoggedIn && loggedInUser ? (
-        <div>
-          <p>{loggedInUser}</p>
-          <button onClick={handleLogout}>로그아웃</button>
-        </div>
-      ) : (
-        <button
-          onClick={() => router.push("/auth")}
-          className=" w-[110px] h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy text-[20px] hover:bg-main-light-blue  "
-        >
-          로그인
-        </button>
-      )}
-    </>
+    <button
+      onClick={() => router.push("/auth")}
+      className=" w-[110px] h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy text-[20px] hover:bg-main-light-blue  "
+    >
+      로그인
+    </button>
   );
+}
+
+export function HeaderLogoutButton() {
+  const handleLogout = () => {
+    signOut();
+    window.location.reload();
+  };
+
+  return <button onClick={handleLogout}>로그아웃</button>;
 }
