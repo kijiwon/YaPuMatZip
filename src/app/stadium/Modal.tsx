@@ -19,8 +19,6 @@ export default function Modal({ userName }: { userName: string }) {
     ? `/stadium/${selectedStadium}/${selectedPlace}`
     : `/stadium/${selectedStadium}`;
 
-  console.log(url);
-
   const handlePageRouter = () => {
     setTimeout(() => {
       router.push(url);
@@ -28,15 +26,19 @@ export default function Modal({ userName }: { userName: string }) {
   };
 
   useEffect(() => {
-    if (hydrated) handlePageRouter();
+    // if (hydrated) handlePageRouter();
   }, [hydrated]);
 
   if (!hydrated) return;
 
   return (
-    <div>
-      <p>{userName}님 로그인 완료!</p>
-      <p>잠시 후 페이지로 이동합니다...</p>
+    <div className="flex flex-col justify-center items-center px-[100px] py-[50px] bg-white rounded-[15px] shadow-md">
+      <p className="text-[24px] font-kbo mb-[10px]">
+        {userName}님 로그인 완료!
+      </p>
+      <p className="text-[16px] font-paper_logy">
+        잠시 후 페이지로 이동합니다...
+      </p>
     </div>
   );
 }
