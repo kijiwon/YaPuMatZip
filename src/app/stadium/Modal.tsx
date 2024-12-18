@@ -1,0 +1,42 @@
+"use client";
+
+import { usePlaceStore } from "@/stores/place-store";
+import { useStadiumStore } from "@/stores/stadium-store";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+export default function Modal({ userName }: { userName: string }) {
+  const { selectedStadium } = useStadiumStore();
+  const { selectedPlace } = usePlaceStore();
+  const [hydrated, setHydrated] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  const url = selectedPlace
+    ? `/stadium/${selectedStadium}/${selectedPlace}`
+    : `/stadium/${selectedStadium}`;
+
+  console.log(url);
+
+  const handlePageRouter = () => {
+    setTimeout(() => {
+      router.push(url);
+    }, 1500);
+  };
+
+  useEffect(() => {
+    if (hydrated) handlePageRouter();
+  }, [hydrated]);
+
+  if (!hydrated) return;
+
+  return (
+    <div>
+      <p>{userName}님 로그인 완료!</p>
+      <p>잠시 후 페이지로 이동합니다...</p>
+    </div>
+  );
+}

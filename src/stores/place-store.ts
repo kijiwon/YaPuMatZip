@@ -5,7 +5,6 @@ export type PlaceStore = {
   selectedPlace: string | null; 
   setSelectedPlace: (place: string) => void;
   clearSelectedPlace : () => void;
-
 };
 
 export const usePlaceStore = create(
