@@ -24,7 +24,14 @@ export function HeaderLogoutButton() {
     window.location.reload();
   };
 
-  return <button onClick={handleLogout}>로그아웃</button>;
+  return (
+    <button
+      onClick={handleLogout}
+      className=" w-[110px] h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy text-[20px] hover:bg-main-light-blue  "
+    >
+      로그아웃
+    </button>
+  );
 }
 
 export function GoogleLoginButton() {

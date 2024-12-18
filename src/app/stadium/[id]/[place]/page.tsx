@@ -51,10 +51,10 @@ export default function PlacePage() {
 
   const onChangeComment = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (commentRef.current !== null) {
-      if (!loggedInUser) {
-        alert("로그인 후 이용해주세요🙏");
-        return;
-      }
+      // if (!loggedInUser) {
+      //   alert("로그인 후 이용해주세요🙏");
+      //   return;
+      // }
     }
     setComment(e.target.value);
   };
