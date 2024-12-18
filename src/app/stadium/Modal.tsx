@@ -26,7 +26,7 @@ export default function Modal({ userName }: { userName: string }) {
   };
 
   useEffect(() => {
-    // if (hydrated) handlePageRouter();
+    if (hydrated) handlePageRouter();
   }, [hydrated]);
 
   if (!hydrated) return;
