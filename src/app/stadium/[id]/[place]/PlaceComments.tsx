@@ -1,6 +1,6 @@
 "use client";
 
-import CommentsList from "@/components/CommentsList";
+import CommentsList from "@/app/stadium/[id]/[place]/CommentsList";
 import { useRef, useState } from "react";
 import { PiRobot } from "react-icons/pi";
 
