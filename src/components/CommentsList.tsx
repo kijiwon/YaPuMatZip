@@ -2,7 +2,7 @@ import { PiRobot } from "react-icons/pi";
 
 export default function CommentsList() {
   return (
-    <ul className="mb-[20px] px-[100px]">
+    <ul className="mb-[20px] px-[80px]">
       <li className="flex flex-row items-start font-s_core border-b-[2px]">
         <p className=" flex flex-row items-center text-[18px] mr-[10px]">
           <PiRobot size={22} />
