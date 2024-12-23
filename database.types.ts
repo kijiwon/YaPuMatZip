@@ -43,6 +43,8 @@ export type Database = {
           deleted_at: string | null
           id: number
           place: string
+          updated_at: string | null
+          user_email: string
           user_id: string
         }
         Insert: {
@@ -51,6 +53,8 @@ export type Database = {
           deleted_at?: string | null
           id?: number
           place: string
+          updated_at?: string | null
+          user_email: string
           user_id?: string
         }
         Update: {
@@ -59,6 +63,8 @@ export type Database = {
           deleted_at?: string | null
           id?: number
           place?: string
+          updated_at?: string | null
+          user_email?: string
           user_id?: string
         }
         Relationships: [
@@ -70,6 +76,33 @@ export type Database = {
             referencedColumns: ["name"]
           },
         ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+          username: string | null
+          website: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+          username?: string | null
+          website?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+          username?: string | null
+          website?: string | null
+        }
+        Relationships: []
       }
       "recommended-menus": {
         Row: {

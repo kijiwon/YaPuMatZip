@@ -43,7 +43,7 @@ export default function PlaceComments({ userName }: { userName: string }) {
           </button>
         </div>
       </div>
-      <CommentsList />
+      <CommentsList userName={userName} />
     </div>
   );
 }
