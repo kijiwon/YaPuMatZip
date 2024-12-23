@@ -9,14 +9,13 @@ export default async function PlacePage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const userName = user?.email?.split("@")[0] as string;
-  console.log(userName);
+  const userEmail = user?.email;
 
   return (
     <div className="w-[70%] mt-[20px]">
       <PlaceInfo />
       <hr />
-      <PlaceComments userName={userName} />
+      <PlaceComments userEmail={userEmail} />
     </div>
   );
 }

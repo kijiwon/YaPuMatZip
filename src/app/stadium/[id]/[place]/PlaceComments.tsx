@@ -1,22 +1,39 @@
 "use client";
 
+import { createComments } from "@/app/api/comments";
 import CommentsList from "@/app/stadium/[id]/[place]/CommentsList";
-import { useRef, useState } from "react";
+import { usePlaceStore } from "@/stores/place-store";
+import { useEffect, useRef, useState } from "react";
 import { PiRobot } from "react-icons/pi";
 
-export default function PlaceComments({ userName }: { userName: string }) {
+export default function PlaceComments({
+  userEmail,
+}: {
+  userEmail: string | null;
+}) {
+  const { selectedPlace } = usePlaceStore();
   const commentRef = useRef<HTMLInputElement>(null);
   const [comment, setComment] = useState("");
+  const userName = userEmail?.split("@")[0] as string;
 
   const onChangeComment = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (commentRef.current !== null) {
-      if (!userName) {
+      if (!userEmail) {
         alert("로그인 후 이용해주세요🙏");
         return;
       }
     }
     setComment(e.target.value);
   };
+
+  useEffect(() => {
+    if (userEmail)
+      createComments({
+        place: selectedPlace!,
+        content: "테스트 코멘트",
+        user_email: userEmail!,
+      });
+  }, []);
 
   return (
     <div className="mt-[20px]">
@@ -43,7 +60,7 @@ export default function PlaceComments({ userName }: { userName: string }) {
           </button>
         </div>
       </div>
-      <CommentsList userName={userName} />
+      <CommentsList />
     </div>
   );
 }
