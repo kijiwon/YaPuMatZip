@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Database } from "../../../database.types";
-import { createComments, getComments, updateComments } from "../comment/actions";
+import { createComments, deleteComments, getComments, updateComments } from "../comment/actions";
 
 type TypeComments = Database['public']['Tables']['comments']['Row'];
 
@@ -36,5 +36,10 @@ export const useCommentsController = (place:string) =>{
         await onGetComments(place);
     }
 
-    return {loading, comments, onCreateComments, onEditComments}
+    // comment 삭제
+    const onDeleteComments = async(id:number) => {
+        await deleteComments(id);
+        await onGetComments(place);
+    }
+    return {loading, comments, onCreateComments, onEditComments, onDeleteComments}
 }

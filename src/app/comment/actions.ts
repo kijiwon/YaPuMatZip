@@ -14,7 +14,7 @@ export const getComments = async(place:string)=>{
     });
 
     return result.data;
-}
+};
 
 // comments 생성
 export const createComments = async({place,content, user_email}:{place:string,content:string, user_email:string})=>{
@@ -27,7 +27,7 @@ export const createComments = async({place,content, user_email}:{place:string,co
     .select();
 
     return result.data; 
-}
+};
 
 // comments 수정
 export const updateComments = async({id,content}:{id:number,content:string})=>{
@@ -41,5 +41,18 @@ export const updateComments = async({id,content}:{id:number,content:string})=>{
     .select();
 
     return result.data; 
-}
+};
 
+// comments 삭제
+export const deleteComments = async(id:number)=>{
+    const supabase = await createServerSideClient();
+    const result = await supabase.from('comments')
+    .update({
+        deleted_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+    })
+    .eq('id',id)
+    .select();
+
+    return result.data;
+};

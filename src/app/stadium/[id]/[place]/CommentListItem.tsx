@@ -15,12 +15,14 @@ interface Props {
     id: number;
     content: string;
   }) => Promise<void>;
+  onDeleteComments: (id: number) => Promise<void>;
 }
 
 export default function CommentListItem({
   i,
   userEmail,
   onEditComments,
+  onDeleteComments,
 }: Props) {
   const [isClickedEdit, setIsClickedEdit] = useState(false);
   const [editContent, setEditContent] = useState(i.content);
@@ -34,8 +36,10 @@ export default function CommentListItem({
       alert("한 글자 이상 작성해주세요");
       return;
     }
-
     onEditComments({ id: i.id, content: editContent });
+    setTimeout(() => {
+      alert("수정 완료");
+    }, 1000);
     setIsClickedEdit(false);
   };
 
@@ -78,7 +82,7 @@ export default function CommentListItem({
               <MdEdit size={16} />
             </button>
           )}
-          <button>
+          <button onClick={() => onDeleteComments(i.id)}>
             <FaTrashCan size={16} />
           </button>
         </div>

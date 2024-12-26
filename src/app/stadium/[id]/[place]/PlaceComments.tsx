@@ -15,8 +15,13 @@ export default function PlaceComments({
   const commentRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState("");
   const userName = userEmail?.split("@")[0] as string;
-  const { loading, comments, onCreateComments, onEditComments } =
-    useCommentsController(selectedPlace!);
+  const {
+    loading,
+    comments,
+    onCreateComments,
+    onEditComments,
+    onDeleteComments,
+  } = useCommentsController(selectedPlace!);
 
   const onChangeComment = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (commentRef.current !== null) {
@@ -82,6 +87,7 @@ export default function PlaceComments({
               i={i}
               userEmail={userEmail!}
               onEditComments={onEditComments}
+              onDeleteComments={onDeleteComments}
             />
           ))}
         </ul>
