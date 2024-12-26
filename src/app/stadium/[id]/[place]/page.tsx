@@ -12,7 +12,7 @@ export default async function PlacePage() {
   const userEmail = user?.email;
 
   return (
-    <div className="w-[70%] mt-[20px]">
+    <div className="w-[80%] mt-[20px]">
       <PlaceInfo />
       <hr />
       <PlaceComments userEmail={userEmail as string} />

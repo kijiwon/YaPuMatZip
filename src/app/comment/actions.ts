@@ -13,7 +13,6 @@ export const getComments = async(place:string)=>{
         ascending:false // 내림차순 정렬
     });
 
-    console.log(result.data)
     return result.data;
 }
 
@@ -25,8 +24,21 @@ export const createComments = async({place,content, user_email}:{place:string,co
     .insert({
        place, content, user_email
     })
-    .select();
+    .select('*');
 
-    console.log(result.data)
+    return result.data; 
+}
+
+// comments 수정
+export const updateComments = async({id,content}:{id:number,content:string})=>{
+    const supabase = await createServerSideClient();
+    const result = await supabase.from('comments')
+    .update({
+        content,
+       updated_at: new Date().toISOString() 
+    })
+    .eq('id',id)
+    .select('*');
+
     return result.data; 
 }

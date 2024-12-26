@@ -5,6 +5,7 @@ import { usePlaceStore } from "@/stores/place-store";
 import { useEffect, useRef, useState } from "react";
 import { PiRobot } from "react-icons/pi";
 import { Database } from "../../../../../database.types";
+import CommentListItem from "./CommentListItem";
 
 type TypeComments = Database["public"]["Tables"]["comments"]["Row"];
 
@@ -41,17 +42,16 @@ export default function PlaceComments({
       user_email: userEmail!,
     });
     setContent("");
-    handleGetComments();
+    // handleGetComments(selectedPlace!);
   };
 
-  const handleGetComments = async () => {
+  const handleGetComments = async (selectedPlace: string) => {
     const commentData = await getComments(selectedPlace!);
-    console.log(commentData);
     if (commentData) setCommentList(commentData);
   };
 
   useEffect(() => {
-    handleGetComments();
+    handleGetComments(selectedPlace!);
   }, []);
 
   return (
@@ -86,21 +86,9 @@ export default function PlaceComments({
         </form>
       </div>
       {commentList && (
-        <ul className="mb-[20px] px-[80px]">
+        <ul className="mb-[20px] px-[50px]">
           {commentList.map((i) => (
-            <li
-              key={i.id}
-              className="flex flex-row items-start font-s_core border-b-[2px]"
-            >
-              <p className="w-[180px] flex flex-row  items-center text-[18px] mr-[10px] pt-[5px] pl-[5px]">
-                <PiRobot size={22} />
-                <span>{i.user_email.split("@")[0]}</span>
-              </p>
-              <div className=" border-l-[2px] border-dashed text-[16px] pl-[5px]">
-                <p>{i.content}</p>
-                <p className="text-[13px] text-gray-500">{i.created_at}</p>
-              </div>
-            </li>
+            <CommentListItem key={i.id} i={i} userEmail={userEmail!} />
           ))}
         </ul>
       )}
