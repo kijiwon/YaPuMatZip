@@ -15,7 +15,7 @@ export default async function PlacePage() {
     <div className="w-[70%] mt-[20px]">
       <PlaceInfo />
       <hr />
-      <PlaceComments userEmail={userEmail} />
+      <PlaceComments userEmail={userEmail as string} />
     </div>
   );
 }

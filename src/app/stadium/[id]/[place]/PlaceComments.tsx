@@ -1,6 +1,6 @@
 "use client";
 
-import { createComments } from "@/app/api/comments";
+import { createComments, getComments } from "@/app/comment/actions";
 import CommentsList from "@/app/stadium/[id]/[place]/CommentsList";
 import { usePlaceStore } from "@/stores/place-store";
 import { useEffect, useRef, useState } from "react";
@@ -33,6 +33,8 @@ export default function PlaceComments({
         content: "테스트 코멘트",
         user_email: userEmail!,
       });
+
+    getComments(selectedPlace as string);
   }, []);
 
   return (
