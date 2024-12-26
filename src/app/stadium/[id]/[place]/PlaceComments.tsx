@@ -1,13 +1,10 @@
 "use client";
 
-import { createComments, getComments } from "@/app/comment/actions";
 import { usePlaceStore } from "@/stores/place-store";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { PiRobot } from "react-icons/pi";
-import { Database } from "../../../../../database.types";
 import CommentListItem from "./CommentListItem";
-
-type TypeComments = Database["public"]["Tables"]["comments"]["Row"];
+import { useCommentsController } from "@/app/hooks/useCommentsController";
 
 export default function PlaceComments({
   userEmail,
@@ -18,7 +15,8 @@ export default function PlaceComments({
   const commentRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState("");
   const userName = userEmail?.split("@")[0] as string;
-  const [commentList, setCommentList] = useState<TypeComments[]>([]);
+  const { loading, comments, onCreateComments, onEditComments } =
+    useCommentsController(selectedPlace!);
 
   const onChangeComment = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (commentRef.current !== null) {
@@ -36,23 +34,14 @@ export default function PlaceComments({
       alert("한 글자 이상 작성해주세요");
       return;
     }
-    createComments({
-      place: selectedPlace!,
-      content: content,
-      user_email: userEmail!,
-    });
+    if (selectedPlace && userEmail)
+      onCreateComments({
+        selectedPlace,
+        content,
+        userEmail,
+      });
     setContent("");
-    // handleGetComments(selectedPlace!);
   };
-
-  const handleGetComments = async (selectedPlace: string) => {
-    const commentData = await getComments(selectedPlace!);
-    if (commentData) setCommentList(commentData);
-  };
-
-  useEffect(() => {
-    handleGetComments(selectedPlace!);
-  }, []);
 
   return (
     <div className="mt-[20px]">
@@ -85,10 +74,15 @@ export default function PlaceComments({
           </button>
         </form>
       </div>
-      {commentList && (
+      {!loading && comments && (
         <ul className="mb-[20px] px-[50px]">
-          {commentList.map((i) => (
-            <CommentListItem key={i.id} i={i} userEmail={userEmail!} />
+          {comments.map((i) => (
+            <CommentListItem
+              key={i.id}
+              i={i}
+              userEmail={userEmail!}
+              onEditComments={onEditComments}
+            />
           ))}
         </ul>
       )}

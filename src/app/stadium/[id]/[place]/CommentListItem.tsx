@@ -3,17 +3,25 @@ import { MdEdit } from "react-icons/md";
 import { FaTrashCan } from "react-icons/fa6";
 import { PiRobot } from "react-icons/pi";
 import { useState } from "react";
-import { getComments, updateComments } from "@/app/comment/actions";
 
 type TypeComments = Database["public"]["Tables"]["comments"]["Row"];
+interface Props {
+  i: TypeComments;
+  userEmail: string;
+  onEditComments: ({
+    id,
+    content,
+  }: {
+    id: number;
+    content: string;
+  }) => Promise<void>;
+}
 
 export default function CommentListItem({
   i,
   userEmail,
-}: {
-  i: TypeComments;
-  userEmail: string;
-}) {
+  onEditComments,
+}: Props) {
   const [isClickedEdit, setIsClickedEdit] = useState(false);
   const [editContent, setEditContent] = useState(i.content);
 
@@ -22,14 +30,12 @@ export default function CommentListItem({
   };
 
   const onSaveEdit = () => {
-    console.log(">>수정된 컨텐츠", editContent);
-    console.log(">>수정된 아이템", i.id);
     if (editContent.length === 0) {
       alert("한 글자 이상 작성해주세요");
       return;
     }
-    updateComments({ id: i.id, content: editContent });
-    setEditContent(i.content);
+
+    onEditComments({ id: i.id, content: editContent });
     setIsClickedEdit(false);
   };
 

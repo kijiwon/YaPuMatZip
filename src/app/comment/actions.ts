@@ -24,7 +24,7 @@ export const createComments = async({place,content, user_email}:{place:string,co
     .insert({
        place, content, user_email
     })
-    .select('*');
+    .select();
 
     return result.data; 
 }
@@ -38,7 +38,8 @@ export const updateComments = async({id,content}:{id:number,content:string})=>{
        updated_at: new Date().toISOString() 
     })
     .eq('id',id)
-    .select('*');
+    .select();
 
     return result.data; 
 }
+
