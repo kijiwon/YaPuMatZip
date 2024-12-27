@@ -1,6 +1,6 @@
 import { StadiumType } from '@/types/stadium';
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export type Stadium = StadiumType
 
@@ -17,6 +17,7 @@ export const useStadiumStore = create(
     }),
     {
       name: 'stadium-storage',
+       storage: createJSONStorage(()=> sessionStorage) // session storage에 저장
     }
   )
 );

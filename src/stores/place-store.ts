@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export type PlaceStore = {
   selectedPlace: string | null; 
@@ -16,6 +16,7 @@ export const usePlaceStore = create(
     }),
     {
       name: 'place-storage',
+      storage: createJSONStorage(()=> sessionStorage) // session storage에 저장
     }
   )
 );
