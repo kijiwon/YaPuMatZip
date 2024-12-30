@@ -1,11 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
 import "../../../globals.css";
-import { getYapuPlaceBySearch } from "@/app/api/yapu-place-info";
+import { useYapuPlaceBySearch } from "@/app/hooks/useYapuPlaceData";
+import { useSearchParams } from "next/navigation";
+
 export default function Search() {
-  useEffect(() => {
-    getYapuPlaceBySearch("보영");
-  }, []);
-  return <div>search page</div>;
+  const searchParams = useSearchParams();
+  const term = searchParams.get("q");
+  const { isPlaceLoading, yapuPlaceSearchlData } = useYapuPlaceBySearch(
+    term as string
+  );
+
+  if (isPlaceLoading) return <div>로딩중...</div>;
+  if (yapuPlaceSearchlData.length === 0) {
+    return <div>일치하는 결과가 없습니다.</div>;
+  }
+
+  return (
+    <div>
+      {yapuPlaceSearchlData.map((place) => (
+        <div key={place.id}>{place.name}</div>
+      ))}
+    </div>
+  );
 }

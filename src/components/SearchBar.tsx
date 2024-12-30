@@ -25,6 +25,9 @@ export default function SearchBar() {
         ref={searchRef}
         value={term}
         onChange={(e) => setTerms(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") onClickSearch();
+        }}
         className="border-y-[3px] border-l-[3px] flex-1 h-[40px] rounded-l-lg focus:outline-none pl-[6px] text-[20px] font-paper_logy tracking-widest"
       />
       <IoSearch
