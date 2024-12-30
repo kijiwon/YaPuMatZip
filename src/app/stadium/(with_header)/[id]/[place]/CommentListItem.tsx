@@ -1,4 +1,4 @@
-import { Database } from "../../../../../database.types";
+import { Database } from "../../../../../../database.types";
 import { MdEdit } from "react-icons/md";
 import { FaTrashCan } from "react-icons/fa6";
 import { PiRobot } from "react-icons/pi";

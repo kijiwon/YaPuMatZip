@@ -1,4 +1,4 @@
-import "../../../globals.css";
+import "../../../../globals.css";
 import PlaceInfo from "./PlaceInfo";
 import PlaceComments from "./PlaceComments";
 import { createServerSideClientRSC } from "@/app/utils/server";

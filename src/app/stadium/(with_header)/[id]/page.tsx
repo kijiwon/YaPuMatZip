@@ -1,8 +1,8 @@
 "use client";
 
-import "../../globals.css";
+import "../../../globals.css";
 import { useStadiumStore } from "@/stores/stadium-store";
-import PlaceLists from "@/app/stadium/[id]/PlaceLists";
+import PlaceLists from "@/app/stadium/(with_header)/[id]/PlaceLists";
 
 export default function Page() {
   const { selectedStadium } = useStadiumStore();
