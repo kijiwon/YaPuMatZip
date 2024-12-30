@@ -70,7 +70,6 @@ export const useYapuPlaceBySearch =(term:string) =>{
 
      useEffect(()=>{
         onGetData(term);
-        console.log('>>데이터 요청',yapuPlaceSearchlData)
      },[term])
 
      return {isPlaceLoading,yapuPlaceSearchlData};

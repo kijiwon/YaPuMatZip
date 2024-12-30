@@ -18,6 +18,7 @@ export default function PlaceItem({
   const { setSelectedPlace } = usePlaceStore();
   const handleClickPlace = (place_name: string) => {
     setSelectedPlace(place_name as string);
+    console.log(`/stadium/${stadium.id}/${place_name}`);
     router.push(`/stadium/${stadium.id}/${place_name}`);
   };
 
