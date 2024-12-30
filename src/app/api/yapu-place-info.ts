@@ -21,12 +21,12 @@ export const getYapuPlaceDetailInfo = async(id:string, name:string)=>{
     return result.data
 }
 
-export const getYapuPlaceBySearch = async(q:string)=>{
+export const getYapuPlaceBySearch = async(term:string)=>{
     const supabase = createSupabaseBrowserClient();
     const result = await supabase.from('yapu-place')
     .select('*')
     // q가 포함된 name을 가져옴
-    .like('name',`%${q}%`)
+    .like('name',`%${term}%`)
     .order('id');
     
 

@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { Database } from "../../../database.types"
 import { useEffect } from "react"
-import { getYapuPlaceDetailInfo, getYapuPlaceInfo } from "../api/yapu-place-info"
+import { getYapuPlaceBySearch, getYapuPlaceDetailInfo, getYapuPlaceInfo } from "../api/yapu-place-info"
 
 type TypeYapuPlace = Database['public']['Tables']['yapu-place']['Row']
 
@@ -50,5 +50,28 @@ export const useYapuPlaceDatailData =(id:string,name:string) =>{
      },[])
 
      return {isPlaceLoading,yapuPlaceDetailData};
+}
+
+export const useYapuPlaceBySearch =(term:string) =>{
+    const [isPlaceLoading, setIsPlaceLoading] = useState(true);
+    const [yapuPlaceSearchlData, setYapuPlaceSearchData] = useState<TypeYapuPlace[]>([]);
+    
+    const onGetData = async(term:string)=>{
+        setIsPlaceLoading(true);
+        try{
+         const placeDataBySearch = await getYapuPlaceBySearch(term);
+         if(placeDataBySearch) setYapuPlaceSearchData(placeDataBySearch!);
+        } catch(error){
+            console.log(error);
+        } finally{
+            setIsPlaceLoading(false);
+        }
+     }
+
+     useEffect(()=>{
+        onGetData(term)
+     },[])
+
+     return {isPlaceLoading,yapuPlaceSearchlData};
 }
 
