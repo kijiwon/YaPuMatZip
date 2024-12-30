@@ -1,6 +1,7 @@
 import { createServerSideClientRSC } from "@/app/utils/server";
-import { HeaderLoginButton, HeaderLogoutButton } from "./LoginButtons";
+import { HeaderLoginButton } from "./LoginButtons";
 import SearchBar from "./SearchBar";
+import UserButton from "./UserButton";
 
 export default async function Header() {
   const supabase = await createServerSideClientRSC();
@@ -16,12 +17,7 @@ export default async function Header() {
       <SearchBar />
       <div>
         {user ? (
-          <div className="flex flex-row items-center">
-            <p className="text-[18px] font-paper_logy mr-[10px]">
-              {userName}님
-            </p>
-            <HeaderLogoutButton />
-          </div>
+          <UserButton userName={userName as string} />
         ) : (
           <HeaderLoginButton />
         )}
