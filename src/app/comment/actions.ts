@@ -3,7 +3,6 @@
 import { createServerSideClient } from "../utils/server"
 
 export const getComments = async(place:string)=>{
-    console.log('comment 가져오기', place);
     const supabase =await  createServerSideClient();
     const result = await supabase.from('comments')
     .select('*')
@@ -13,6 +12,20 @@ export const getComments = async(place:string)=>{
         ascending:false // 내림차순 정렬
     });
 
+    return result.data;
+};
+
+export const getCommentsById = async(user_id:string)=>{
+    console.log('comment 가져오기', user_id);
+    const supabase =await  createServerSideClient();
+    const result = await supabase.from('comments')
+    .select('*')
+    .is('deleted_at',null)
+    .eq('user_id',user_id)
+    .order('created_at',{
+        ascending:false // 내림차순 정렬
+    });
+console.log(result.data);
     return result.data;
 };
 

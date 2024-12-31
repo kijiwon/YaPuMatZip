@@ -1,6 +1,8 @@
+'use client';
+
 import { useEffect, useState } from "react"
 import { Database } from "../../../database.types";
-import { createComments, deleteComments, getComments, updateComments } from "../comment/actions";
+import { createComments, deleteComments, getComments, getCommentsById, updateComments } from "../comment/actions";
 
 type TypeComments = Database['public']['Tables']['comments']['Row'];
 
@@ -42,4 +44,28 @@ export const useCommentsController = (place:string) =>{
         await onGetComments(place);
     }
     return {loading, comments, onCreateComments, onEditComments, onDeleteComments}
+}
+
+export const useCommentsById = (user_id:string) =>{
+    const [loading, setLoading] = useState(false);
+    const [comments, setComments] = useState<TypeComments[]>([]);
+
+    const onGetCommentsById = async(user_id:string) =>{
+        setLoading(true);
+        try{
+            const resultComments = await getCommentsById(user_id);
+            if(resultComments) setComments(resultComments);
+        } catch(error){
+            console.log(error);
+        } finally{
+            setLoading(false);
+        };
+    }
+
+    useEffect(()=>{
+        onGetCommentsById(user_id);
+    },[]);
+
+   
+    return {loading, comments}
 }
