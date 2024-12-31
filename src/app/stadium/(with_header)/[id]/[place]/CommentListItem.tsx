@@ -3,6 +3,7 @@ import { MdEdit } from "react-icons/md";
 import { FaTrashCan } from "react-icons/fa6";
 import { PiRobot } from "react-icons/pi";
 import { useState } from "react";
+import { useElapsedTimeToText } from "@/app/hooks/useElapsedTimeToText";
 
 type TypeComments = Database["public"]["Tables"]["comments"]["Row"];
 interface Props {
@@ -27,6 +28,7 @@ export default function CommentListItem({
   const [isClickedEdit, setIsClickedEdit] = useState(false);
   const [editContent, setEditContent] = useState(i.content);
 
+  const elapsedText = useElapsedTimeToText(new Date(i.created_at));
   const onClickEdit = () => {
     setIsClickedEdit(true);
   };
@@ -64,7 +66,7 @@ export default function CommentListItem({
         ) : (
           <div>
             <p className="pt-[10px]">{i.content}</p>
-            <p className="text-[13px] text-gray-500">{i.created_at}</p>
+            <p className="text-[13px] text-gray-500">{elapsedText}</p>
           </div>
         )}
       </div>
