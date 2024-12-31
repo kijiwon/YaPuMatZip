@@ -16,6 +16,7 @@ export default function UserButton({ userName }: { userName: string }) {
   const onClickButton = () => {
     router.push(`/user/${userName}`);
     setIsClicked(false);
+    sessionStorage.removeItem("term");
   };
 
   return (

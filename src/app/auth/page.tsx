@@ -1,3 +1,4 @@
+import "../globals.css";
 import Modal from "@/components/LoginModal";
 
 export default function Auth() {

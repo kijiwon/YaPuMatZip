@@ -5,13 +5,29 @@ import { useYapuPlaceBySearch } from "@/app/hooks/useYapuPlaceData";
 import { useSearchParams } from "next/navigation";
 import SearchResultListItem from "./SearchResultListItem";
 import { BsFillSearchHeartFill } from "react-icons/bs";
+import { useEffect, useState } from "react";
 
 export default function Search() {
+  const [isClickedBack, setIsClickedBack] = useState(false);
   const searchParams = useSearchParams();
-  const term = searchParams.get("q");
+  const term = searchParams.get("q") || sessionStorage.getItem("term");
   const { isPlaceLoading, yapuPlaceSearchlData } = useYapuPlaceBySearch(
     term as string
   );
+
+  useEffect(() => {
+    if (term) sessionStorage.setItem("term", term as string);
+  }, [term]);
+
+  // 브라우저 뒤로가기 제어
+  useEffect(() => {
+    const handlePopState = () => {
+      setIsClickedBack(true);
+      sessionStorage.removeItem("term");
+    };
+    window.addEventListener("popstate", handlePopState);
+    setIsClickedBack(false);
+  }, [isClickedBack]);
 
   if (isPlaceLoading) return <div>로딩중...</div>;
 
@@ -20,7 +36,7 @@ export default function Search() {
       <p className="w-[80%] flex flex-row  items-center  border-b-[1px] border-dashed  mb-[20px] pb-[10px] font-paper_logy text-[20px]">
         <BsFillSearchHeartFill size={22} />
         <span className="tracking-wider ml-[5px]">
-          "{term}"에 대한 검색 결과
+          &ldquo;{term}&rdquo;에 대한 검색 결과
         </span>
       </p>
       {yapuPlaceSearchlData.length === 0 ? (

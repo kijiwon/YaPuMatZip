@@ -19,6 +19,7 @@ export default function NavBar() {
           onClick={() => {
             setSelectedStadium(i);
             router.push(`/stadium/${i.id}`);
+            sessionStorage.removeItem("term");
           }}
         >
           ⚾️

@@ -33,7 +33,6 @@ export default function PlaceInfo() {
   // 브라우저 뒤로가기 제어
   useEffect(() => {
     const handlePopState = () => {
-      console.log("뒤로가기 감지");
       setIsClickedBack(true);
       clearSelectedPlace();
     };

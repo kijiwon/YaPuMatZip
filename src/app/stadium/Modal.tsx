@@ -10,12 +10,15 @@ export default function Modal({ userName }: { userName: string }) {
   const { selectedPlace } = usePlaceStore();
   const [hydrated, setHydrated] = useState(false);
   const router = useRouter();
+  const term = sessionStorage.getItem("term");
 
   useEffect(() => {
     setHydrated(true);
   }, []);
 
-  const url = selectedPlace
+  const url = term
+    ? `/stadium/search?q=${term}`
+    : selectedPlace
     ? `/stadium/${selectedStadium}/${selectedPlace}`
     : `/stadium/${selectedStadium}`;
 

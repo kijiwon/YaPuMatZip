@@ -19,6 +19,7 @@ export default function SearchResultListItem({ place }: { place: TypePlace }) {
     setSelectedStadium(stadium[0]);
     setSelectedPlace(place.name);
     router.push(url);
+    sessionStorage.removeItem("term");
   };
 
   return (
