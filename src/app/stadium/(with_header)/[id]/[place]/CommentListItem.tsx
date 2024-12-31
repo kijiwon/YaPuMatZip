@@ -28,7 +28,10 @@ export default function CommentListItem({
   const [isClickedEdit, setIsClickedEdit] = useState(false);
   const [editContent, setEditContent] = useState(i.content);
 
-  const elapsedText = useElapsedTimeToText(new Date(i.created_at));
+  const elapsedText = useElapsedTimeToText(
+    new Date(i.updated_at || i.created_at)
+  );
+  
   const onClickEdit = () => {
     setIsClickedEdit(true);
   };
@@ -38,10 +41,11 @@ export default function CommentListItem({
       alert("한 글자 이상 작성해주세요");
       return;
     }
+    if (editContent === i.content) {
+      alert("수정된 내용이 없습니다");
+      return;
+    }
     onEditComments({ id: i.id, content: editContent });
-    setTimeout(() => {
-      alert("수정 완료");
-    }, 1000);
     setIsClickedEdit(false);
   };
 
@@ -65,7 +69,10 @@ export default function CommentListItem({
           />
         ) : (
           <div>
-            <p className="pt-[10px]">{i.content}</p>
+            <p className="pt-[10px]">
+              {i.content}
+              {i.updated_at && <span>(수정됨)</span>}
+            </p>
             <p className="text-[13px] text-gray-500">{elapsedText}</p>
           </div>
         )}
