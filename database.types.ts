@@ -43,6 +43,7 @@ export type Database = {
           deleted_at: string | null
           id: number
           place: string
+          stadium_id: string
           updated_at: string | null
           user_email: string
           user_id: string
@@ -53,6 +54,7 @@ export type Database = {
           deleted_at?: string | null
           id?: number
           place: string
+          stadium_id: string
           updated_at?: string | null
           user_email: string
           user_id?: string
@@ -63,6 +65,7 @@ export type Database = {
           deleted_at?: string | null
           id?: number
           place?: string
+          stadium_id?: string
           updated_at?: string | null
           user_email?: string
           user_id?: string

@@ -29,7 +29,7 @@ export const useYapuPlaceData =(id:string) =>{
      return {isLoading,yapuPlaceData};
 }
 
-export const useYapuPlaceDatailData =(id:string,name:string) =>{
+export const useYapuPlaceDetailData =(id:string,name:string) =>{
     const [isPlaceLoading, setIsPlaceLoading] = useState(true);
     const [yapuPlaceDetailData, setYapuPlaceDetailData] = useState<TypeYapuPlace[]>([]);
     

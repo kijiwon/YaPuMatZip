@@ -5,12 +5,14 @@ import { useRef, useState } from "react";
 import { PiRobot } from "react-icons/pi";
 import CommentListItem from "./CommentListItem";
 import { useCommentsController } from "@/app/hooks/useCommentsController";
+import { useStadiumStore } from "@/stores/stadium-store";
 
 export default function PlaceComments({
   userEmail,
 }: {
   userEmail: string | null;
 }) {
+  const { selectedStadium } = useStadiumStore();
   const { selectedPlace } = usePlaceStore();
   const commentRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState("");
@@ -44,6 +46,7 @@ export default function PlaceComments({
         selectedPlace,
         content,
         userEmail,
+        stadium_id: selectedStadium?.id as string,
       });
     setContent("");
   };

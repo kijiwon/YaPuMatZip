@@ -30,12 +30,12 @@ export const getCommentsById = async(user_id:string)=>{
 };
 
 // comments 생성
-export const createComments = async({place,content, user_email}:{place:string,content:string, user_email:string})=>{
+export const createComments = async({place,content, user_email, stadium_id}:{place:string,content:string, user_email:string, stadium_id:string})=>{
 
     const supabase = await createServerSideClient();
     const result = await supabase.from('comments')
     .insert({
-       place, content, user_email
+       place, content, user_email, stadium_id
     })
     .select();
 

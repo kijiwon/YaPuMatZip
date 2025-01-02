@@ -27,8 +27,8 @@ export const useCommentsController = (place:string) =>{
     },[]);
 
     // comment 생성
-    const onCreateComments = async({selectedPlace, content, userEmail}:{selectedPlace:string, content:string, userEmail:string})=>{
-        await createComments({place:selectedPlace, content,user_email:userEmail});
+    const onCreateComments = async({selectedPlace, content, userEmail, stadium_id}:{selectedPlace:string, content:string, userEmail:string, stadium_id:string})=>{
+        await createComments({place:selectedPlace, content,user_email:userEmail, stadium_id});
         await onGetComments(place);
     }
 

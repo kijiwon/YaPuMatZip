@@ -2,6 +2,7 @@
 
 import { useElapsedTimeToText } from "@/app/hooks/useElapsedTimeToText";
 import { Database } from "../../../../database.types";
+import { useRouter } from "next/navigation";
 
 type TypeComments = Database["public"]["Tables"]["comments"]["Row"];
 
@@ -10,6 +11,8 @@ export default function UserCommentListItem({
 }: {
   comment: TypeComments;
 }) {
+  const router = useRouter();
+
   const elapsedText = useElapsedTimeToText(
     new Date(comment.updated_at || comment.created_at)
   );
@@ -19,8 +22,15 @@ export default function UserCommentListItem({
       ? comment.content.slice(0, 30) + "..."
       : comment.content;
 
+  const onClickComment = () => {
+    router.push(`/stadium/${comment.stadium_id}/${comment.place}`);
+  };
+
   return (
-    <li className="w-[90%] flex flex-row justify-center items-center">
+    <li
+      onClick={onClickComment}
+      className="w-[90%] mb-[10px] cursor-pointer  flex flex-row justify-center items-center"
+    >
       <p>{comment.place}</p>
       <p className="flex-1">
         {slicedContent}

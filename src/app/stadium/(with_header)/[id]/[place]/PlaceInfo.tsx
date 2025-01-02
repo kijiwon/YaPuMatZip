@@ -1,7 +1,7 @@
 "use client";
 
 import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
-import { useYapuPlaceDatailData } from "@/app/hooks/useYapuPlaceData";
+import { useYapuPlaceDetailData } from "@/app/hooks/useYapuPlaceData";
 import BackButton from "@/components/BackButton";
 import KakaoMap from "@/components/KakaoMap";
 import { usePlaceStore } from "@/stores/place-store";
@@ -16,7 +16,7 @@ export default function PlaceInfo() {
   const hasHydrated = usePlaceStore.persist.hasHydrated();
 
   const router = useRouter();
-  const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDatailData(
+  const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDetailData(
     selectedStadium?.id as string,
     selectedPlace!
   );
