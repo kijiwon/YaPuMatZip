@@ -11,8 +11,10 @@ import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
-export default function PlaceInfo() {
+export default function PlaceInfo({ userEmail }: { userEmail: string }) {
   const [isClickedBack, setIsClickedBack] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  console.log(userEmail);
   const { selectedStadium } = useStadiumStore();
   const { selectedPlace, clearSelectedPlace } = usePlaceStore();
   const hasHydrated = usePlaceStore.persist.hasHydrated();
@@ -30,6 +32,14 @@ export default function PlaceInfo() {
   const handleBackButton = () => {
     clearSelectedPlace();
     router.replace(`/stadium/${selectedStadium?.id}`);
+  };
+
+  const handleLike = () => {
+    if (!userEmail) {
+      alert("로그인 후 이용해주세요");
+      return;
+    }
+    setIsLiked(!isLiked);
   };
 
   // 브라우저 뒤로가기 제어
@@ -62,8 +72,22 @@ export default function PlaceInfo() {
                   </span>
                   <span>{yapuPlaceDetailData[0]?.name}</span>
                 </h1>
-                {/* <FaRegHeart size={26} className="ml-[10px]" /> */}
-                <FaHeart size={26} color="pink" className="ml-[10px]" />
+                <div>
+                  {isLiked ? (
+                    <FaHeart
+                      onClick={handleLike}
+                      size={26}
+                      color="pink"
+                      className="ml-[10px] cursor-pointer"
+                    />
+                  ) : (
+                    <FaRegHeart
+                      onClick={handleLike}
+                      size={26}
+                      className="ml-[10px] cursor-pointer"
+                    />
+                  )}
+                </div>
               </div>
               <p className="font-s_core font-bold text-[18px] mt-[30px] mb-[10px] ml-[30px]">
                 위치 : {yapuPlaceDetailData[0]?.location}

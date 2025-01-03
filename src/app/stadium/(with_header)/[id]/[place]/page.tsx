@@ -13,7 +13,7 @@ export default async function PlacePage() {
 
   return (
     <div className="w-[70%] mt-[20px]">
-      <PlaceInfo />
+      <PlaceInfo userEmail={userEmail as string} />
       <hr />
       <PlaceComments userEmail={userEmail as string} />
     </div>
