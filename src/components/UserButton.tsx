@@ -25,9 +25,17 @@ export default function UserButton({ userName }: { userName: string }) {
         <p className="relative flex flex-row items-center text-[16px] font-paper_logy mr-[10px]">
           {userName}님
           {isClicked ? (
-            <IoIosArrowUp onClick={handleOpen} />
+            <IoIosArrowUp
+              onClick={handleOpen}
+              size={16}
+              className="cursor-pointer"
+            />
           ) : (
-            <IoIosArrowDown onClick={handleOpen} />
+            <IoIosArrowDown
+              onClick={handleOpen}
+              size={16}
+              className="cursor-pointer"
+            />
           )}
         </p>
         {isClicked && (

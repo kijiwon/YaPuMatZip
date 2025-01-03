@@ -12,10 +12,10 @@ export default async function UserPage() {
   if (!user) return <UserPageModal />;
 
   return (
-    <div className="w-[80%]">
+    <div className="w-[80%] h-[100vh]">
       <BackButton />
-      <div className="w-[70%] mx-auto">
-        <div className="flex flex-row items-center mb-[50px]">
+      <div className="w-[70%] h-[80%]  mx-auto pt-[30px] border-[2px]">
+        <div className="flex flex-row items-center mb-[50px] pl-[20px]">
           <img
             className="w-[40px] h-[40px] rounded-full border-[1px]"
             src={user?.user_metadata.avatar_url}

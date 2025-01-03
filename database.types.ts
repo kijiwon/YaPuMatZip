@@ -144,6 +144,7 @@ export type Database = {
           inside_stadium: boolean | null
           is_delivery_or_takeout_available: string | null
           lat: number | null
+          liked_user_ids: Json | null
           lng: number | null
           location: string
           name: string
@@ -156,6 +157,7 @@ export type Database = {
           inside_stadium?: boolean | null
           is_delivery_or_takeout_available?: string | null
           lat?: number | null
+          liked_user_ids?: Json | null
           lng?: number | null
           location: string
           name: string
@@ -168,6 +170,7 @@ export type Database = {
           inside_stadium?: boolean | null
           is_delivery_or_takeout_available?: string | null
           lat?: number | null
+          liked_user_ids?: Json | null
           lng?: number | null
           location?: string
           name?: string

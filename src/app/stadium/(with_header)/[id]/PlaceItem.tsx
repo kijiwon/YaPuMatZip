@@ -4,6 +4,8 @@ import { StadiumType } from "@/types/stadium";
 import { useRouter } from "next/navigation";
 import { usePlaceStore } from "@/stores/place-store";
 import { Database } from "../../../../../database.types";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];
 
@@ -37,8 +39,11 @@ export default function PlaceItem({
               {i.is_delivery_or_takeout_available}
             </p>
           ) : null}
-
-          <p className=" ml-auto ">
+          <div className="ml-auto text-[22px]">
+            {/* <FaHeart /> */}
+            <FaRegHeart />
+          </div>
+          <p className=" ml-[20px] ">
             {i.inside_stadium ? (
               <span className="bg-main-blue text-white p-[10px] rounded-[10px]">
                 구장안

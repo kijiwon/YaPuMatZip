@@ -8,6 +8,8 @@ import { usePlaceStore } from "@/stores/place-store";
 import { useStadiumStore } from "@/stores/stadium-store";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 export default function PlaceInfo() {
   const [isClickedBack, setIsClickedBack] = useState(false);
@@ -51,17 +53,19 @@ export default function PlaceInfo() {
       <BackButton fn={handleBackButton} />
       <div>
         {yapuPlaceDetailData[0] && (
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <section className="mb-[20px]">
-              <div>
+              <div className="flex flex-row justify-center items-center">
                 <h1 className="flex flex-row justify-center items-center font-paper_logy text-[32px] text-center">
                   <span className="mr-[5px]">
                     {yapuPlaceDetailData[0]?.food_type}
                   </span>
                   <span>{yapuPlaceDetailData[0]?.name}</span>
                 </h1>
+                {/* <FaRegHeart size={26} className="ml-[10px]" /> */}
+                <FaHeart size={26} color="pink" className="ml-[10px]" />
               </div>
-              <p className="font-s_core font-bold text-[18px] mt-[30px] mb-[10px]">
+              <p className="font-s_core font-bold text-[18px] mt-[30px] mb-[10px] ml-[30px]">
                 위치 : {yapuPlaceDetailData[0]?.location}
               </p>
               <p className="font-s_core flex text-[18px] flex-row items-center mb-[10px]">
