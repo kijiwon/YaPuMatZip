@@ -53,3 +53,29 @@ export const addLikePlace = async({id,place_name, stadium_id}:{id:string,place_n
    console.log('result>>>>',result.data)
    return result.data;
 }
+
+// 좋아요 삭제
+export const removeLikePlace = async({id, place_name}:{id:string, place_name:string}) => {
+    const supabase = await createServerSideClient();
+    const {data:userProfile, error} = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id',id)
+   .single();
+   
+   if(error){
+    console.log('error>>>', error);
+    return;
+   }
+
+   const currentLikes: PlaceLike[] = userProfile["place-like"] as PlaceLike[];
+   // place_name이 일치하지 않는 데이터만 담기
+   const updatedLikes = currentLikes.filter((i)=> i.place_name !== place_name);
+
+   const result = await supabase
+   .from('profiles')
+   .update({"place-like":updatedLikes})
+   .eq('id',id);
+
+   return result.data;
+}

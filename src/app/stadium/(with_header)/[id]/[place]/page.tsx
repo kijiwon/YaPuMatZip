@@ -17,6 +17,7 @@ export default async function PlacePage() {
       <PlaceInfo
         userEmail={data?.email as string}
         userId={data?.id as string}
+        placeLike={data?.["place-like"]}
       />
       <hr />
       <PlaceComments userEmail={data?.email as string} />

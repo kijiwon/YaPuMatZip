@@ -1,6 +1,9 @@
 "use client";
 
-import { addLikePlace } from "@/app/actions/user-info/user-actions";
+import {
+  addLikePlace,
+  removeLikePlace,
+} from "@/app/actions/user-info/user-actions";
 import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDetailData } from "@/app/hooks/useYapuPlaceData";
 import BackButton from "@/components/BackButton";
@@ -12,12 +15,19 @@ import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
+type PlaceLike = {
+  place_name?: string;
+  stadium_id?: string;
+};
+
 export default function PlaceInfo({
   userEmail,
   userId,
+  placeLike,
 }: {
   userEmail: string;
   userId: string;
+  placeLike: PlaceLike[];
 }) {
   const [isClickedBack, setIsClickedBack] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -40,7 +50,7 @@ export default function PlaceInfo({
     router.replace(`/stadium/${selectedStadium?.id}`);
   };
 
-  const onClickeAddLike = () => {
+  const onClickAddLike = () => {
     if (!userEmail) {
       alert("로그인 후 이용해주세요");
       return;
@@ -53,13 +63,24 @@ export default function PlaceInfo({
     setIsLiked(!isLiked);
   };
 
-  const handleLike = () => {
+  const onClickRemoveLike = () => {
     if (!userEmail) {
       alert("로그인 후 이용해주세요");
       return;
     }
+    removeLikePlace({
+      id: userId,
+      place_name: selectedPlace!,
+    });
     setIsLiked(!isLiked);
   };
+
+  useEffect(() => {
+    console.log("place-like>>", placeLike);
+    if (placeLike.find((i) => i.place_name === selectedPlace)) {
+      setIsLiked(true);
+    }
+  }, []);
 
   // 브라우저 뒤로가기 제어
   useEffect(() => {
@@ -94,14 +115,14 @@ export default function PlaceInfo({
                 <div>
                   {isLiked ? (
                     <FaHeart
-                      onClick={handleLike}
+                      onClick={onClickRemoveLike}
                       size={26}
                       color="pink"
                       className="ml-[10px] cursor-pointer"
                     />
                   ) : (
                     <FaRegHeart
-                      onClick={onClickeAddLike}
+                      onClick={onClickAddLike}
                       size={26}
                       className="ml-[10px] cursor-pointer"
                     />
