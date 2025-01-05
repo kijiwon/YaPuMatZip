@@ -3,6 +3,9 @@
 import { useElapsedTimeToText } from "@/app/hooks/useElapsedTimeToText";
 import { Database } from "../../../../database.types";
 import { useRouter } from "next/navigation";
+import { usePlaceStore } from "@/stores/place-store";
+import { useStadiumStore } from "@/stores/stadium-store";
+import StadiumData from "@/data/stadiums.json";
 
 type TypeComments = Database["public"]["Tables"]["comments"]["Row"];
 
@@ -12,7 +15,11 @@ export default function UserCommentListItem({
   comment: TypeComments;
 }) {
   const router = useRouter();
+  const { setSelectedStadium } = useStadiumStore();
+  const { setSelectedPlace } = usePlaceStore();
 
+  const stadium = StadiumData.filter((i) => i.id === comment.stadium_id);
+  console.log(stadium);
   const elapsedText = useElapsedTimeToText(
     new Date(comment.updated_at || comment.created_at)
   );
@@ -23,6 +30,8 @@ export default function UserCommentListItem({
       : comment.content;
 
   const onClickComment = () => {
+    setSelectedStadium(stadium[0]);
+    setSelectedPlace(comment.place);
     router.push(`/stadium/${comment.stadium_id}/${comment.place}`);
   };
 

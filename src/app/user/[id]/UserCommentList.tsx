@@ -7,7 +7,7 @@ import { getUserInfo } from "@/app/actions/user-info/user-actions";
 
 export default function UserCommentList({ user_id }: { user_id: string }) {
   const { loading, comments } = useCommentsById(user_id);
-  console.log(user_id);
+
   useEffect(() => {
     getUserInfo(user_id);
   }, []);

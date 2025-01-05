@@ -14,7 +14,6 @@ import { FaHeart } from "react-icons/fa";
 export default function PlaceInfo({ userEmail }: { userEmail: string }) {
   const [isClickedBack, setIsClickedBack] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  console.log(userEmail);
   const { selectedStadium } = useStadiumStore();
   const { selectedPlace, clearSelectedPlace } = usePlaceStore();
   const hasHydrated = usePlaceStore.persist.hasHydrated();
