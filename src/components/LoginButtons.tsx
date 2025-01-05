@@ -1,9 +1,12 @@
 "use client";
 
-import { signInWithGoogle, signInWithKakao } from "@/app/login/actions";
 import { BiSolidMessageRounded } from "react-icons/bi";
-import { signOut } from "@/app/login/actions";
 import { useRouter } from "next/navigation";
+import {
+  signInWithGoogle,
+  signInWithKakao,
+  signOut,
+} from "@/app/actions/login/login-actions";
 
 export function HeaderLoginButton() {
   const router = useRouter();

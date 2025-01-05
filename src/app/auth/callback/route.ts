@@ -32,7 +32,7 @@ export async function GET(request: Request) {
 
         if(!data){
           console.log('name???', name)
-          const {data, error} = await supabase
+          const { error} = await supabase
           .from('profiles')
           .insert({
             id,

@@ -1,6 +1,6 @@
 "use server"
 
-import { createServerSideClient } from "../utils/server"
+import { createServerSideClient } from "../../utils/server"
 
 export const getComments = async(place:string)=>{
     const supabase =await  createServerSideClient();

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Database } from "../../../database.types";
-import { createComments, deleteComments, getComments, getCommentsById, updateComments } from "../comment/actions";
+import { createComments, deleteComments, getComments, getCommentsById, updateComments } from "../actions/comment/comment-actions";
 
 type TypeComments = Database['public']['Tables']['comments']['Row'];
 
