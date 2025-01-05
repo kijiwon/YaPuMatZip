@@ -2,6 +2,7 @@ import "../../../../globals.css";
 import PlaceInfo from "./PlaceInfo";
 import PlaceComments from "./PlaceComments";
 import { createServerSideClientRSC } from "@/app/utils/server";
+import { getUserInfo } from "@/app/actions/user-info/user-actions";
 
 export default async function PlacePage() {
   const supabase = await createServerSideClientRSC();
@@ -9,13 +10,16 @@ export default async function PlacePage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const userEmail = user?.email;
+  const data = await getUserInfo(user?.id as string);
 
   return (
     <div className="w-[70%] mt-[20px]">
-      <PlaceInfo userEmail={userEmail as string} />
+      <PlaceInfo
+        userEmail={data?.email as string}
+        userId={data?.id as string}
+      />
       <hr />
-      <PlaceComments userEmail={userEmail as string} />
+      <PlaceComments userEmail={data?.email as string} />
     </div>
   );
 }

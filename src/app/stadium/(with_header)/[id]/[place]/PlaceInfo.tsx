@@ -1,5 +1,6 @@
 "use client";
 
+import { addLikePlace } from "@/app/actions/user-info/user-actions";
 import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDetailData } from "@/app/hooks/useYapuPlaceData";
 import BackButton from "@/components/BackButton";
@@ -11,7 +12,13 @@ import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
-export default function PlaceInfo({ userEmail }: { userEmail: string }) {
+export default function PlaceInfo({
+  userEmail,
+  userId,
+}: {
+  userEmail: string;
+  userId: string;
+}) {
   const [isClickedBack, setIsClickedBack] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const { selectedStadium } = useStadiumStore();
@@ -31,6 +38,19 @@ export default function PlaceInfo({ userEmail }: { userEmail: string }) {
   const handleBackButton = () => {
     clearSelectedPlace();
     router.replace(`/stadium/${selectedStadium?.id}`);
+  };
+
+  const onClickeAddLike = () => {
+    if (!userEmail) {
+      alert("로그인 후 이용해주세요");
+      return;
+    }
+    addLikePlace({
+      id: userId,
+      place_name: selectedPlace!,
+      stadium_id: selectedStadium?.id!,
+    });
+    setIsLiked(!isLiked);
   };
 
   const handleLike = () => {
@@ -81,7 +101,7 @@ export default function PlaceInfo({ userEmail }: { userEmail: string }) {
                     />
                   ) : (
                     <FaRegHeart
-                      onClick={handleLike}
+                      onClick={onClickeAddLike}
                       size={26}
                       className="ml-[10px] cursor-pointer"
                     />
