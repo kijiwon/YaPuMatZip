@@ -24,7 +24,7 @@ export default function PlaceInfo({ userEmail }: { userEmail: string }) {
     selectedStadium?.id as string,
     selectedPlace!
   );
-
+  console.log("data>>", yapuPlaceDetailData);
   const { isMenuLoading, recommendedMenusData } = useRecommededMenusData(
     selectedPlace!
   );
