@@ -12,14 +12,12 @@ export default async function Page() {
   } = await supabase.auth.getUser();
 
   const data = await getPlaceLike(user?.id as string);
-  const placeLike = Array.isArray(data?.["place-like"])
-    ? (data["place-like"] as TypePlaceLike[])
-    : [];
+  const likedPlace: TypePlaceLike[] | [] = data?.liked_place;
 
   return (
     <div className=" mt-[20px]">
       <PlaceHeader />
-      <PlaceLists placeLike={placeLike} />
+      <PlaceLists likedPlace={likedPlace} />
     </div>
   );
 }

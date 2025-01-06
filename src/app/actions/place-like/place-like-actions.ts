@@ -1,17 +1,15 @@
 "use server";
 
 import { createServerSideClient } from "@/app/utils/server";
+import { TypePlaceLike } from "@/types/PlaceLike";
 
-type PlaceLike = {
-    place_name:string;
-    stadium_id:string;
-}
+
 
 export const getPlaceLike = async(id:string) => {
     const supabase = await createServerSideClient();
     const result = await supabase
     .from('profiles')
-    .select('place-like')
+    .select('liked_place')
     .eq('id',id)
     .single();
 
@@ -33,11 +31,11 @@ export const addLikePlace = async({id,place_name, stadium_id}:{id:string,place_n
     return;
    }
 
-   let currentLikes:PlaceLike[]  =  [];
+   let currentLikes:TypePlaceLike[]  =  [];
 
    // place-like 데이터가 배열인지 확인
-   if(userProfile && Array.isArray(userProfile['place-like'])){
-    currentLikes = userProfile['place-like'] as PlaceLike[]
+   if(userProfile && Array.isArray(userProfile.liked_place)){
+    currentLikes = userProfile.liked_place as TypePlaceLike[]
    }
 
    const newPlaceLike = {
@@ -48,7 +46,7 @@ export const addLikePlace = async({id,place_name, stadium_id}:{id:string,place_n
 
    const result = await supabase 
    .from('profiles')
-   .update({'place-like':updatedLikes})
+   .update({liked_place:updatedLikes})
    .eq('id', id);
 
    return result.data;
@@ -68,13 +66,13 @@ export const removeLikePlace = async({id, place_name}:{id:string, place_name:str
     return;
    }
 
-   const currentLikes: PlaceLike[] = userProfile["place-like"] as PlaceLike[];
+   const currentLikes: TypePlaceLike[] = userProfile.liked_place as TypePlaceLike[];
    // place_name이 일치하지 않는 데이터만 담기
    const updatedLikes = currentLikes.filter((i)=> i.place_name !== place_name);
 
    const result = await supabase
    .from('profiles')
-   .update({"place-like":updatedLikes})
+   .update({liked_place:updatedLikes})
    .eq('id',id);
 
    return result.data;

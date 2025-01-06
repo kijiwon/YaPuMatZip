@@ -19,7 +19,7 @@ export default function UserCommentListItem({
   const { setSelectedPlace } = usePlaceStore();
 
   const stadium = StadiumData.filter((i) => i.id === comment.stadium_id);
-  console.log(stadium);
+
   const elapsedText = useElapsedTimeToText(
     new Date(comment.updated_at || comment.created_at)
   );

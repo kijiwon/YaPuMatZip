@@ -19,11 +19,11 @@ import { TypePlaceLike } from "@/types/PlaceLike";
 export default function PlaceInfo({
   userEmail,
   userId,
-  placeLike,
+  likedPlace,
 }: {
   userEmail: string;
   userId: string;
-  placeLike: TypePlaceLike[] | undefined;
+  likedPlace: TypePlaceLike[] | undefined;
 }) {
   const [isClickedBack, setIsClickedBack] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -72,7 +72,7 @@ export default function PlaceInfo({
   };
 
   useEffect(() => {
-    if (placeLike?.find((i) => i.place_name === selectedPlace)) {
+    if (likedPlace?.find((i) => i.place_name === selectedPlace)) {
       setIsLiked(true);
     }
   }, []);

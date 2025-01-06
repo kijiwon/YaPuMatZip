@@ -2,12 +2,18 @@ import { createServerSideClientRSC } from "@/app/utils/server";
 import BackButton from "@/components/BackButton";
 import UserPageModal from "./UserPageModal";
 import UserCommentList from "./UserCommentList";
+import { getPlaceLike } from "@/app/actions/place-like/place-like-actions";
+import { TypePlaceLike } from "@/types/PlaceLike";
+import LikedPlaceList from "./LikedPlaceList";
 
 export default async function UserPage() {
   const supabase = await createServerSideClientRSC();
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  const data = await getPlaceLike(user?.id as string);
+  const likedPlace: TypePlaceLike | undefined = data?.liked_place;
 
   if (!user) return <UserPageModal />;
 
@@ -26,12 +32,16 @@ export default async function UserPage() {
           </p>
         </div>
         <section>
-          <div className="border-b-[2px] border-dashed border-main-blue">
+          <div className=" flex flex-row items-center justify-end border-b-[2px] border-dashed border-main-blue">
             <p className="w-fit ml-[10px] border-[2px] border-b-0 rounded-t-lg border-main-blue  py-[4px] px-[8px]">
-              작성한 댓글
+              Comments
+            </p>
+            <p className="w-fit ml-[10px] border-[2px] border-b-0 rounded-t-lg border-main-blue  py-[4px] px-[8px]">
+              Liked-Place
             </p>
           </div>
-          <UserCommentList user_id={user.id} />
+          {/* <UserCommentList user_id={user.id} /> */}
+          <LikedPlaceList likedPlace={likedPlace} />
         </section>
       </div>
     </div>

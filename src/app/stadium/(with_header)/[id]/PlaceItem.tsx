@@ -13,11 +13,11 @@ type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];
 export default function PlaceItem({
   place,
   stadium_id,
-  placeLike,
+  likedPlace,
 }: {
   place: TypeYapuPlace;
   stadium_id: string;
-  placeLike: TypePlaceLike[] | [];
+  likedPlace: TypePlaceLike[] | [];
 }) {
   const router = useRouter();
   const { setSelectedPlace } = usePlaceStore();
@@ -29,8 +29,8 @@ export default function PlaceItem({
     router.push(`/stadium/${stadium_id}/${place_name}`);
   };
   useEffect(() => {
-    const isPlaceLiked = placeLike.some((i) => i.place_name === place.name);
-    setIsLiked(isPlaceLiked);
+    const isLikedPlace = likedPlace.some((i) => i.place_name === place.name);
+    setIsLiked(isLikedPlace);
   }, []);
 
   return (

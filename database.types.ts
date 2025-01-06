@@ -85,22 +85,22 @@ export type Database = {
           avatar_url: string | null
           email: string | null
           id: string
+          liked_place: Json | null
           name: string | null
-          "place-like": Json | null
         }
         Insert: {
           avatar_url?: string | null
           email?: string | null
           id: string
+          liked_place?: Json | null
           name?: string | null
-          "place-like"?: Json | null
         }
         Update: {
           avatar_url?: string | null
           email?: string | null
           id?: string
+          liked_place?: Json | null
           name?: string | null
-          "place-like"?: Json | null
         }
         Relationships: []
       }
