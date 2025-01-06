@@ -14,11 +14,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-
-type PlaceLike = {
-  place_name?: string;
-  stadium_id?: string;
-};
+import { TypePlaceLike } from "@/types/PlaceLike";
 
 export default function PlaceInfo({
   userEmail,
@@ -27,7 +23,7 @@ export default function PlaceInfo({
 }: {
   userEmail: string;
   userId: string;
-  placeLike: PlaceLike[];
+  placeLike: TypePlaceLike[] | undefined;
 }) {
   const [isClickedBack, setIsClickedBack] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -76,8 +72,7 @@ export default function PlaceInfo({
   };
 
   useEffect(() => {
-    console.log("place-like>>", placeLike);
-    if (placeLike.find((i) => i.place_name === selectedPlace)) {
+    if (placeLike?.find((i) => i.place_name === selectedPlace)) {
       setIsLiked(true);
     }
   }, []);

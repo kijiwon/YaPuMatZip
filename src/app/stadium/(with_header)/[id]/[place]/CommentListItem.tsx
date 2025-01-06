@@ -1,3 +1,5 @@
+"use client";
+
 import { Database } from "../../../../../../database.types";
 import { MdEdit } from "react-icons/md";
 import { FaTrashCan } from "react-icons/fa6";
@@ -31,7 +33,7 @@ export default function CommentListItem({
   const elapsedText = useElapsedTimeToText(
     new Date(i.updated_at || i.created_at)
   );
-  
+
   const onClickEdit = () => {
     setIsClickedEdit(true);
   };

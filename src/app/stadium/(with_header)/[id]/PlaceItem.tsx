@@ -6,6 +6,7 @@ import { usePlaceStore } from "@/stores/place-store";
 import { Database } from "../../../../../database.types";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { useEffect } from "react";
 
 type TypeYapuPlace = Database["public"]["Tables"]["yapu-place"]["Row"];
 
@@ -18,11 +19,15 @@ export default function PlaceItem({
 }) {
   const router = useRouter();
   const { setSelectedPlace } = usePlaceStore();
+
   const handleClickPlace = (place_name: string) => {
     setSelectedPlace(place_name as string);
     console.log(`/stadium/${stadium.id}/${place_name}`);
     router.push(`/stadium/${stadium.id}/${place_name}`);
   };
+  useEffect(() => {
+    console.log("data>>>", yapuPlaceData);
+  }, []);
 
   return (
     <ul>

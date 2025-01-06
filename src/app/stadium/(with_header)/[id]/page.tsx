@@ -1,44 +1,25 @@
-"use client";
-
+import { createServerSideClientRSC } from "@/app/utils/server";
 import "../../../globals.css";
-import { useStadiumStore } from "@/stores/stadium-store";
-import PlaceLists from "@/app/stadium/(with_header)/[id]/PlaceLists";
+import { getUserInfo } from "@/app/actions/user-info/user-actions";
+import { TypePlaceLike } from "@/types/PlaceLike";
+import PlaceHeader from "./PlaceHeader";
+import PlaceLists from "./PlaceLists";
 
-export default function Page() {
-  const { selectedStadium } = useStadiumStore();
+export default async function Page() {
+  const supabase = await createServerSideClientRSC();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const data = await getUserInfo(user?.id as string);
+  const placeLike = Array.isArray(data?.["place-like"])
+    ? (data["place-like"] as TypePlaceLike[])
+    : [];
 
   return (
     <div className=" mt-[20px]">
-      <div className="w-[70%] font-kbo mb-[30px]">
-        <p
-          className={` text-[26px] tracking-wider text-${selectedStadium?.team_short_color[0]}-main`}
-        >
-          {selectedStadium?.teams[0]}
-          {selectedStadium?.teams.length == 2 && (
-            <>
-              <span className="text-black">/</span>
-              <span
-                className={`text-${selectedStadium?.team_short_color[1]}-main`}
-              >
-                {selectedStadium?.teams[1]}
-              </span>
-            </>
-          )}
-        </p>
-        <p className=" mt-[10px] text-[18px]">구장: {selectedStadium?.name}</p>
-      </div>
-      {selectedStadium?.id === "baseball-dream-park" ? (
-        <div className=" font-paper_logy text-center tracking-wider">
-          <h1 className=" text-[30px] text-main-red mb-[20px]">
-            2025년 신구장 오픈 예정으로 데이터가 존재하지 않습니다.
-          </h1>
-          <p className=" text-[16px]  ">
-            개막 후 빠르게 업데이트 할 예정이니 조금만 기다려 주세요🙏
-          </p>
-        </div>
-      ) : (
-        <PlaceLists stadium={selectedStadium!} />
-      )}
+      <PlaceHeader />
+      <PlaceLists />
     </div>
   );
 }
