@@ -7,16 +7,17 @@ type PlaceLike = {
     stadium_id:string;
 }
 
-export const getUserInfo = async(id:string) => {
+export const getPlaceLike = async(id:string) => {
     const supabase = await createServerSideClient();
     const result = await supabase
     .from('profiles')
-    .select('*')
+    .select('place-like')
     .eq('id',id)
     .single();
 
     return result.data;
 }
+
 
 // 좋아요 추가
 export const addLikePlace = async({id,place_name, stadium_id}:{id:string,place_name:string, stadium_id:string}) => {
@@ -50,7 +51,6 @@ export const addLikePlace = async({id,place_name, stadium_id}:{id:string,place_n
    .update({'place-like':updatedLikes})
    .eq('id', id);
 
-   console.log('result>>>>',result.data)
    return result.data;
 }
 

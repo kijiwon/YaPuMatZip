@@ -2,8 +2,8 @@ import "../../../../globals.css";
 import PlaceInfo from "./PlaceInfo";
 import PlaceComments from "./PlaceComments";
 import { createServerSideClientRSC } from "@/app/utils/server";
-import { getUserInfo } from "@/app/actions/user-info/user-actions";
 import { TypePlaceLike } from "@/types/PlaceLike";
+import { getUserInfo } from "@/app/actions/user/user-actions";
 
 export default async function PlacePage() {
   const supabase = await createServerSideClientRSC();

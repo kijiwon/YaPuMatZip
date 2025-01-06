@@ -3,7 +3,7 @@
 import {
   addLikePlace,
   removeLikePlace,
-} from "@/app/actions/user-info/user-actions";
+} from "@/app/actions/place-like/place-like-actions";
 import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDetailData } from "@/app/hooks/useYapuPlaceData";
 import BackButton from "@/components/BackButton";
@@ -36,7 +36,7 @@ export default function PlaceInfo({
     selectedStadium?.id as string,
     selectedPlace!
   );
-  console.log("data>>", yapuPlaceDetailData);
+
   const { isMenuLoading, recommendedMenusData } = useRecommededMenusData(
     selectedPlace!
   );

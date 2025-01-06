@@ -1,10 +1,11 @@
 "use client";
 
+import { TypePlaceLike } from "@/types/PlaceLike";
 import { useYapuPlaceData } from "../../../hooks/useYapuPlaceData";
 import PlaceItem from "./PlaceItem";
 import { useStadiumStore } from "@/stores/stadium-store";
 
-export default function PlaceLists() {
+export default function PlaceLists(placeLike: TypePlaceLike | []) {
   const stadium = JSON.parse(sessionStorage.getItem("stadium-storage")!);
   const sessionStadiumId = stadium.state.selectedStadium.id;
   const { selectedStadium } = useStadiumStore();
@@ -32,10 +33,16 @@ export default function PlaceLists() {
           {isLoading ? (
             <div>Loading...</div>
           ) : (
-            <PlaceItem
-              yapuPlaceData={yapuPlaceData}
-              stadium={selectedStadium}
-            />
+            <ul>
+              {yapuPlaceData.map((place) => (
+                <PlaceItem
+                  key={place.id}
+                  place={place}
+                  stadium_id={selectedStadium.id}
+                  placeLike={placeLike?.placeLike}
+                />
+              ))}
+            </ul>
           )}
         </>
       )}
