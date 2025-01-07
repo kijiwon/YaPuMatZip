@@ -1,10 +1,10 @@
 import { createServerSideClientRSC } from "@/app/utils/server";
 import BackButton from "@/components/BackButton";
 import UserPageModal from "./UserPageModal";
-import UserCommentList from "./UserCommentList";
 import { getPlaceLike } from "@/app/actions/place-like/place-like-actions";
 import { TypePlaceLike } from "@/types/PlaceLike";
-import LikedPlaceList from "./LikedPlaceList";
+
+import UserDataSection from "./UserDataSection";
 
 export default async function UserPage() {
   const supabase = await createServerSideClientRSC();
@@ -31,18 +31,7 @@ export default async function UserPage() {
             <span>님의 페이지</span>
           </p>
         </div>
-        <section>
-          <div className=" flex flex-row items-center justify-end border-b-[2px] border-dashed border-main-blue">
-            <p className="w-fit ml-[10px] border-[2px] border-b-0 rounded-t-lg border-main-blue  py-[4px] px-[8px]">
-              Comments
-            </p>
-            <p className="w-fit ml-[10px] border-[2px] border-b-0 rounded-t-lg border-main-blue  py-[4px] px-[8px]">
-              Liked-Place
-            </p>
-          </div>
-          {/* <UserCommentList user_id={user.id} /> */}
-          <LikedPlaceList likedPlace={likedPlace} />
-        </section>
+        <UserDataSection userId={user.id} likedPlace={likedPlace} />
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 "use client";
 
 import { useElapsedTimeToText } from "@/app/hooks/useElapsedTimeToText";
-import { Database } from "../../../../database.types";
 import { useRouter } from "next/navigation";
 import { usePlaceStore } from "@/stores/place-store";
 import { useStadiumStore } from "@/stores/stadium-store";
 import StadiumData from "@/data/stadiums.json";
+import { Database } from "../../../../../database.types";
 
 type TypeComments = Database["public"]["Tables"]["comments"]["Row"];
 
