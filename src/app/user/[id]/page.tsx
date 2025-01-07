@@ -20,15 +20,15 @@ export default async function UserPage() {
   return (
     <div className="w-[80%] h-[100vh]">
       <BackButton />
-      <div className="w-[70%] h-[80%]  mx-auto pt-[30px] border-[2px]">
-        <div className="flex flex-row items-center mb-[50px] pl-[20px]">
+      <div className="w-[70%] h-[80%]  mx-auto pt-[20px]">
+        <div className="flex flex-row items-end mb-[50px] border-[2px] rounded-2xl py-[10px] px-[20px] border-main-blue">
           <img
             className="w-[40px] h-[40px] rounded-full border-[1px]"
             src={user?.user_metadata.avatar_url}
           />
-          <p className="text-[20px] font-kbo tracking-wider ml-[3px]">
-            {user.email?.split("@")[0]}
-            <span>님의 페이지</span>
+          <p className=" font-kbo tracking-wider ml-[3px]">
+            <span className="text-[22px]">{user.email?.split("@")[0]}</span>
+            <span className="text-[16px] ml-[5px]">님의 페이지</span>
           </p>
         </div>
         <UserDataSection userId={user.id} likedPlace={likedPlace} />

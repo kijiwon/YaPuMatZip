@@ -12,37 +12,45 @@ export default function UserDataSection({
   userId: string;
   likedPlace: TypePlaceLike[] | [];
 }) {
-  const [isCommentsView, setIsCommentsView] = useState(true);
-  const [isLikedPlaceView, setIsLikedPlaceView] = useState(false);
+  const [activeTab, setActiveTab] = useState("comments");
 
   const showComments = () => {
-    setIsCommentsView(true);
-    setIsLikedPlaceView(false);
+    setActiveTab("comments");
   };
 
   const showLikedPlace = () => {
-    setIsLikedPlaceView(true);
-    setIsCommentsView(false);
+    setActiveTab("liked-place");
   };
 
   return (
-    <section>
-      <div className=" flex flex-row items-center justify-end border-b-[2px] border-dashed border-main-blue">
-        <p
-          onClick={showComments}
-          className="w-fit ml-[10px] border-[2px] border-b-0 rounded-t-lg border-main-blue  py-[4px] px-[8px]"
-        >
-          Comments
-        </p>
-        <p
-          onClick={showLikedPlace}
-          className="w-fit ml-[10px] border-[2px] border-b-0 rounded-t-lg border-main-blue  py-[4px] px-[8px]"
-        >
-          Liked-Place
-        </p>
+    <section className="h-[85%]">
+      <div className="border-b-[3px] text-center text-[16px] font-paper_logy">
+        <ul className="flex items-center flex-wrap -mb-[3px]">
+          <li onClick={showComments} className="me-2">
+            <button
+              className={`border-b-[3px] p-2 hover:border-main-blue ${
+                activeTab === "comments" && "border-main-blue"
+              } `}
+            >
+              Comments
+            </button>
+          </li>
+          <li onClick={showLikedPlace} className="me-2">
+            <button
+              className={`border-b-[3px] p-2 hover:border-main-blue ${
+                activeTab === "liked-place" && "border-main-blue"
+              }`}
+            >
+              Liked-Place
+            </button>
+          </li>
+        </ul>
       </div>
-      {isCommentsView && <UserCommentList user_id={userId} />}
-      {isLikedPlaceView && <LikedPlaceList likedPlace={likedPlace} />}
+      {activeTab === "comments" ? (
+        <UserCommentList user_id={userId} />
+      ) : (
+        <LikedPlaceList likedPlace={likedPlace} />
+      )}
     </section>
   );
 }

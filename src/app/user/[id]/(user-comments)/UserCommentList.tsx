@@ -11,7 +11,7 @@ export default function UserCommentList({ user_id }: { user_id: string }) {
   if (comments.length === 0) return <div>작성된 댓글이 없어요!</div>;
 
   return (
-    <ul className="flex flex-col justify-center items-center pt-[10px]">
+    <ul className="flex flex-col justify-center pt-[20px]">
       {comments.map((comment) => (
         <UserCommentListItem key={comment.id} comment={comment} />
       ))}
