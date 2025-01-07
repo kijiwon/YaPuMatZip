@@ -5,7 +5,11 @@ import { useYapuPlaceData } from "../../../hooks/useYapuPlaceData";
 import PlaceItem from "./PlaceItem";
 import { useStadiumStore } from "@/stores/stadium-store";
 
-export default function PlaceLists(likedPlace: TypePlaceLike | []) {
+export default function PlaceLists({
+  likedPlace,
+}: {
+  likedPlace: TypePlaceLike[] | [];
+}) {
   const stadium = JSON.parse(sessionStorage.getItem("stadium-storage")!);
   const sessionStadiumId = stadium.state.selectedStadium.id;
   const { selectedStadium } = useStadiumStore();
@@ -39,7 +43,7 @@ export default function PlaceLists(likedPlace: TypePlaceLike | []) {
                   key={place.id}
                   place={place}
                   stadium_id={selectedStadium.id}
-                  likedPlace={likedPlace.likedPlace}
+                  likedPlace={likedPlace}
                 />
               ))}
             </ul>

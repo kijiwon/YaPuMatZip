@@ -13,7 +13,7 @@ export default async function UserPage() {
   } = await supabase.auth.getUser();
 
   const data = await getPlaceLike(user?.id as string);
-  const likedPlace: TypePlaceLike | undefined = data?.liked_place;
+  const likedPlace = data?.liked_place as TypePlaceLike[] | [];
 
   if (!user) return <UserPageModal />;
 

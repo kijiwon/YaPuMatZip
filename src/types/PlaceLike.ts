@@ -1,3 +1,5 @@
-import { Database } from "../../database.types";
 
-export type TypePlaceLike =Database['public']['Tables']['profiles']['Row']['liked_place']
+export type TypePlaceLike ={
+    place_name:string,
+    stadium_id:string,
+}

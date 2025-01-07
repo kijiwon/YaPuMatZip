@@ -1,18 +1,19 @@
 "use client";
 
 import { TypePlaceLike } from "@/types/PlaceLike";
-import { useEffect, useState } from "react";
+import LikedPlaceListItem from "./LikedPlaceListItem";
 
-export default function LikedPlaceList(likedPlace: TypePlaceLike[] | []) {
-  useEffect(() => {
-    console.log(likedPlace);
-  }, []);
-
+export default function LikedPlaceList({
+  likedPlace,
+}: {
+  likedPlace: TypePlaceLike[] | [];
+}) {
+  if (!likedPlace || likedPlace.length === 0) return <div>no data</div>;
   return (
     <div>
       <ul>
-        {likedPlace.likedPlace.map((i) => (
-          <p>{i.place_name}</p>
+        {likedPlace.map((i, idx) => (
+          <LikedPlaceListItem key={idx} i={i} />
         ))}
       </ul>
     </div>

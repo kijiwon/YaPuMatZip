@@ -29,7 +29,7 @@ export default function PlaceItem({
     router.push(`/stadium/${stadium_id}/${place_name}`);
   };
   useEffect(() => {
-    const isLikedPlace = likedPlace.some((i) => i.place_name === place.name);
+    const isLikedPlace = likedPlace?.some((i) => i.place_name === place.name);
     setIsLiked(isLikedPlace);
   }, []);
 

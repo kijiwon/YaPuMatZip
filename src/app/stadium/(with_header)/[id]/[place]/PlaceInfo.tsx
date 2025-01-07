@@ -54,7 +54,7 @@ export default function PlaceInfo({
     addLikePlace({
       id: userId,
       place_name: selectedPlace!,
-      stadium_id: selectedStadium?.id!,
+      stadium_id: selectedStadium?.id as string,
     });
     setIsLiked(!isLiked);
   };
