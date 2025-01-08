@@ -43,7 +43,8 @@ export default function PlaceInfo({
 
   const handleBackButton = () => {
     clearSelectedPlace();
-    router.replace(`/stadium/${selectedStadium?.id}`);
+    // router.replace(`/stadium/${selectedStadium?.id}`);
+    router.back();
   };
 
   const onClickAddLike = () => {
@@ -95,7 +96,7 @@ export default function PlaceInfo({
 
   return (
     <div>
-      <BackButton />
+      <BackButton fn={handleBackButton} />
       <div>
         {yapuPlaceDetailData[0] && (
           <div className="flex flex-col ">

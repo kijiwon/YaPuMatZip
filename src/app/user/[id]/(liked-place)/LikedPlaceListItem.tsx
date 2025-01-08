@@ -27,12 +27,15 @@ export default function LikedPlaceListItem({ i }: { i: TypePlaceLike }) {
   return (
     <li
       onClick={onClickPlace}
-      className="font-s_core mb-[16px] border-[1px]  cursor-pointer flex flex-row justify-center items-center"
+      className="font-s_core mb-[16px] border-[2px] rounded-[10px]  p-3  cursor-pointer hover:shadow-lg"
     >
       {yapuPlaceDetailData.map((place) => (
-        <div key={place.id}>
+        <div
+          key={place.id}
+          className=" flex flex-row justify-between items-center text-[18px]"
+        >
           <p>
-            <span>{place.food_type}</span>
+            <span className="mr-[10px]">{place.food_type}</span>
             {place.name}
           </p>
           <p>{stadium[0].name}</p>
