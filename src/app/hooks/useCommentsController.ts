@@ -46,15 +46,20 @@ export const useCommentsController = (place:string) =>{
     return {loading, comments, onCreateComments, onEditComments, onDeleteComments}
 }
 
-export const useCommentsById = (user_id:string) =>{
+export const useCommentsById = (user_id:string, pageSize:number=10) =>{
     const [loading, setLoading] = useState(false);
     const [comments, setComments] = useState<TypeComments[]>([]);
+    const [total, setTotal] = useState(0);
+    const [page, setPage] = useState(1);
 
-    const onGetCommentsById = async(user_id:string) =>{
+    const onGetCommentsById = async(page:number) =>{
         setLoading(true);
         try{
-            const resultComments = await getCommentsById(user_id);
-            if(resultComments) setComments(resultComments);
+            const result= await getCommentsById(user_id,page,pageSize);
+            if(result?.data){
+                setComments(result.data);
+                setTotal(result.count || 0);
+            }
         } catch(error){
             console.log(error);
         } finally{
@@ -63,9 +68,9 @@ export const useCommentsById = (user_id:string) =>{
     }
 
     useEffect(()=>{
-        onGetCommentsById(user_id);
-    },[]);
+        onGetCommentsById(page);
+    },[user_id, page]);
 
    
-    return {loading, comments}
+    return {loading, comments, total, page, pageSize, setPage}
 }

@@ -15,18 +15,19 @@ export const getComments = async(place:string)=>{
     return result.data;
 };
 
-export const getCommentsById = async(user_id:string)=>{
+export const getCommentsById = async(user_id:string,page:number=1, pageSize:number = 10)=>{
 
     const supabase =await  createServerSideClient();
     const result = await supabase.from('comments')
-    .select('*')
+    .select('*',{count: 'exact'}) // count를 추가로 전달->정확한 행 수를 리턴
     .is('deleted_at',null)
     .eq('user_id',user_id)
     .order('created_at',{
         ascending:false // 내림차순 정렬
-    });
-
-    return result.data;
+    })
+    .range((page-1)*pageSize, page*pageSize-1); // 10개씩 가져오기
+console.log(result.count)
+    return {data:result.data , count:result.count};
 };
 
 // comments 생성
