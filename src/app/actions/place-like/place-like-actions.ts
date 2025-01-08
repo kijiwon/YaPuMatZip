@@ -9,12 +9,23 @@ export const getLikedPlace = async(id:string) => {
     const supabase = await createServerSideClient();
     const result = await supabase
     .from('profiles')
-    .select('liked_place')
+    .select('liked_place',{count:'exact'})
     .eq('id',id)
     .single();
 
     return result.data;
 }
+
+export const getLikedPlacePagination = async(id:string) => {
+    const supabase = await createServerSideClient();
+    const result = await supabase
+    .from('profiles')
+    .select('liked_place',{count:'exact'})
+    .eq('id',id);
+
+    return {data:result.data , count:result.count};
+}
+
 
 
 // 좋아요 추가

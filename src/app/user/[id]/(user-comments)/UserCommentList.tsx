@@ -8,8 +8,6 @@ export default function UserCommentList({ user_id }: { user_id: string }) {
     useCommentsById(user_id);
   const totalPages = Math.ceil(total / pageSize); // 총 페이지 수
 
-  console.log("totalPages", totalPages);
-
   if (loading) return <div>로딩중...</div>;
 
   if (comments.length === 0) return <div>작성된 댓글이 없어요!</div>;
