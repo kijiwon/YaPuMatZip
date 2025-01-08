@@ -1,8 +1,6 @@
 import { createServerSideClientRSC } from "@/app/utils/server";
 import BackButton from "@/components/BackButton";
 import UserPageModal from "./UserPageModal";
-import { getPlaceLike } from "@/app/actions/place-like/place-like-actions";
-import { TypePlaceLike } from "@/types/PlaceLike";
 
 import UserDataSection from "./UserDataSection";
 
@@ -11,9 +9,6 @@ export default async function UserPage() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  const data = await getPlaceLike(user?.id as string);
-  const likedPlace = data?.liked_place as TypePlaceLike[] | [];
 
   if (!user) return <UserPageModal />;
 
@@ -31,7 +26,7 @@ export default async function UserPage() {
             <span className="text-[16px] ml-[5px]">님의 페이지</span>
           </p>
         </div>
-        <UserDataSection userId={user.id} likedPlace={likedPlace} />
+        <UserDataSection userId={user.id} />
       </div>
     </div>
   );

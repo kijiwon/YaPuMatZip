@@ -26,7 +26,7 @@ export const getCommentsById = async(user_id:string,page:number=1, pageSize:numb
         ascending:false // 내림차순 정렬
     })
     .range((page-1)*pageSize, page*pageSize-1); // 10개씩 가져오기
-console.log(result.count)
+
     return {data:result.data , count:result.count};
 };
 

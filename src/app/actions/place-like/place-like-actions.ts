@@ -5,7 +5,7 @@ import { TypePlaceLike } from "@/types/PlaceLike";
 
 
 
-export const getPlaceLike = async(id:string) => {
+export const getLikedPlace = async(id:string) => {
     const supabase = await createServerSideClient();
     const result = await supabase
     .from('profiles')
@@ -31,7 +31,7 @@ export const addLikePlace = async({id,place_name, stadium_id}:{id:string,place_n
     return;
    }
 
-   let currentLikes:TypePlaceLike[]  =  [];
+   let currentLikes:TypePlaceLike[]|[]  =  [];
 
    // place-like 데이터가 배열인지 확인
    if(userProfile && Array.isArray(userProfile.liked_place)){

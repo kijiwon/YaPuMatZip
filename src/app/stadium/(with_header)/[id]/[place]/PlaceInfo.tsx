@@ -1,9 +1,5 @@
 "use client";
 
-import {
-  addLikePlace,
-  removeLikePlace,
-} from "@/app/actions/place-like/place-like-actions";
 import { useRecommededMenusData } from "@/app/hooks/useRecommendedMenusData";
 import { useYapuPlaceDetailData } from "@/app/hooks/useYapuPlaceData";
 import BackButton from "@/components/BackButton";
@@ -14,21 +10,21 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { TypePlaceLike } from "@/types/PlaceLike";
+import { useLikedPlaceController } from "@/app/hooks/useLikedPlaceController";
 
 export default function PlaceInfo({
   userEmail,
   userId,
-  likedPlace,
 }: {
   userEmail: string;
   userId: string;
-  likedPlace: TypePlaceLike[] | undefined;
 }) {
   const [isClickedBack, setIsClickedBack] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const { selectedStadium } = useStadiumStore();
   const { selectedPlace, clearSelectedPlace } = usePlaceStore();
+  const { loading, likedPlace, onAddPlace, onRemovePlace } =
+    useLikedPlaceController(userId);
   const hasHydrated = usePlaceStore.persist.hasHydrated();
 
   const router = useRouter();
@@ -52,7 +48,7 @@ export default function PlaceInfo({
       alert("로그인 후 이용해주세요");
       return;
     }
-    addLikePlace({
+    onAddPlace({
       id: userId,
       place_name: selectedPlace!,
       stadium_id: selectedStadium?.id as string,
@@ -65,7 +61,7 @@ export default function PlaceInfo({
       alert("로그인 후 이용해주세요");
       return;
     }
-    removeLikePlace({
+    onRemovePlace({
       id: userId,
       place_name: selectedPlace!,
     });
@@ -88,7 +84,7 @@ export default function PlaceInfo({
     setIsClickedBack(false);
   }, [isClickedBack]);
 
-  if (isPlaceLoading || isMenuLoading) {
+  if (isPlaceLoading || isMenuLoading || loading) {
     return <div>loading...</div>;
   }
 

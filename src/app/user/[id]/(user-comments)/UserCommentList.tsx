@@ -16,7 +16,7 @@ export default function UserCommentList({ user_id }: { user_id: string }) {
 
   return (
     <>
-      <ul className=" flex flex-col justify-center pt-[20px]">
+      <ul className="min-h-[80%] flex flex-col pt-[20px]">
         {comments.map((comment) => (
           <UserCommentListItem key={comment.id} comment={comment} />
         ))}

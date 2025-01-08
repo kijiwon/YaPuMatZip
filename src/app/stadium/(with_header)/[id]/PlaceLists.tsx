@@ -1,23 +1,20 @@
 "use client";
 
-import { TypePlaceLike } from "@/types/PlaceLike";
+import { useLikedPlaceController } from "@/app/hooks/useLikedPlaceController";
 import { useYapuPlaceData } from "../../../hooks/useYapuPlaceData";
 import PlaceItem from "./PlaceItem";
 import { useStadiumStore } from "@/stores/stadium-store";
 
-export default function PlaceLists({
-  likedPlace,
-}: {
-  likedPlace: TypePlaceLike[] | [];
-}) {
+export default function PlaceLists({ userId }: { userId: string }) {
   const stadium = JSON.parse(sessionStorage.getItem("stadium-storage")!);
   const sessionStadiumId = stadium.state.selectedStadium.id;
   const { selectedStadium } = useStadiumStore();
   const stadium_id =
     (selectedStadium && selectedStadium.id) || sessionStadiumId;
   const { isLoading, yapuPlaceData } = useYapuPlaceData(stadium_id!);
+  const { loading, likedPlace } = useLikedPlaceController(userId);
 
-  if (!selectedStadium) {
+  if (!selectedStadium || loading) {
     return <div>로딩중...</div>;
   }
 

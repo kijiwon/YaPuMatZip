@@ -9,6 +9,7 @@ export default function LikedPlaceList({
   likedPlace: TypePlaceLike[] | [];
 }) {
   if (!likedPlace || likedPlace.length === 0) return <div>no data</div>;
+
   return (
     <ul className="flex flex-col justify-center pt-[20px]">
       {likedPlace.map((i, idx) => (

@@ -3,17 +3,11 @@
 import { useState } from "react";
 import LikedPlaceList from "./(liked-place)/LikedPlaceList";
 import UserCommentList from "./(user-comments)/UserCommentList";
-import { TypePlaceLike } from "@/types/PlaceLike";
+import { useLikedPlaceController } from "@/app/hooks/useLikedPlaceController";
 
-export default function UserDataSection({
-  userId,
-  likedPlace,
-}: {
-  userId: string;
-  likedPlace: TypePlaceLike[] | [];
-}) {
+export default function UserDataSection({ userId }: { userId: string }) {
   const [activeTab, setActiveTab] = useState("comments");
-
+  const { loading, likedPlace } = useLikedPlaceController(userId);
   const showComments = () => {
     setActiveTab("comments");
   };
@@ -21,6 +15,8 @@ export default function UserDataSection({
   const showLikedPlace = () => {
     setActiveTab("liked-place");
   };
+
+  if (loading) return <div>로딩중...</div>;
 
   return (
     <section className="h-[85%]">
