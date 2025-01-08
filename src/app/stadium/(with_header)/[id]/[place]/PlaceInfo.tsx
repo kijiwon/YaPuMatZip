@@ -95,7 +95,7 @@ export default function PlaceInfo({
 
   return (
     <div>
-      <BackButton fn={handleBackButton} />
+      <BackButton />
       <div>
         {yapuPlaceDetailData[0] && (
           <div className="flex flex-col ">

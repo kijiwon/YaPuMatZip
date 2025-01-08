@@ -10,12 +10,10 @@ export default function LikedPlaceList({
 }) {
   if (!likedPlace || likedPlace.length === 0) return <div>no data</div>;
   return (
-    <div>
-      <ul>
-        {likedPlace.map((i, idx) => (
-          <LikedPlaceListItem key={idx} i={i} />
-        ))}
-      </ul>
-    </div>
+    <ul className="flex flex-col justify-center pt-[20px]">
+      {likedPlace.map((i, idx) => (
+        <LikedPlaceListItem key={idx} i={i} />
+      ))}
+    </ul>
   );
 }
