@@ -31,7 +31,6 @@ export async function GET(request: Request) {
 
 
         if(!data){
-          console.log('name???', name)
           const { error} = await supabase
           .from('profiles')
           .insert({
@@ -42,7 +41,6 @@ export async function GET(request: Request) {
           });
    
           if(error){
-
             console.log('error>>>>', error)
           }
         }

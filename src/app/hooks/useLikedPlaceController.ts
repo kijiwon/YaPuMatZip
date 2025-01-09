@@ -48,7 +48,6 @@ export const useLikedPlacePagination = (userId:string, pageSize:number=5) =>{
     setLoading(true);
     try {
         const result = await getLikedPlacePagination(userId);
-        console.log('data>>>',result.data)
         if(result.data){
             const allLikedPlaces =result.data[0].liked_place as TypePlaceLike[];
             setTotal(allLikedPlaces.length);
