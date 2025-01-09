@@ -38,7 +38,7 @@ export const useLikedPlaceController = (userId:string) =>{
 }
 
 
-export const useLikedPlacePagination = (userId:string, pageSize:number=7) =>{
+export const useLikedPlacePagination = (userId:string, pageSize:number=5) =>{
     const [loading, setLoading] = useState(false);
     const [likedPlace, setLikedPlace] = useState<TypePlaceLike[]>([]);
     const [total, setTotal] = useState(0);
