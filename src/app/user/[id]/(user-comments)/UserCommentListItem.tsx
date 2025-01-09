@@ -25,8 +25,8 @@ export default function UserCommentListItem({
   );
 
   const slicedContent =
-    comment.content.length > 30
-      ? comment.content.slice(0, 30) + "..."
+    comment.content.length > 20
+      ? comment.content.slice(0, 20) + "..."
       : comment.content;
 
   const onClickComment = () => {

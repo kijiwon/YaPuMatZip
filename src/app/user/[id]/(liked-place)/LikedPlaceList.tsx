@@ -18,9 +18,15 @@ export default function LikedPlaceList({ userId }: { userId: string }) {
           <LikedPlaceListItem key={idx} i={i} />
         ))}
       </ul>
-      <div>
+      <div className="flex flex-row items-center justify-center font-paper_logy text-[18px]">
         {Array.from({ length: totalPages }, (_, idx) => (
-          <button key={idx} onClick={() => setPage(idx + 1)}>
+          <button
+            key={idx}
+            onClick={() => setPage(idx + 1)}
+            className={`text-white py-2 px-4 ${
+              page === idx + 1 ? " bg-main-blue" : "bg-gray-200"
+            } hover:bg-main-blue`}
+          >
             {idx + 1}
           </button>
         ))}

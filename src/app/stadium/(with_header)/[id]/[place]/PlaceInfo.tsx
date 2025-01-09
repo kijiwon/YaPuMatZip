@@ -72,7 +72,7 @@ export default function PlaceInfo({
     if (likedPlace?.find((i) => i.place_name === selectedPlace)) {
       setIsLiked(true);
     }
-  }, []);
+  }, [likedPlace]);
 
   // 브라우저 뒤로가기 제어
   useEffect(() => {
