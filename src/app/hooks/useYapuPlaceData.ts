@@ -24,7 +24,7 @@ export const useYapuPlaceData =(id:string) =>{
 
      useEffect(()=>{
         onGetData(id)
-     },[])
+     },[id])
 
      return {isLoading,yapuPlaceData};
 }
@@ -47,7 +47,7 @@ export const useYapuPlaceDetailData =(id:string,name:string) =>{
 
      useEffect(()=>{
         onGetData(id,name)
-     },[])
+     },[id, name])
 
      return {isPlaceLoading,yapuPlaceDetailData};
 }

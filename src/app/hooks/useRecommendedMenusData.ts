@@ -25,7 +25,7 @@ export const useRecommededMenusData =(id:string) =>{
 
      useEffect(()=>{
         onGetData(id)
-     },[])
+     },[id])
 
      return {isMenuLoading,recommendedMenusData};
 }

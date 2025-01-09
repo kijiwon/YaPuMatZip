@@ -24,7 +24,7 @@ export const useBallparkData =(id:string) =>{
 
      useEffect(()=>{
         onGetData(id)
-     },[])
+     },[onGetData])
 
      return {isLoading,ballparkData};
 }

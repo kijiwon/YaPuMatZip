@@ -22,7 +22,7 @@ export const useLikedPlaceController = (userId:string) =>{
    
    useEffect(()=>{
     onGetLikedPlace(userId);
-   },[]);
+   },[userId]);
 
    const onAddPlace = async({id,place_name, stadium_id}:{id:string,place_name:string, stadium_id:string}) => {
     await addLikePlace({id,place_name, stadium_id});

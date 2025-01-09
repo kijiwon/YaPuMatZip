@@ -24,7 +24,7 @@ export const useCommentsController = (place:string) =>{
 
     useEffect(()=>{
         onGetComments(place);
-    },[]);
+    },[place]);
 
     // comment 생성
     const onCreateComments = async({selectedPlace, content, userEmail, stadium_id}:{selectedPlace:string, content:string, userEmail:string, stadium_id:string})=>{
