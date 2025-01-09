@@ -1,6 +1,7 @@
 import { createServerSideClientRSC } from "@/app/utils/server";
 import BackButton from "@/components/BackButton";
 import UserPageModal from "./UserPageModal";
+import Image from "next/image";
 
 import UserDataSection from "./UserDataSection";
 
@@ -17,7 +18,8 @@ export default async function UserPage() {
       <BackButton />
       <div className="w-[70%] h-[80%]  mx-auto pt-[20px]">
         <div className="flex flex-row items-end mb-[50px] border-[2px] rounded-2xl py-[10px] px-[20px] border-main-blue">
-          <img
+          <Image
+            alt="user-profile"
             className="w-[40px] h-[40px] rounded-full border-[1px]"
             src={user?.user_metadata.avatar_url}
           />

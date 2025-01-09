@@ -2,15 +2,22 @@
 
 import "../../../globals.css";
 import { useYapuPlaceBySearch } from "@/app/hooks/useYapuPlaceData";
-import { useSearchParams } from "next/navigation";
 import SearchResultListItem from "./SearchResultListItem";
 import { BsFillSearchHeartFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 
 export default function Search() {
   const [isClickedBack, setIsClickedBack] = useState(false);
-  const searchParams = useSearchParams();
-  const term = searchParams.get("q") || sessionStorage.getItem("term");
+  // const searchParams = useSearchParams();
+  // const term = searchParams.get("q") || sessionStorage.getItem("term");
+  const [term, setTerm] = useState<string | null>(null);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search); // 서버사이드의 경우 useSearchParams 훅을 사용할 수 없음
+    const query = searchParams.get("q") || sessionStorage.getItem("term");
+    setTerm(query);
+  }, []);
+
   const { isPlaceLoading, yapuPlaceSearchlData } = useYapuPlaceBySearch(
     term as string
   );

@@ -7,6 +7,7 @@ import {
   signInWithKakao,
   signOut,
 } from "@/app/actions/login/login-actions";
+import Image from "next/image";
 
 export function HeaderLoginButton() {
   const router = useRouter();
@@ -43,7 +44,7 @@ export function GoogleLoginButton() {
       className="h-[52px] flex flex-row items-center pl-[13px] bg-[#4285F4] rounded-[12px]"
       onClick={signInWithGoogle}
     >
-      <img src="/g-logo.png" className="w-[40px]" />
+      <Image alt="google-logo" src="/g-logo.png" className="w-[40px]" />
       <span className=" font-roboto text-white mr-auto ml-auto text-[18px]">
         구글 로그인
       </span>

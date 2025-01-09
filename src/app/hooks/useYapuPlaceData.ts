@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { Database } from "../../../database.types"
 import { useEffect } from "react"
 import { getYapuPlaceBySearch, getYapuPlaceDetailInfo, getYapuPlaceInfo } from "../api/yapu-place-info"
@@ -10,7 +10,8 @@ export const useYapuPlaceData =(id:string) =>{
     const [isLoading, setIsLoading] = useState(true);
     const [yapuPlaceData, setYapuPlaceData] = useState<TypeYapuPlace[]>([]);
 
-    const onGetData = async(id:string)=>{
+    const onGetData =useCallback(
+        async(id:string)=>{
         setIsLoading(true);
         try{
          const yapuPlaceInfoData = await getYapuPlaceInfo(id);
@@ -20,11 +21,11 @@ export const useYapuPlaceData =(id:string) =>{
         } finally{
             setIsLoading(false);
         }
-     }
+     },[]) 
 
      useEffect(()=>{
         onGetData(id)
-     },[id])
+     },[id, onGetData])
 
      return {isLoading,yapuPlaceData};
 }
@@ -33,7 +34,8 @@ export const useYapuPlaceDetailData =(id:string,name:string) =>{
     const [isPlaceLoading, setIsPlaceLoading] = useState(true);
     const [yapuPlaceDetailData, setYapuPlaceDetailData] = useState<TypeYapuPlace[]>([]);
     
-    const onGetData = async(id:string, name:string)=>{
+    const onGetData =useCallback(
+         async(id:string, name:string)=>{
         setIsPlaceLoading(true);
         try{
          const yapuPlaceDetailInfoData = await getYapuPlaceDetailInfo(id,name);
@@ -43,11 +45,11 @@ export const useYapuPlaceDetailData =(id:string,name:string) =>{
         } finally{
             setIsPlaceLoading(false);
         }
-     }
+     },[])
 
      useEffect(()=>{
         onGetData(id,name)
-     },[id, name])
+     },[id, name, onGetData])
 
      return {isPlaceLoading,yapuPlaceDetailData};
 }
@@ -56,21 +58,22 @@ export const useYapuPlaceBySearch =(term:string) =>{
     const [isPlaceLoading, setIsPlaceLoading] = useState(true);
     const [yapuPlaceSearchlData, setYapuPlaceSearchData] = useState<TypeYapuPlace[]>([]);
     
-    const onGetData = async(term:string)=>{
+    const onGetData =useCallback(
+        async(term:string)=>{
         setIsPlaceLoading(true);
         try{
-         const placeDataBySearch = await getYapuPlaceBySearch(term);
-         if(placeDataBySearch) setYapuPlaceSearchData(placeDataBySearch!);
+            const placeDataBySearch = await getYapuPlaceBySearch(term);
+            if(placeDataBySearch) setYapuPlaceSearchData(placeDataBySearch!);
         } catch(error){
             console.log(error);
         } finally{
             setIsPlaceLoading(false);
         }
-     }
+     },[]) 
 
      useEffect(()=>{
         onGetData(term);
-     },[term])
+     },[term, onGetData])
 
      return {isPlaceLoading,yapuPlaceSearchlData};
 }

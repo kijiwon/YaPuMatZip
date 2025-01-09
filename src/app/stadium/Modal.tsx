@@ -3,7 +3,7 @@
 import { usePlaceStore } from "@/stores/place-store";
 import { useStadiumStore } from "@/stores/stadium-store";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Modal({ userName }: { userName: string }) {
   const { selectedStadium } = useStadiumStore();
@@ -22,15 +22,15 @@ export default function Modal({ userName }: { userName: string }) {
     ? `/stadium/${selectedStadium?.id}/${selectedPlace}`
     : `/stadium/${selectedStadium?.id}`;
 
-  const handlePageRouter = () => {
+  const handlePageRouter = useCallback(() => {
     setTimeout(() => {
       router.push(url);
     }, 1500);
-  };
+  }, [url, router]);
 
   useEffect(() => {
     if (hydrated) handlePageRouter();
-  }, [hydrated]);
+  }, [hydrated, handlePageRouter]);
 
   if (!hydrated) return;
 

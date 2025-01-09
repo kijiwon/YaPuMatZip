@@ -29,6 +29,6 @@ export const getYapuPlaceBySearch = async(term:string)=>{
     .like('name',`%${term}%`)
     .order('id');
     
-
+    if(result.error) console.log('supabase error>>>',result.error)
     return result.data
 }

@@ -30,7 +30,7 @@ export default function PlaceItem({
   useEffect(() => {
     const isLikedPlace = likedPlace?.some((i) => i.place_name === place.name);
     setIsLiked(isLikedPlace);
-  }, []);
+  }, [likedPlace, place.name]);
 
   return (
     <li

@@ -74,7 +74,13 @@ export default function KakaoMap({
       stadiumOverlay.setMap(map);
       placeOverlay.setMap(map);
     });
-  }, [isLoaded, place]);
+  }, [
+    isLoaded,
+    place,
+    stadium.coordinates.lat,
+    stadium.coordinates.lng,
+    stadium.name,
+  ]);
 
   return (
     <div>

@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { Database } from "../../../database.types"
 import { useEffect } from "react"
 import { getRecommendedMenusInfo } from "../api/recommended-menus-info"
@@ -11,7 +11,8 @@ export const useRecommededMenusData =(id:string) =>{
     const [isMenuLoading, setIsMenuLoading] = useState(true);
     const [recommendedMenusData, setRecommendedMenusData] = useState<TypeRecommendedMenus[]>([]);
 
-    const onGetData = async(id:string)=>{
+    const onGetData =useCallback(
+        async(id:string)=>{
         setIsMenuLoading(true);
         try{
          const recommendedMenusInfoData = await getRecommendedMenusInfo(id);
@@ -21,11 +22,11 @@ export const useRecommededMenusData =(id:string) =>{
         } finally{
             setIsMenuLoading(false);
         }
-     }
+     },[]) 
 
      useEffect(()=>{
         onGetData(id)
-     },[id])
+     },[id, onGetData])
 
      return {isMenuLoading,recommendedMenusData};
 }

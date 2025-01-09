@@ -78,7 +78,7 @@ export default function PlaceInfo({
     if (likedPlace?.find((i) => i.place_name === selectedPlace)) {
       setIsLiked(true);
     }
-  }, [likedPlace]);
+  }, [likedPlace, selectedPlace]);
 
   // 브라우저 뒤로가기 제어
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function PlaceInfo({
     };
     window.addEventListener("popstate", handlePopState);
     setIsClickedBack(false);
-  }, [isClickedBack]);
+  }, [isClickedBack, clearSelectedPlace]);
 
   if (isPlaceLoading || isMenuLoading || loading) {
     return <div>loading...</div>;
