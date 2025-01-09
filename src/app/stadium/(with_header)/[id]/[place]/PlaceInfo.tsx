@@ -6,7 +6,7 @@ import BackButton from "@/components/BackButton";
 import KakaoMap from "@/components/KakaoMap";
 import { usePlaceStore } from "@/stores/place-store";
 import { useStadiumStore } from "@/stores/stadium-store";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
@@ -21,6 +21,12 @@ export default function PlaceInfo({
 }) {
   const [isClickedBack, setIsClickedBack] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const pathname = usePathname();
+  const decodePath = decodeURI(pathname);
+
+  const pathStadium = decodePath.split("/")[2];
+  const pathPlace = decodePath.split("/")[3];
+
   const { selectedStadium } = useStadiumStore();
   const { selectedPlace, clearSelectedPlace } = usePlaceStore();
   const { loading, likedPlace, onAddPlace, onRemovePlace } =
@@ -29,12 +35,12 @@ export default function PlaceInfo({
 
   const router = useRouter();
   const { isPlaceLoading, yapuPlaceDetailData } = useYapuPlaceDetailData(
-    selectedStadium?.id as string,
-    selectedPlace!
+    (selectedStadium?.id as string) || pathStadium,
+    selectedPlace! || pathPlace
   );
 
   const { isMenuLoading, recommendedMenusData } = useRecommededMenusData(
-    selectedPlace!
+    selectedPlace! || pathPlace
   );
 
   const handleBackButton = () => {

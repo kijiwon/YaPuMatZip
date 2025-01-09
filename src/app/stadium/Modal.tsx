@@ -19,8 +19,8 @@ export default function Modal({ userName }: { userName: string }) {
   const url = term
     ? `/stadium/search?q=${term}`
     : selectedPlace
-    ? `/stadium/${selectedStadium}/${selectedPlace}`
-    : `/stadium/${selectedStadium}`;
+    ? `/stadium/${selectedStadium?.id}/${selectedPlace}`
+    : `/stadium/${selectedStadium?.id}`;
 
   const handlePageRouter = () => {
     setTimeout(() => {
