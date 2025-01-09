@@ -19,7 +19,7 @@ export default function UserCommentList({ user_id }: { user_id: string }) {
           <UserCommentListItem key={comment.id} comment={comment} />
         ))}
       </ul>
-      <div className="flex flex-row items-center justify-center font-paper_logy text-[18px]">
+      <div className="flex flex-row items-center justify-center font-paper_logy text-[14px]">
         {Array.from({ length: totalPages }, (_, idx) => (
           <button
             key={idx}

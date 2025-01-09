@@ -25,8 +25,8 @@ export default function UserCommentListItem({
   );
 
   const slicedContent =
-    comment.content.length > 20
-      ? comment.content.slice(0, 20) + "..."
+    comment.content.length > 30
+      ? comment.content.slice(0, 30) + "..."
       : comment.content;
 
   const onClickComment = () => {
@@ -38,9 +38,9 @@ export default function UserCommentListItem({
   return (
     <li
       onClick={onClickComment}
-      className="font-s_core mb-[16px] border-b-[1px]  cursor-pointer flex flex-row justify-center items-center"
+      className="font-s_core mb-[16px] border-b-[1px] text-[16px] cursor-pointer flex flex-row justify-between items-center"
     >
-      <p>{comment.place}</p>
+      <p className="text-main-blue mr-[20px]">[{comment.place}]</p>
       <p className="flex-1">
         {slicedContent}
         {comment.updated_at && <span>(수정됨)</span>}
