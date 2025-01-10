@@ -24,10 +24,10 @@ export default function KakaoMap({
       setIsLoaded(true);
       return;
     }
-
+    const appKey = process.env.NEXT_PUBLIC_KAKAO_API_KEY;
     const script: HTMLScriptElement = document.createElement("script");
     script.async = true;
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${appKey}&libraries=services&autoload=false`;
     script.onload = () => setIsLoaded(true);
     document.body.appendChild(script);
   }, []);
