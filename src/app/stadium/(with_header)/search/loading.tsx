@@ -1,6 +1,12 @@
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import { ItemSkeleton } from "@/components/ItemSkeleton";
 
 export default function Loading() {
-  return <Skeleton count={5} />;
+  return (
+    <div>
+      <ItemSkeleton />
+      <ItemSkeleton />
+      <ItemSkeleton />
+      <ItemSkeleton />
+    </div>
+  );
 }

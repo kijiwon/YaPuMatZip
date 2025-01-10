@@ -1,9 +1,14 @@
 "use client";
 
 import { useStadiumStore } from "@/stores/stadium-store";
+import Loading from "./loading";
 
 export default function PlaceHeader() {
   const { selectedStadium } = useStadiumStore();
+
+  if (!selectedStadium) {
+    return <Loading />;
+  }
 
   return (
     <div className="w-[70%] font-kbo mb-[30px]">

@@ -5,10 +5,15 @@ import { useYapuPlaceData } from "../../../hooks/useYapuPlaceData";
 import PlaceItem from "./PlaceItem";
 import { useStadiumStore } from "@/stores/stadium-store";
 import Loading from "./loading";
+import { ItemSkeleton } from "@/components/ItemSkeleton";
 
 export default function PlaceLists({ userId }: { userId: string }) {
-  const stadium = JSON.parse(sessionStorage.getItem("stadium-storage")!);
-  const sessionStadiumId = stadium.state.selectedStadium.id;
+  let stadium = null;
+  if (typeof window !== "undefined") {
+    stadium = JSON.parse(sessionStorage.getItem("stadium-storage")!);
+  }
+
+  const sessionStadiumId = stadium?.state?.selectedStadium.id;
   const { selectedStadium } = useStadiumStore();
   const stadium_id =
     (selectedStadium && selectedStadium.id) || sessionStadiumId;
@@ -16,7 +21,11 @@ export default function PlaceLists({ userId }: { userId: string }) {
   const { loading, likedPlace } = useLikedPlaceController(userId);
 
   if (!selectedStadium || loading || isLoading) {
-    return <Loading />;
+    return (
+      <div className="w-[70%] flex flex-col items-center">
+        <ItemSkeleton />
+      </div>
+    );
   }
 
   return (
