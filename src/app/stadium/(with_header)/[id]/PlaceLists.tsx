@@ -4,7 +4,6 @@ import { useLikedPlaceController } from "@/app/hooks/useLikedPlaceController";
 import { useYapuPlaceData } from "../../../hooks/useYapuPlaceData";
 import PlaceItem from "./PlaceItem";
 import { useStadiumStore } from "@/stores/stadium-store";
-import Loading from "./loading";
 import { ItemSkeleton } from "@/components/ItemSkeleton";
 
 export default function PlaceLists({ userId }: { userId: string }) {
