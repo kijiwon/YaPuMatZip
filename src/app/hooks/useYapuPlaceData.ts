@@ -58,22 +58,29 @@ export const useYapuPlaceBySearch =(term:string) =>{
     const [isPlaceLoading, setIsPlaceLoading] = useState(true);
     const [yapuPlaceSearchlData, setYapuPlaceSearchData] = useState<TypeYapuPlace[]>([]);
     
-    const onGetData =useCallback(
-        async(term:string)=>{
-        setIsPlaceLoading(true);
-        try{
-            const placeDataBySearch = await getYapuPlaceBySearch(term);
-            if(placeDataBySearch) setYapuPlaceSearchData(placeDataBySearch!);
-        } catch(error){
-            console.log(error);
-        } finally{
+    useEffect(() => {
+        if (!term) {
             setIsPlaceLoading(false);
+            setYapuPlaceSearchData([]);
+            return;
         }
-     },[]) 
-
-     useEffect(()=>{
-        onGetData(term);
-     },[term, onGetData])
+        
+        const fetchData = async () => {
+            setIsPlaceLoading(true);
+            try {
+                const placeDataBySearch = await getYapuPlaceBySearch(term);
+                if (placeDataBySearch) setYapuPlaceSearchData(placeDataBySearch);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsPlaceLoading(false);
+            }
+        };
+        // term이 들어오면 데이터패칭
+        if (term) {
+            fetchData();
+        }
+    }, [term]);  
 
      return {isPlaceLoading,yapuPlaceSearchlData};
 }

@@ -4,6 +4,7 @@ import { useLikedPlaceController } from "@/app/hooks/useLikedPlaceController";
 import { useYapuPlaceData } from "../../../hooks/useYapuPlaceData";
 import PlaceItem from "./PlaceItem";
 import { useStadiumStore } from "@/stores/stadium-store";
+import Loading from "./loading";
 
 export default function PlaceLists({ userId }: { userId: string }) {
   const stadium = JSON.parse(sessionStorage.getItem("stadium-storage")!);
@@ -14,8 +15,8 @@ export default function PlaceLists({ userId }: { userId: string }) {
   const { isLoading, yapuPlaceData } = useYapuPlaceData(stadium_id!);
   const { loading, likedPlace } = useLikedPlaceController(userId);
 
-  if (!selectedStadium || loading) {
-    return <div>로딩중...</div>;
+  if (!selectedStadium || loading || isLoading) {
+    return <Loading />;
   }
 
   return (
@@ -31,20 +32,16 @@ export default function PlaceLists({ userId }: { userId: string }) {
         </div>
       ) : (
         <>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            <ul>
-              {yapuPlaceData.map((place) => (
-                <PlaceItem
-                  key={place.id}
-                  place={place}
-                  stadium_id={selectedStadium.id}
-                  likedPlace={likedPlace}
-                />
-              ))}
-            </ul>
-          )}
+          <ul>
+            {yapuPlaceData.map((place) => (
+              <PlaceItem
+                key={place.id}
+                place={place}
+                stadium_id={selectedStadium.id}
+                likedPlace={likedPlace}
+              />
+            ))}
+          </ul>
         </>
       )}
     </div>
