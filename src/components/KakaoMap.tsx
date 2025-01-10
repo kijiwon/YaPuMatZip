@@ -27,7 +27,7 @@ export default function KakaoMap({
 
     const script: HTMLScriptElement = document.createElement("script");
     script.async = true;
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services&autoload=false`;
     script.onload = () => setIsLoaded(true);
     document.body.appendChild(script);
   }, []);
