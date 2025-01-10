@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
 export default function SearchBar() {
@@ -19,15 +19,20 @@ export default function SearchBar() {
     router.push(`/stadium/search?q=${term}`);
   };
 
+  const submitOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.nativeEvent.isComposing) return;
+    if (e.key === "Enter") {
+      onClickSearch();
+    }
+  };
+
   return (
     <div className="flex flex-row items-center justify-center w-[50%] ">
       <input
         ref={searchRef}
         value={term}
         onChange={(e) => setTerms(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") onClickSearch();
-        }}
+        onKeyDown={submitOnEnter}
         className="border-y-[3px] border-l-[3px] flex-1 h-[40px] rounded-l-lg focus:outline-none pl-[6px] text-[20px] font-paper_logy tracking-widest"
       />
       <IoSearch
