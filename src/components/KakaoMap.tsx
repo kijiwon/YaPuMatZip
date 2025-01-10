@@ -27,7 +27,7 @@ export default function KakaoMap({
 
     const script: HTMLScriptElement = document.createElement("script");
     script.async = true;
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services&autoload=false`;
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services&autoload=false`;
     script.onload = () => setIsLoaded(true);
     document.body.appendChild(script);
   }, []);
@@ -90,7 +90,7 @@ export default function KakaoMap({
           className="w-[80%] h-[320px] ml-auto mr-auto  border-2 rounded-md "
         ></div>
       ) : (
-        <div className="w-[80%] h-[320px] ml-auto mr-auto bg-gray-200 rounded-md ">
+        <div className="w-[80%] h-[320px] ml-auto mr-auto bg-gray-200 rounded-md text-center ">
           loading...
         </div>
       )}
