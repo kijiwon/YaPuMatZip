@@ -91,7 +91,11 @@ export default function PlaceInfo({
   }, [isClickedBack, clearSelectedPlace]);
 
   if (isPlaceLoading || isMenuLoading || loading) {
-    return <div>loading...</div>;
+    return (
+      <div>
+        <div>loading...</div>
+      </div>
+    );
   }
 
   if (!hasHydrated) return;

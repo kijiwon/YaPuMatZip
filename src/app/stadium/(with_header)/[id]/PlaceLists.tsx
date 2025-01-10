@@ -24,6 +24,8 @@ export default function PlaceLists({ userId }: { userId: string }) {
     return (
       <div className="w-[70%] flex flex-col items-center">
         <ItemSkeleton />
+        <ItemSkeleton />
+        <ItemSkeleton />
       </div>
     );
   }

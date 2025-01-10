@@ -90,7 +90,9 @@ export default function KakaoMap({
           className="w-[80%] h-[320px] ml-auto mr-auto  border-2 rounded-md "
         ></div>
       ) : (
-        <div>loading...</div>
+        <div className="w-[80%] h-[320px] ml-auto mr-auto bg-gray-200 rounded-md ">
+          loading...
+        </div>
       )}
     </div>
   );
