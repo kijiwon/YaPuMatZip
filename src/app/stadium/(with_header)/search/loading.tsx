@@ -2,7 +2,7 @@ import { ItemSkeleton } from "@/components/ItemSkeleton";
 
 export default function Loading() {
   return (
-    <div>
+    <div className="animate-pulse">
       <ItemSkeleton />
       <ItemSkeleton />
       <ItemSkeleton />

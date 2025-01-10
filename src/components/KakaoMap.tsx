@@ -24,10 +24,10 @@ export default function KakaoMap({
       setIsLoaded(true);
       return;
     }
-    const appKey = process.env.NEXT_PUBLIC_KAKAO_API_KEY;
+
     const script: HTMLScriptElement = document.createElement("script");
     script.async = true;
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${appKey}&libraries=services&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services&autoload=false`;
     script.onload = () => setIsLoaded(true);
     document.body.appendChild(script);
   }, []);
@@ -90,8 +90,8 @@ export default function KakaoMap({
           className="w-[80%] h-[320px] ml-auto mr-auto  border-2 rounded-md "
         ></div>
       ) : (
-        <div className="w-[80%] h-[320px] ml-auto mr-auto bg-gray-200 rounded-md text-center ">
-          loading...
+        <div className="w-[80%] h-[320px] ml-auto mr-auto bg-gray-300 rounded-md text-center flex justify-center items-center ">
+          <p className="animate-pulse font-kbo text-[30px]">로딩 중...</p>
         </div>
       )}
     </div>
