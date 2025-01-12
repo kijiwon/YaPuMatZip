@@ -10,7 +10,12 @@ export default function UserCommentList({ user_id }: { user_id: string }) {
 
   if (loading) return <div>로딩중...</div>;
 
-  if (comments.length === 0) return <div>작성된 댓글이 없어요!</div>;
+  if (comments.length === 0)
+    return (
+      <div className="mt-[20px] font-s_core text-[18px]">
+        작성된 댓글이 없어요!
+      </div>
+    );
 
   return (
     <>

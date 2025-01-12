@@ -9,7 +9,12 @@ export default function LikedPlaceList({ userId }: { userId: string }) {
   const totalPages = Math.ceil(total / pageSize); // 총 페이지 수
 
   if (loading) return <div>로딩중...</div>;
-  if (!likedPlace || likedPlace.length === 0) return <div>no data</div>;
+  if (!likedPlace || likedPlace.length === 0)
+    return (
+      <div className="mt-[20px] font-s_core text-[18px]">
+        아직 좋아요를 누른 장소가 없어요!
+      </div>
+    );
 
   return (
     <>
