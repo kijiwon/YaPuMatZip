@@ -3,8 +3,27 @@ import { Suspense } from "react";
 import Search from "./SearchContainer";
 import Loading from "./loading";
 import { BsFillSearchHeartFill } from "react-icons/bs";
+import { Metadata } from "next";
 
 type PageParams = Promise<{ q: string }>;
+
+export const generateMetadata = ({
+  searchParams,
+}: {
+  searchParams: {
+    q?: string;
+  };
+}): Metadata => {
+  return {
+    title: `야푸 맛집 : ${searchParams.q}`,
+    description: `${searchParams.q} 검색 결과입니다`,
+    openGraph: {
+      title: `야푸 맛집 : ${searchParams.q}`,
+      description: `${searchParams.q} 검색 결과입니다`,
+      images: ["/logo.png"],
+    },
+  };
+};
 
 export default async function Page({
   searchParams,

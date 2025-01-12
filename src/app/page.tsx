@@ -2,6 +2,17 @@ import TeamButton from "../components/TeamButton";
 import "./globals.css";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import StadiumData from "@/data/stadiums.json";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "야푸 맛집",
+  description: "구장 별 야푸 맛집을 만나보세요!",
+  openGraph: {
+    title: "야푸 맛집",
+    description: "구장 별 야푸 맛집을 만나보세요!",
+    images: ["/logo.png"],
+  },
+};
 
 export default function Home() {
   const topTeam = StadiumData.slice(0, 4);
