@@ -13,7 +13,6 @@ export const generateMetadata = async ({
   searchParams: PageParams;
 }): Promise<Metadata> => {
   const { q } = await searchParams;
-
   const query = q || "검색어 없음";
 
   return {
