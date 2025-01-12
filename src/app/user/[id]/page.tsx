@@ -25,7 +25,6 @@ export default async function UserPage() {
             alt="user-profile"
             className="rounded-full border-[1px]"
             src={user?.user_metadata.avatar_url || "/logo.png"}
-            onError={(e) => (e.currentTarget.src = "/logo.png")}
           />
           <p className=" font-kbo tracking-wider ml-[3px]">
             <span className="text-[22px]">{user.email?.split("@")[0]}</span>
