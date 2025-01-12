@@ -57,7 +57,7 @@ export default function PlaceComments({
         <p className="font-kbo text-[18px]">댓글</p>
         <form
           onSubmit={onSubmit}
-          className="flex flex-row items-center justify-center mt-[10px]  mb-[40px] font-s_core"
+          className="flex flex-row items-center justify-center mt-[10px]  mb-[40px] font-kyobo"
         >
           <p className="flex flex-row items-center text-[18px] ">
             {userName && (

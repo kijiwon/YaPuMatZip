@@ -8,9 +8,14 @@ export default function UserCommentList({ user_id }: { user_id: string }) {
     useCommentsById(user_id);
   const totalPages = Math.ceil(total / pageSize); // 총 페이지 수
 
-  if (loading) return <div>로딩중...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center mt-[20px] ">
+        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
 
-  if (comments.length === 0)
+  if (!loading && comments.length === 0)
     return (
       <div className="mt-[20px] font-s_core text-[18px]">
         작성된 댓글이 없어요!

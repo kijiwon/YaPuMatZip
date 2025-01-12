@@ -57,7 +57,7 @@ export default function CommentListItem({
   };
 
   return (
-    <li className="flex flex-row items-start font-s_core border-b-[2px]">
+    <li className="flex flex-row items-start font-kyobo border-b-[2px]">
       <p className="w-[20%] break-all flex flex-row  items-center text-[18px] mr-[10px] pt-[10px]">
         <PiRobot size={22} />
         <span>{i.user_email.split("@")[0]}</span>

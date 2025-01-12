@@ -23,7 +23,15 @@ export default function LikedPlaceListItem({ i }: { i: TypePlaceLike }) {
     router.push(`/stadium/${i.stadium_id}/${i.place_name}`);
   };
 
-  if (isPlaceLoading) return <div>로딩 중...</div>;
+  if (isPlaceLoading)
+    return (
+      <div className=" border-[2px] rounded-[10px]  p-3 text-[18px]">
+        <div className="flex justify-center items-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      </div>
+    );
+
   return (
     <li
       onClick={onClickPlace}

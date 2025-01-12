@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import LikedPlaceList from "./(liked-place)/LikedPlaceList";
 import UserCommentList from "./(user-comments)/UserCommentList";
+import Loading from "./loading";
 
 export default function UserDataSection({ userId }: { userId: string }) {
   const [activeTab, setActiveTab] = useState("comments");
+  const [isLoaded, setIsLoaded] = useState(false);
 
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
   const showComments = () => {
     setActiveTab("comments");
   };
@@ -41,10 +46,18 @@ export default function UserDataSection({ userId }: { userId: string }) {
           </li>
         </ul>
       </div>
-      {activeTab === "comments" ? (
-        <UserCommentList user_id={userId} />
+      {isLoaded ? (
+        activeTab === "comments" ? (
+          <Suspense fallback={<Loading />}>
+            <UserCommentList user_id={userId} />
+          </Suspense>
+        ) : (
+          <Suspense fallback={<Loading />}>
+            <LikedPlaceList userId={userId} />
+          </Suspense>
+        )
       ) : (
-        <LikedPlaceList userId={userId} />
+        <Loading />
       )}
     </section>
   );

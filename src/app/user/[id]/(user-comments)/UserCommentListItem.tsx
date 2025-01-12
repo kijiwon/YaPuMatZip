@@ -38,7 +38,7 @@ export default function UserCommentListItem({
   return (
     <li
       onClick={onClickComment}
-      className="font-s_core mb-[16px] border-b-[1px] text-[16px] cursor-pointer flex flex-row justify-between items-center"
+      className="font-kyobo mb-[16px] border-b-[1px] text-[16px] cursor-pointer flex flex-row justify-between items-center"
     >
       <p className="text-main-blue mr-[20px]">[{comment.place}]</p>
       <p className="flex-1">
