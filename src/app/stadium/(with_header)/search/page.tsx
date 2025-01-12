@@ -7,19 +7,21 @@ import { Metadata } from "next";
 
 type PageParams = Promise<{ q: string }>;
 
-export const generateMetadata = ({
+export const generateMetadata = async ({
   searchParams,
 }: {
-  searchParams: {
-    q?: string;
-  };
-}): Metadata => {
+  searchParams: PageParams;
+}): Promise<Metadata> => {
+  const { q } = await searchParams;
+
+  const query = q || "검색어 없음";
+
   return {
-    title: `야푸 맛집 : ${searchParams.q}`,
-    description: `${searchParams.q} 검색 결과입니다`,
+    title: `야푸 맛집 : ${query}`,
+    description: `${query} 검색 결과입니다`,
     openGraph: {
-      title: `야푸 맛집 : ${searchParams.q}`,
-      description: `${searchParams.q} 검색 결과입니다`,
+      title: `야푸 맛집 : ${query}`,
+      description: `${query} 검색 결과입니다`,
       images: ["/logo.png"],
     },
   };
