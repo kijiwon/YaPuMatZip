@@ -16,10 +16,10 @@ export const generateMetadata = async ({
   const query = q || "검색어 없음";
 
   return {
-    title: `야푸 맛집 : ${query}`,
+    title: `야푸 맛집 : ${query} 검색 결과`,
     description: `${query} 검색 결과입니다`,
     openGraph: {
-      title: `야푸 맛집 : ${query}`,
+      title: `야푸 맛집 : ${query} 검색 결과`,
       description: `${query} 검색 결과입니다`,
       images: ["/logo.png"],
     },
