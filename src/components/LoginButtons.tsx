@@ -8,6 +8,7 @@ import {
   signOut,
 } from "@/app/actions/login/login-actions";
 import Image from "next/image";
+import GoogleLogo from "./../../public/g-logo.png";
 
 export function HeaderLoginButton() {
   const router = useRouter();
@@ -44,7 +45,12 @@ export function GoogleLoginButton() {
       className="h-[52px] flex flex-row items-center pl-[13px] bg-[#4285F4] rounded-[12px]"
       onClick={signInWithGoogle}
     >
-      <Image alt="google-logo" src="/g-logo.png" className="w-[40px]" />
+      <Image
+        width={40}
+        alt="google-logo"
+        src={GoogleLogo}
+        className="w-[40px]"
+      />
       <span className=" font-roboto text-white mr-auto ml-auto text-[18px]">
         구글 로그인
       </span>

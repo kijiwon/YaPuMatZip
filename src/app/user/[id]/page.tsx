@@ -3,6 +3,7 @@ import BackButton from "@/components/BackButton";
 import UserPageModal from "./UserPageModal";
 
 import UserDataSection from "./UserDataSection";
+import Image from "next/image";
 
 export default async function UserPage() {
   const supabase = await createServerSideClientRSC();
@@ -17,9 +18,11 @@ export default async function UserPage() {
       <BackButton />
       <div className="w-[70%] h-[80%]  mx-auto pt-[20px]">
         <div className="flex flex-row items-end mb-[50px] border-[2px] rounded-2xl py-[10px] px-[20px] border-main-blue">
-          <img
+          <Image
+            width={40}
+            height={40}
             alt="user-profile"
-            className="w-[40px] h-[40px] rounded-full border-[1px]"
+            className="rounded-full border-[1px]"
             src={user?.user_metadata.avatar_url}
           />
           <p className=" font-kbo tracking-wider ml-[3px]">
