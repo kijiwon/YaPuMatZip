@@ -1,7 +1,7 @@
 import { createServerSideClientRSC } from "@/app/utils/server";
 import BackButton from "@/components/BackButton";
 import UserPageModal from "./UserPageModal";
-import DefaultImage from "../../../../public/logo.png";
+// import DefaultImage from "../../../../public/logo.png";
 
 import UserDataSection from "./UserDataSection";
 import Image from "next/image";
@@ -24,7 +24,8 @@ export default async function UserPage() {
             height={40}
             alt="user-profile"
             className="rounded-full border-[1px]"
-            src={user?.user_metadata.avatar_url || DefaultImage}
+            src={user?.user_metadata.avatar_url || "/logo.png"}
+            onError={(e) => (e.currentTarget.src = "/logo.png")}
           />
           <p className=" font-kbo tracking-wider ml-[3px]">
             <span className="text-[22px]">{user.email?.split("@")[0]}</span>
