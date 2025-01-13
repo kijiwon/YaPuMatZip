@@ -7,6 +7,10 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      sm: "768px",
+      lg: "1024px",
+    },
     extend: {
       colors: {
         background: "var(--background)",

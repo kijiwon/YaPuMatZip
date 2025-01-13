@@ -21,13 +21,13 @@ export default function TeamButton({ stadium }: { stadium: StadiumType }) {
       onClick={onClickButton}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
-      className={`  text-[26px] rounded-lg w-[230px]  h-[84px] ${
+      className={`lg:text-[26px] text-[20px] rounded-lg lg:w-[230px] lg:h-[84px] w-[180px] h-[60px] ${
         isHovered ? "  bg-[#f3f3f34a] " : "bg-white "
       } `}
     >
       {isHovered ? (
         <div
-          className={` text-${stadium.team_short_color[0]}-main  flex flex-row justify-center items-center text-center  text-[25px] drop-shadow-[0_8px_2px_rgba(0,0,0,0.2)]`}
+          className={`text-${stadium.team_short_color[0]}-main flex flex-row justify-center items-center text-center  lg:text-[25px] text-[20px] drop-shadow-[0_8px_2px_rgba(0,0,0,0.2)]`}
         >
           <FaMapMarkerAlt />
           {stadium.name}
