@@ -29,15 +29,12 @@ export default async function Header() {
       <header className="lg:hidden fixed bg-white w-[100%] mx-auto px-10  flex flex-col items-center pt-[10px] pb-[10px]">
         <div className="w-[100%] flex flex-row justify-between items-center mb-[10px]">
           <Image width={60} src={LogoImage} alt="logo" />
-          <div>
-            {user ? (
-              <UserButton userName={userName as string} />
-            ) : (
-              <HeaderLoginButton />
-            )}
-          </div>
+          {user ? (
+            <UserButton userName={userName as string} />
+          ) : (
+            <HeaderLoginButton />
+          )}
         </div>
-        <SearchBar />
       </header>
     </>
   );

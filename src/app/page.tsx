@@ -32,7 +32,7 @@ export default function Home() {
           맛ZIP
         </h1>
       </header>
-      <div className=" relative font-paper_logy grid lg:grid-rows-2 lg:gap-16 grid-rows-2 gap-2 place-items-center">
+      <div className=" relative font-paper_logy grid lg:grid-rows-2 lg:gap-16 grid-rows-2 gap-2 place-items-center pb-[16px]">
         <div className=" grid lg:grid-cols-4 lg:gap-16 grid-cols-2 gap-4">
           {topTeam.map((i) => (
             <TeamButton key={i.id} stadium={i} />
