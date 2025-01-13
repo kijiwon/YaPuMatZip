@@ -16,7 +16,7 @@ export function HeaderLoginButton() {
   return (
     <button
       onClick={() => router.push("/auth")}
-      className=" w-[110px] h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy text-[20px] hover:bg-main-light-blue  "
+      className="lg:w-[110px] lg:h-[40px] rounded-[10px] bg-main-blue text-white font-paper_logy lg:text-[20px] text-[16px] px-4 py-2 hover:bg-main-light-blue"
     >
       로그인
     </button>
@@ -32,7 +32,7 @@ export function HeaderLogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className=" w-[110px] h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy text-[20px] hover:bg-main-light-blue  "
+      className="lg:w-[110px] lg:h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy lg:text-[20px] text-[16px] px-4 py-2 hover:bg-main-light-blue  "
     >
       로그아웃
     </button>

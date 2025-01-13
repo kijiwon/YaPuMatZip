@@ -15,7 +15,7 @@ export default function NavBar() {
       {filteredData.map((i) => (
         <button
           key={i.id}
-          className=" w-[100px] mr-[20px] ml-[20px] text-[18px]"
+          className=" w-[100px] mx-[20px] text-[18px]"
           onClick={() => {
             setSelectedStadium(i);
             router.push(`/stadium/${i.id}`);
