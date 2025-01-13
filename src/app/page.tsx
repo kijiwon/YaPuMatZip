@@ -19,7 +19,7 @@ export default function Home() {
   const downTeam = StadiumData.slice(4);
 
   return (
-    <div className=" relative  h-[100vh] flex flex-col items-center ">
+    <div className=" relative  lg:h-screen flex flex-col items-center ">
       <div className=" absolute inset-0 bg-ball-park opacity-70 bg-cover"></div>
       <header className=" relative flex flex-col justify-center items-center text-white lg:mt-[120px] lg:mb-[130px] mt-[100px] mb-[80px]">
         <FaMapMarkedAlt
