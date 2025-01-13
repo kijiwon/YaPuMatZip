@@ -33,12 +33,12 @@ export default function SearchBar() {
         value={term}
         onChange={(e) => setTerms(e.target.value)}
         onKeyDown={submitOnEnter}
-        className="border-y-[3px] border-l-[3px] flex-1 h-[40px] rounded-l-lg focus:outline-none pl-[6px] text-[20px] font-paper_logy tracking-widest"
+        className="border-y-[3px] border-l-[3px] flex-1 h-[40px] rounded-l-lg focus:outline-none pl-[6px] lg:text-[20px] text-[16px] font-kyobo tracking-widest"
       />
       <IoSearch
         onClick={onClickSearch}
         size={40}
-        className=" cursor-pointer border-y-[3px] border-r-[3px] pr-[5px] rounded-r-lg"
+        className="cursor-pointer border-y-[3px] border-r-[3px] pr-[5px] rounded-r-lg"
       />
     </div>
   );
