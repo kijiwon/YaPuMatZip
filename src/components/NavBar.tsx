@@ -61,7 +61,7 @@ export default function NavBar() {
         </nav>
         {/* sidebar */}
         <div
-          className={`fixed top-0 left-0 z-40 w-64 h-screen px-5 py-10 overflow-y-auto transition-transform ${
+          className={`fixed top-0 left-0 z-40 w-50 h-screen px-5 py-10 overflow-y-auto transition-transform ${
             isOpenSideBar ? "translate-x-0" : "-translate-x-full"
           } bg-white border-r-[2px]`}
         >
