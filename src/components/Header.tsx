@@ -26,7 +26,7 @@ export default async function Header() {
           )}
         </div>
       </header>
-      <header className="lg:hidden fixed bg-white w-[100%] mx-auto px-10  flex flex-col items-center pt-[10px] pb-[10px]">
+      <header className="lg:hidden fixed bg-white w-screen mx-auto px-7  flex flex-col items-center pt-[10px] pb-[10px]">
         <div className="w-[100%] flex flex-row justify-between items-center mb-[10px]">
           <Image width={60} src={LogoImage} alt="logo" />
           {user ? (

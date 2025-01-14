@@ -39,10 +39,10 @@ export default function UserButton({ userName }: { userName: string }) {
           )}
         </p>
         {isClicked && (
-          <div className="px-[20px] h-[100px] pt-[5px] bg-white  absolute mt-[30px] border-[1px] text-[16px] font-s_core z-40">
+          <div className="px-[20px] h-fit pt-[5px] pb-[5px] bg-white  absolute mt-[30px] border-[1px] lg:text-[16px] text-[14px] font-s_core z-40">
             <button
               onClick={onClickButton}
-              className="border-b-[1px] border-dashed z-20"
+              className="border-b-[1px] border-dashed"
             >
               마이페이지
             </button>

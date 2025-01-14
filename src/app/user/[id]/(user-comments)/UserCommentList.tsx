@@ -17,14 +17,14 @@ export default function UserCommentList({ user_id }: { user_id: string }) {
 
   if (!loading && comments.length === 0)
     return (
-      <div className="mt-[20px] font-s_core text-[18px]">
+      <div className="mt-[20px] font-s_core lg:text-[18px] text-[16px]">
         작성된 댓글이 없어요!
       </div>
     );
 
   return (
     <>
-      <ul className="min-h-[80%] flex flex-col pt-[20px]">
+      <ul className="lg:min-h-[80%] flex flex-col pt-[20px]">
         {comments.map((comment) => (
           <UserCommentListItem key={comment.id} comment={comment} />
         ))}
@@ -34,7 +34,7 @@ export default function UserCommentList({ user_id }: { user_id: string }) {
           <button
             key={idx}
             onClick={() => setPage(idx + 1)}
-            className={`text-white py-2 px-4 ${
+            className={`text-white py-2 px-4 rounded-md ${
               page === idx + 1 ? " bg-main-blue" : "bg-gray-200"
             } hover:bg-main-blue`}
           >

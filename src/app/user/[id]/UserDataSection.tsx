@@ -21,8 +21,8 @@ export default function UserDataSection({ userId }: { userId: string }) {
   };
 
   return (
-    <section className="h-[85%]">
-      <div className="border-b-[3px] text-center text-[16px] font-paper_logy">
+    <section className="lg:h-[85%]">
+      <div className="border-b-[3px] text-center lg:text-[16px] text-[14px] font-paper_logy">
         <ul className="flex items-center flex-wrap -mb-[3px]">
           <li onClick={showComments} className="me-2">
             <button

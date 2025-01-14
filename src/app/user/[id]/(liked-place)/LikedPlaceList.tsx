@@ -19,14 +19,14 @@ export default function LikedPlaceList({ userId }: { userId: string }) {
 
   if (!loading && likedPlace.length === 0)
     return (
-      <div className="mt-[20px] font-s_core text-[18px]">
+      <div className="mt-[20px] font-s_core lg:text-[18px] text-[16px]">
         아직 좋아요를 누른 장소가 없어요!
       </div>
     );
 
   return (
     <>
-      <ul className="min-h-[80%] flex flex-col pt-[20px]">
+      <ul className="lg:min-h-[80%] flex flex-col pt-[20px]">
         {likedPlace.map((i, idx) => (
           <LikedPlaceListItem key={idx} i={i} />
         ))}
@@ -36,7 +36,7 @@ export default function LikedPlaceList({ userId }: { userId: string }) {
           <button
             key={idx}
             onClick={() => setPage(idx + 1)}
-            className={`text-white py-2 px-4 ${
+            className={`text-white py-2 px-4 rounded-md ${
               page === idx + 1 ? " bg-main-blue" : "bg-gray-200"
             } hover:bg-main-blue`}
           >
