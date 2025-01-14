@@ -12,7 +12,7 @@ export default async function Page() {
   } = await supabase.auth.getUser();
 
   return (
-    <div className=" mt-[20px] w-[70%] flex flex-col items-center">
+    <div className=" mt-[20px] lg:w-[70%] w-[90%] flex flex-col lg:items-center">
       <Suspense fallback={<Loading />}>
         <PlaceHeader />
         <PlaceLists userId={user?.id as string} />

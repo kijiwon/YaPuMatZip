@@ -9,7 +9,7 @@ export default function UserLayout({
   return (
     <div>
       <Header />
-      <div className="w-full h-[100vh] flex flex-col items-center">
+      <div className="w-full h-[100vh] pt-[100px] lg:pt-0 flex flex-col items-center">
         {children}
       </div>
     </div>

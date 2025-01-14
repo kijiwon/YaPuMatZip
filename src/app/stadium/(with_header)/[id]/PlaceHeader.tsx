@@ -11,9 +11,9 @@ export default function PlaceHeader() {
   }
 
   return (
-    <div className="w-[70%] font-kbo mb-[30px]">
+    <div className="lg:w-[70%] font-kbo mb-[30px]">
       <p
-        className={` text-[26px] tracking-wider text-${selectedStadium?.team_short_color[0]}-main`}
+        className={`lg:text-[26px] text-[24px] tracking-wider text-${selectedStadium?.team_short_color[0]}-main`}
       >
         {selectedStadium?.teams[0]}
         {selectedStadium?.teams.length == 2 && (
@@ -27,7 +27,9 @@ export default function PlaceHeader() {
           </>
         )}
       </p>
-      <p className=" mt-[10px] text-[18px]">구장: {selectedStadium?.name}</p>
+      <p className="mt-[10px] lg:text-[18px] text-[16px]">
+        구장: {selectedStadium?.name}
+      </p>
     </div>
   );
 }

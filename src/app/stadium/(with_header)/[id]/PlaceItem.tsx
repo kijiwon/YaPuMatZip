@@ -35,29 +35,31 @@ export default function PlaceItem({
   return (
     <li
       onClick={() => handleClickPlace(place.name)}
-      className={`w-[800px] cursor-pointer shadow-inner  border-2 mb-[16px] p-[16px] rounded-[10px] pl-[26px] pr-[20px] flex flex-row justify-start items-center text-[18px] font-s_core hover:shadow-lg`}
+      className={`lg:w-[800px] cursor-pointer shadow-inner border-2 mb-[16px] py-[16px] rounded-[10px] pl-[26px] lg:pr-[20px] pr-[10px] flex flex-row justify-start items-center lg:text-[18px] text-[14px] font-s_core hover:shadow-lg`}
     >
-      <p className="text-[30px] mr-[18px]">{place.food_type}</p>
+      <p className="lg:text-[30px] text-[20px] lg:mr-[18px] mr-[10px]">
+        {place.food_type}
+      </p>
       <p className="font-s_core_bold">{place.name}</p>
       {place.is_delivery_or_takeout_available ? (
-        <p className=" mr-[10px] ml-[10px] rounded-lg bg-main-light-blue text-[15px] p-[5px] text-white">
+        <p className="lg:mx-[12px] mx-[6px] px-2 py-1 lg:p-[10px] rounded-lg bg-main-light-blue lg:text-[15px] text-[12px]  text-white">
           {place.is_delivery_or_takeout_available}
         </p>
       ) : null}
-      <div className="ml-auto text-[22px]">
+      <div className="ml-auto">
         {isLiked ? (
-          <FaHeart size={26} color="pink" />
+          <FaHeart color="pink" className="lg:text-[26px] text-[20px]" />
         ) : (
-          <FaRegHeart size={26} />
+          <FaRegHeart className="lg:text-[26px] text-[20px]" />
         )}
       </div>
-      <p className=" ml-[20px] ">
+      <p className="lg:ml-[20px] ml-[10px] break-keep">
         {place.inside_stadium ? (
-          <span className="bg-main-blue text-white p-[10px] rounded-[10px]">
+          <span className="bg-main-blue text-white lg:p-[10px] p-2 rounded-[10px]">
             구장안
           </span>
         ) : (
-          <span className="bg-main-red text-white p-[10px] rounded-[10px]">
+          <span className="bg-main-red text-white lg:p-[10px] p-2 rounded-[10px]">
             구장밖
           </span>
         )}

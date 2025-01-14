@@ -10,7 +10,7 @@ export default function StadiumLayout({
     <div>
       <Header />
       <NavBar />
-      <div className="w-full h-[100vh] flex flex-col items-center">
+      <div className="w-screen h-[100vh] pt-[130px] lg:pt-0 flex flex-col items-center">
         {children}
       </div>
     </div>

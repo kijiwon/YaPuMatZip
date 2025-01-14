@@ -32,8 +32,8 @@ export default function PlaceLists({ userId }: { userId: string }) {
   return (
     <div>
       {selectedStadium?.id === "baseball-dream-park" ? (
-        <div className=" font-paper_logy text-center tracking-wider">
-          <h1 className=" text-[30px] text-main-red mb-[20px]">
+        <div className="font-paper_logy text-center tracking-wider">
+          <h1 className="text-[30px] text-main-red mb-[20px]">
             2025년 신구장 오픈 예정으로 데이터가 존재하지 않습니다.
           </h1>
           <p className=" text-[16px]  ">

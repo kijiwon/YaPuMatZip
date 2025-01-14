@@ -27,7 +27,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center lg:w-[50%] w-[80%] ">
+    <div className="flex flex-row items-center justify-center lg:w-[50%] w-[80%] z-0">
       <input
         ref={searchRef}
         value={term}

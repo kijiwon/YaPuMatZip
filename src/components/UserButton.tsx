@@ -42,7 +42,7 @@ export default function UserButton({ userName }: { userName: string }) {
           <div className="px-[20px] h-[100px] pt-[5px] bg-white  absolute mt-[30px] border-[1px] text-[16px] font-s_core">
             <button
               onClick={onClickButton}
-              className="border-b-[1px] border-dashed"
+              className="border-b-[1px] border-dashed z-20"
             >
               마이페이지
             </button>
