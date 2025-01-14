@@ -21,8 +21,8 @@ export default function UserButton({ userName }: { userName: string }) {
 
   return (
     <div className="flex flex-row items-center">
-      <div className="flex flex-col items-center">
-        <p className="relative flex flex-row items-center text-[16px] font-paper_logy mr-[10px]">
+      <div className="relative flex flex-col items-center">
+        <p className="flex flex-row items-center text-[16px] font-paper_logy mr-[10px]">
           {userName}님
           {isClicked ? (
             <IoIosArrowUp
@@ -39,7 +39,7 @@ export default function UserButton({ userName }: { userName: string }) {
           )}
         </p>
         {isClicked && (
-          <div className="px-[20px] h-fit pt-[5px] pb-[5px] bg-white  absolute mt-[30px] border-[1px] lg:text-[16px] text-[14px] font-s_core z-40">
+          <div className="z-50 lg:px-[10px] px-2 h-fit py-[3px] bg-white  absolute mt-[30px] border-[1px] lg:text-[16px] text-[14px] font-s_core">
             <button
               onClick={onClickButton}
               className="border-b-[1px] border-dashed"

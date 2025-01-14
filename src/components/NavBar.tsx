@@ -50,8 +50,8 @@ export default function NavBar() {
           </button>
         ))}
       </nav>
-      <div className="lg:hidden">
-        <nav className="fixed w-[100%] mt-[90px] flex flex-row items-center justify-center bg-white">
+      <div className="lg:hidden relative">
+        <nav className="fixed w-[100%] mt-[90px] flex flex-row items-center justify-center bg-white  pb-[10px] z-10">
           <TbBuildingStadium
             size={30}
             onClick={handleOpenSideBar}
