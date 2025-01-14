@@ -25,18 +25,20 @@ export default function SearchResultListItem({ place }: { place: TypePlace }) {
   return (
     <li
       onClick={onClickPlace}
-      className="w-[800px] grid grid-cols-6  cursor-pointer shadow-inner  border-2 mb-[16px] p-[16px] rounded-[10px] pl-[26px] pr-[20px] text-[18px] font-s_core hover:shadow-lg"
+      className="lg:w-[100%] grid grid-cols-5 cursor-pointer shadow-inner  border-2 mb-[16px] p-[16px] rounded-[10px] pl-[26px] lg:pr-[20px] pr-[10px] lg:text-[18px] text-[14px] font-s_core hover:shadow-lg"
     >
-      <p className={`text-${stadium[0].team_short_color[0]}-main font-kbo`}>
+      <p
+        className={`col-span-1 text-${stadium[0].team_short_color[0]}-main font-kbo`}
+      >
         {stadium[0].team_short.length === 2
           ? `${stadium[0].team_short[0]}/${stadium[0].team_short[1]} `
           : stadium[0].team_short}
       </p>
-      <p className="col-span-4">
+      <p className="col-span-3">
         {place.food_type}
         {place.name}
       </p>
-      <p className="">{place.inside_stadium ? "구장안" : "구장밖"}</p>
+      <p className="col-span-1">{place.inside_stadium ? "구장안" : "구장밖"}</p>
     </li>
   );
 }

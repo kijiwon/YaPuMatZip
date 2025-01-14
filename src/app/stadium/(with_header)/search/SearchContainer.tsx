@@ -39,13 +39,13 @@ export default function Search({ q }: { q: string }) {
   if (isPlaceLoading) return <Loading />;
 
   return (
-    <div className="w-[80%] flex flex-col items-center">
+    <div className="lg:w-[80%] w-[90%] flex flex-col lg:items-center">
       {yapuPlaceSearchlData.length === 0 ? (
         <p className="text-[20px] font-s_core tracking-wide">
           일치하는 장소가 없습니다😭
         </p>
       ) : (
-        <ul className="flex flex-col justify-center">
+        <ul className="w-full flex flex-col justify-center">
           {yapuPlaceSearchlData?.map((place, idx) => (
             <SearchResultListItem key={idx} place={place} />
           ))}

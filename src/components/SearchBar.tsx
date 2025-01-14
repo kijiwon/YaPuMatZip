@@ -27,18 +27,17 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center lg:w-[50%] w-[80%] z-0">
+    <div className="flex flex-row items-center justify-center lg:w-[50%] w-[80%] z-0 border-[3px] rounded-lg py-[2px]">
       <input
         ref={searchRef}
         value={term}
         onChange={(e) => setTerms(e.target.value)}
         onKeyDown={submitOnEnter}
-        className="border-y-[3px] border-l-[3px] flex-1 h-[40px] rounded-l-lg focus:outline-none pl-[6px] lg:text-[20px] text-[16px] font-kyobo tracking-widest"
+        className="h-[30px] lg:h-[40px] outline-none flex-1 focus:outline-none pl-[6px] lg:text-[20px] text-[16px] font-kyobo tracking-widest"
       />
       <IoSearch
         onClick={onClickSearch}
-        size={40}
-        className="cursor-pointer border-y-[3px] border-r-[3px] pr-[5px] rounded-r-lg"
+        className="cursor-pointer pr-[5px] lg:text-[40px] text-[28px]"
       />
     </div>
   );
