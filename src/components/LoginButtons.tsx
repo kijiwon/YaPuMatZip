@@ -42,15 +42,10 @@ export function HeaderLogoutButton() {
 export function GoogleLoginButton() {
   return (
     <button
-      className="h-[52px] flex flex-row items-center pl-[13px] bg-[#4285F4] rounded-[12px]"
+      className="lg:h-[52px] h-fit flex flex-row items-center pl-[13px] py-1 bg-[#4285F4] rounded-[12px]"
       onClick={signInWithGoogle}
     >
-      <Image
-        width={40}
-        alt="google-logo"
-        src={GoogleLogo}
-        className="w-[40px]"
-      />
+      <Image width={40} alt="google-logo" src={GoogleLogo} />
       <span className=" font-roboto text-white mr-auto ml-auto text-[18px]">
         구글 로그인
       </span>
@@ -60,7 +55,7 @@ export function GoogleLoginButton() {
 export function KakaoLoginButton() {
   return (
     <button
-      className="h-[52px] flex flex-row items-center pl-[22px]  bg-[#FEE500] rounded-[12px]  "
+      className="lg:h-[52px] h-[48px] flex flex-row items-center pl-[22px] bg-[#FEE500] rounded-[12px]  "
       onClick={signInWithKakao}
     >
       <BiSolidMessageRounded color="black" size={"26px"} />

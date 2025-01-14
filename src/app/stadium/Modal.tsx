@@ -19,8 +19,8 @@ export default function Modal({ userName }: { userName: string }) {
   const url = term
     ? `/stadium/search?q=${term}`
     : selectedPlace
-    ? `/stadium/${selectedStadium?.id}/${selectedPlace}`
-    : `/stadium/${selectedStadium?.id}`;
+      ? `/stadium/${selectedStadium?.id}/${selectedPlace}`
+      : `/stadium/${selectedStadium?.id}`;
 
   const handlePageRouter = useCallback(() => {
     setTimeout(() => {
@@ -35,11 +35,12 @@ export default function Modal({ userName }: { userName: string }) {
   if (!hydrated) return;
 
   return (
-    <div className="flex flex-col justify-center items-center px-[100px] py-[50px] bg-white rounded-[15px] shadow-md">
-      <p className="text-[24px] font-kbo mb-[10px]">
-        {userName}님 로그인 완료!
+    <div className="flex flex-col justify-center items-center lg:px-[100px] px-[20px] py-[50px] bg-white rounded-[15px] shadow-md">
+      <p className="lg:text-[24px] text-[20px] font-kbo mb-[10px]">
+        {userName}
+        <span className="ml-[3px]">님 로그인 완료!</span>
       </p>
-      <p className="text-[16px] font-paper_logy">
+      <p className="lg:text-[16px] text-[13px] font-s_core">
         잠시 후 페이지로 이동합니다...
       </p>
     </div>
