@@ -15,7 +15,7 @@ export default async function PlacePage() {
   const data = await getUserInfo(user?.id as string);
 
   return (
-    <div className="w-[70%] mt-[20px]">
+    <div className="lg:w-[70%] w-[90%] mt-[20px]">
       <Suspense fallback={<Loading />}>
         <PlaceInfo
           userEmail={data?.email as string}

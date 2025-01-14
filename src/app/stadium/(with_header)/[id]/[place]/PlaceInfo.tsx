@@ -108,7 +108,7 @@ export default function PlaceInfo({
           <div className="flex flex-col ">
             <section className="mb-[20px]">
               <div className="flex flex-row justify-center items-center">
-                <h1 className="flex flex-row justify-center items-center font-paper_logy text-[32px] text-center">
+                <h1 className="flex flex-row justify-center lg:items-center font-paper_logy lg:text-[32px] text-[24px] text-center">
                   <span className="mr-[5px]">
                     {yapuPlaceDetailData[0]?.food_type}
                   </span>
@@ -118,23 +118,21 @@ export default function PlaceInfo({
                   {isLiked ? (
                     <FaHeart
                       onClick={onClickRemoveLike}
-                      size={26}
                       color="pink"
-                      className="ml-[10px] cursor-pointer"
+                      className="ml-[10px] cursor-pointer lg:text-[26px] text-[20px]"
                     />
                   ) : (
                     <FaRegHeart
                       onClick={onClickAddLike}
-                      size={26}
-                      className="ml-[10px] cursor-pointer"
+                      className="ml-[10px] cursor-pointer lg:text-[26px] text-[20px]"
                     />
                   )}
                 </div>
               </div>
-              <p className="font-s_core font-bold text-[18px] mt-[30px] mb-[10px] ml-[30px]">
+              <p className="font-s_core font-bold lg:text-[18px] text-[14px] lg:mt-[30px] mt-[10px] mb-[10px] lg:ml-[30px] ml-[20px]">
                 위치 : {yapuPlaceDetailData[0]?.location}
               </p>
-              <p className="font-s_core flex text-[18px] flex-row items-center mb-[10px]">
+              <p className="font-s_core flex lg:text-[18px] text-[14px] flex-row items-center mb-[10px] lg:ml-[30px] ml-[20px]">
                 <span className="mr-[20px]">
                   {yapuPlaceDetailData[0]?.is_delivery_or_takeout_available}
                 </span>
@@ -150,17 +148,17 @@ export default function PlaceInfo({
                 )}
             </section>
             <hr className="w-[100%] border-b-1 border-dashed border-gray-400 " />
-            <section className="mt-[40px]">
+            <section className="lg:mt-[40px] mt-[20px]">
               {!isMenuLoading && (
-                <div className=" flex flex-col items-center ">
-                  <p className="text-center font-paper_logy text-[26px] mb-[20px]">
+                <div className="flex flex-col items-center ">
+                  <p className="text-center font-paper_logy lg:text-[26px] text-[22px] tracking-widest mb-[20px]">
                     📋추천 메뉴
                   </p>
-                  <ul className=" w-[70%] border-b-2  pt-[40px] pr-[20px] pl-[20px] pb-[20px] mb-[20px] rounded-lg text-[#3d211a] bg-[#fff2d2]">
+                  <ul className="lg:w-[80%] w-[90%] border-b-2  pt-[40px] px-[20px] pb-[20px] mb-[20px] rounded-lg text-[#3d211a] bg-[#fff2d2]">
                     {recommendedMenusData.map((i) => (
                       <li
                         key={i.menu_name}
-                        className="border-b-[1px] border-dashed border-[#3d211a]  flex flex-col mb-[20px] pb-[5px] text-[18px] text-bold "
+                        className="border-b-[1px] border-dashed border-[#3d211a] flex flex-col mb-[20px] pb-[5px] lg:text-[18px] text-[12px] "
                       >
                         <span className="font-s_core">{i.menu_name}</span>
                         <span className="ml-auto mt-[10px] font-s_core">

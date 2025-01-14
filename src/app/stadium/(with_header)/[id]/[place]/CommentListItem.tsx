@@ -57,34 +57,42 @@ export default function CommentListItem({
   };
 
   return (
-    <li className="flex flex-row items-start font-kyobo border-b-[2px]">
-      <p className="w-[20%] break-all flex flex-row  items-center text-[18px] mr-[10px] pt-[10px]">
-        <PiRobot size={22} />
+    <li className="w-[100%] grid grid-cols-4 font-kyobo border-b-[2px]">
+      <p className="col-span-1 break-all flex flex-row items-center lg:text-[18px] text-[14px] pt-[10px]">
+        <PiRobot className="lg:text-[22px] text-[16px]" />
         <span>{i.user_email.split("@")[0]}</span>
       </p>
-      <div className="w-[70%] break-words  border-l-[2px] border-dashed text-[16px] pl-[10px]">
+      <div className="col-span-2 break-words border-l-[2px] border-dashed lg:text-[16px] text-[12px] pl-[10px]">
         {isClickedEdit ? (
           <textarea
             value={editContent}
             onChange={(e) => setEditContent(e.target.value)}
-            className="w-full h-fit pt-[10px]"
+            className="w-[80%] h-[50px] pt-[10px]"
           />
         ) : (
           <div>
             <p className="pt-[10px]">
               {i.content}
-              {i.updated_at && <span>(수정됨)</span>}
+              {i.updated_at && <span className="ml-[6px]">(수정)</span>}
             </p>
             <p className="text-[13px] text-gray-500">{elapsedText}</p>
           </div>
         )}
       </div>
       {i.user_email == userEmail && (
-        <div className="w-[10%] h-full flex flex-row justify-end items-center pl-[5px] pt-[10px]">
+        <div className="col-span-1 h-full flex flex-row justify-end items-center pt-[10px]">
           {isClickedEdit ? (
-            <div className="flex flex-row items-center text-[14px]">
-              <button onClick={onBackEdit}>닫기</button>
-              <button onClick={onSaveEdit} className="mx-[10px]">
+            <div className="flex flex-row items-center gap-2 lg:text-[14px] text-[12px]">
+              <button
+                onClick={onBackEdit}
+                className="cursor-pointer bg-main-red text-white lg:px-2 lg:py-1 px-[2px] py-[1px] rounded-md"
+              >
+                닫기
+              </button>
+              <button
+                onClick={onSaveEdit}
+                className="cursor-pointer bg-main-blue text-white lg:px-2 lg:py-1 px-[2px] py-[1px] rounded-md mr-[10px]"
+              >
                 저장
               </button>
             </div>

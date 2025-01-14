@@ -6,6 +6,7 @@ import { PiRobot } from "react-icons/pi";
 import CommentListItem from "./CommentListItem";
 import { useCommentsController } from "@/app/hooks/useCommentsController";
 import { useStadiumStore } from "@/stores/stadium-store";
+import { FaRegCommentAlt } from "react-icons/fa";
 
 export default function PlaceComments({
   userEmail,
@@ -52,14 +53,17 @@ export default function PlaceComments({
   };
 
   return (
-    <div className="mt-[20px]">
+    <div className="w-[90%] mt-[20px]">
       <div className="flex flex-col">
-        <p className="font-kbo text-[18px]">댓글</p>
+        <p className="font-kbo lg:text-[24px] text-[18px] flex flex-row items-center">
+          댓글
+          <FaRegCommentAlt className="lg:text-[22px] text-[20px] mb-[20px] ml-[3px]" />
+        </p>
         <form
           onSubmit={onSubmit}
-          className="flex flex-row items-center justify-center mt-[10px]  mb-[40px] font-kyobo"
+          className="flex flex-row items-center justify-center mt-[10px] mb-[40px] font-kyobo"
         >
-          <p className="flex flex-row items-center text-[18px] ">
+          <p className="flex flex-row items-center lg:text-[18px] text-[14px]">
             {userName && (
               <>
                 <PiRobot />
@@ -68,7 +72,7 @@ export default function PlaceComments({
             )}
           </p>
           <input
-            className="border-b-2 rounded-sm w-[60%] mx-[15px] pl-[5px] focus:outline-none text-[16px]"
+            className="border-b-2 rounded-sm w-[60%] mx-[15px] pl-[5px] focus:outline-none lg:text-[16px] text-[14px]"
             ref={commentRef}
             type="text"
             value={content}
@@ -76,24 +80,30 @@ export default function PlaceComments({
           />
           <button
             type="submit"
-            className=" py-[5px] px-[14px] bg-slate-200 rounded-md font-bold "
+            className="lg:py-[5px] lg:px-[14px] py-1 px-3 bg-slate-200 rounded-md font-bold "
           >
-            제출
+            등록
           </button>
         </form>
       </div>
       {!loading && comments && (
-        <ul className="mb-[20px] px-[50px]">
-          {comments.map((i) => (
-            <CommentListItem
-              key={i.id}
-              i={i}
-              userEmail={userEmail!}
-              onEditComments={onEditComments}
-              onDeleteComments={onDeleteComments}
-            />
-          ))}
-        </ul>
+        <div className="flex flex-col items-center">
+          <p className="w-full flex flex-row items-center py-1 pl-[10px] bg-main-blue text-white rounded-lg">
+            <FaRegCommentAlt />
+            <span className="ml-[4px] font-kyobo">{comments.length}개</span>
+          </p>
+          <ul className="w-full mb-[20px]">
+            {comments.map((i) => (
+              <CommentListItem
+                key={i.id}
+                i={i}
+                userEmail={userEmail!}
+                onEditComments={onEditComments}
+                onDeleteComments={onDeleteComments}
+              />
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

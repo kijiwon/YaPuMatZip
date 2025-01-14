@@ -87,10 +87,10 @@ export default function KakaoMap({
       {isLoaded ? (
         <div
           ref={mapRef}
-          className="w-[80%] h-[320px] ml-auto mr-auto  border-2 rounded-md "
+          className="lg:w-[80%] w-[90%] lg:h-[320px] h-[200px] ml-auto mr-auto  border-2 rounded-md "
         ></div>
       ) : (
-        <div className="w-[80%] h-[320px] ml-auto mr-auto bg-gray-300 rounded-md text-center flex justify-center items-center ">
+        <div className="lg:w-[80%] w-[90%] lg:h-[320px] h-[200px] ml-auto mr-auto bg-gray-300 rounded-md text-center flex justify-center items-center ">
           <p className="animate-pulse font-kbo text-[30px]">로딩 중...</p>
         </div>
       )}
