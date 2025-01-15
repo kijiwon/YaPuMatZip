@@ -53,15 +53,15 @@ export default function PlaceComments({
   };
 
   return (
-    <div className="w-[90%] mt-[20px]">
-      <div className="flex flex-col">
-        <p className="font-kbo lg:text-[24px] text-[18px] flex flex-row items-center">
+    <div className="w-full mt-[20px] flex flex-col items-center">
+      <div className="w-[100%] flex flex-col items-center">
+        <p className="font-kbo lg:text-[24px] text-[18px] flex flex-row items-center mr-auto">
           댓글
           <FaRegCommentAlt className="lg:text-[22px] text-[20px] mb-[20px] ml-[3px]" />
         </p>
         <form
           onSubmit={onSubmit}
-          className="flex flex-row items-center justify-center mt-[10px] mb-[40px] font-kyobo"
+          className="w-[100%] flex flex-row lg:ml-[150px] ml-[50px] mt-[10px] mb-[40px] font-kyobo"
         >
           <p className="flex flex-row items-center lg:text-[18px] text-[14px]">
             {userName && (
@@ -72,7 +72,7 @@ export default function PlaceComments({
             )}
           </p>
           <input
-            className="border-b-2 rounded-sm w-[60%] mx-[15px] pl-[5px] focus:outline-none lg:text-[16px] text-[14px]"
+            className="border-b-2 lg:w-[70%] w-[60%] mx-[15px] pl-[5px] focus:outline-none lg:text-[16px] text-[14px]"
             ref={commentRef}
             type="text"
             value={content}
@@ -87,12 +87,12 @@ export default function PlaceComments({
         </form>
       </div>
       {!loading && comments && (
-        <div className="flex flex-col items-center">
-          <p className="w-full flex flex-row items-center py-1 pl-[10px] bg-main-blue text-white rounded-lg">
+        <div className="w-[90%] flex flex-col items-center">
+          <p className="w-[100%] mr-auto flex flex-row items-center py-1 pl-[10px] bg-main-blue text-white rounded-lg">
             <FaRegCommentAlt />
             <span className="ml-[4px] font-kyobo">{comments.length}개</span>
           </p>
-          <ul className="w-full mb-[20px]">
+          <ul className="w-[100%] mb-[20px]">
             {comments.map((i) => (
               <CommentListItem
                 key={i.id}
