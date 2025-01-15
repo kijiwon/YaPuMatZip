@@ -9,6 +9,7 @@ import {
 } from "@/app/actions/login/login-actions";
 import Image from "next/image";
 import GoogleLogo from "./../../public/g-logo.png";
+import { useState } from "react";
 
 export function HeaderLoginButton() {
   const router = useRouter();
@@ -24,15 +25,18 @@ export function HeaderLoginButton() {
 }
 
 export function HeaderLogoutButton() {
-  const handleLogout = () => {
-    signOut();
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
+
+  const handleLogout = async () => {
+    if (isLoggedOut) return;
+    setIsLoggedOut(true);
+    await signOut();
     window.location.reload();
   };
 
   return (
     <button
       onClick={handleLogout}
-      onTouchStart={handleLogout}
       className="lg:w-[110px] lg:h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy lg:text-[20px] text-[16px] px-4 py-2 hover:bg-main-light-blue  "
     >
       로그아웃
