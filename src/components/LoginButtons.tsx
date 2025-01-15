@@ -32,6 +32,7 @@ export function HeaderLogoutButton() {
   return (
     <button
       onClick={handleLogout}
+      onTouchStart={handleLogout}
       className="lg:w-[110px] lg:h-[40px] rounded-[10px]  bg-main-blue text-white font-paper_logy lg:text-[20px] text-[16px] px-4 py-2 hover:bg-main-light-blue  "
     >
       로그아웃
