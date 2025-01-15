@@ -36,5 +36,12 @@ export async function signInWithKakao(){
 
 export async function signOut(){
     const {error} = await supabase.auth.signOut();
-    if(error) console.log(error);
+    if(error){
+        console.log(error);
+    } else{
+        sessionStorage.clear();
+        document.cookie = "sb-access-token=; Max-Age=0; path=/;"; // 쿠키 삭제
+        document.cookie = "sb-refresh-token=; Max-Age=0; path=/;"; // 쿠키 삭제
+        location.reload(); // 새로고침
+    }
 }
