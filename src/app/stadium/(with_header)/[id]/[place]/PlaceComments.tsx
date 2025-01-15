@@ -80,7 +80,7 @@ export default function PlaceComments({
           />
           <button
             type="submit"
-            className="lg:py-[5px] lg:px-[14px] py-1 px-3 bg-slate-200 rounded-md font-bold "
+            className="lg:py-[5px] lg:px-[14px] lg:text-[16px] text-[12px] py-1 px-3 bg-slate-200 rounded-md font-bold "
           >
             등록
           </button>

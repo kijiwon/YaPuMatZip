@@ -39,7 +39,7 @@ export default function UserButton({ userName }: { userName: string }) {
           )}
         </p>
         {isClicked && (
-          <div className="z-50 lg:px-[10px] px-2 h-fit py-[3px] bg-white  absolute mt-[30px] border-[1px] lg:text-[16px] text-[14px] font-s_core">
+          <div className="z-50 lg:px-[10px] px-2 h-fit py-[10px] bg-white  absolute mt-[30px] border-[1px] lg:text-[16px] text-[14px] font-s_core">
             <button
               onClick={onClickButton}
               className="border-b-[1px] border-dashed"
