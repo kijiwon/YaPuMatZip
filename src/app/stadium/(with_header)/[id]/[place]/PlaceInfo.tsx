@@ -92,8 +92,8 @@ export default function PlaceInfo({
 
   if (isPlaceLoading || isMenuLoading || loading) {
     return (
-      <div>
-        <div>loading...</div>
+      <div className="flex justify-center mt-[20px] mb-[30px] ">
+        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
