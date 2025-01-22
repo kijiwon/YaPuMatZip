@@ -1,9 +1,9 @@
 'use client'
 import { createSupabaseBrowserClient } from "../../utils/client/supabase";
 
-const supabase = createSupabaseBrowserClient();
 
 export async function signInWithGoogle(){
+    const supabase = createSupabaseBrowserClient();
     const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options:{
@@ -15,26 +15,28 @@ export async function signInWithGoogle(){
         }
     });
     if(error) console.log('google login error:',error.message); 
-
+    
 }
 
 export async function signInWithKakao(){ 
-   const {error} = await supabase.auth.signInWithOAuth({
-    provider:'kakao',
-    options:{
-        redirectTo:process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO,
-        queryParams:{
-            access_type:'offline',
-            prompt: 'consent'
+    const supabase = createSupabaseBrowserClient();
+    const {error} = await supabase.auth.signInWithOAuth({
+        provider:'kakao',
+        options:{
+            redirectTo:process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO,
+            queryParams:{
+                access_type:'offline',
+                prompt: 'consent'
+            }
         }
-    }
-   });
-   if(error) console.log('kakao login error:',error.message);
+    });
+    if(error) console.log('kakao login error:',error.message);
     
-   
+    
 }
 
 export async function signOut(){
+    const supabase = createSupabaseBrowserClient();
     const {error} = await supabase.auth.signOut();
     if(error){
         console.log(error);
