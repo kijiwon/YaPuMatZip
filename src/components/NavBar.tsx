@@ -52,11 +52,13 @@ export default function NavBar() {
       </nav>
       <div className="lg:hidden relative">
         <nav className="fixed w-[100%] mt-[90px] flex flex-row items-center justify-center bg-white  pb-[10px] z-10">
-          <TbBuildingStadium
-            size={30}
+          <div
+            className=" flex flex-col justify-center items-center mx-[10px] text-[12px] font-paper_logy"
             onClick={handleOpenSideBar}
-            className="-ml-[25px] mr-[15px] cursor-pointer"
-          />
+          >
+            <TbBuildingStadium size={30} className="cursor-pointer" />
+            <p>타구장</p>
+          </div>
           <SearchBar />
         </nav>
         {/* sidebar */}

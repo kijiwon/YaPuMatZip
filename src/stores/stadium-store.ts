@@ -6,7 +6,8 @@ export type Stadium = StadiumType
 
 export type StadiumStore = {
   selectedStadium: Stadium | null; 
-  setSelectedStadium: (stadium: Stadium) => void; 
+  setSelectedStadium: (stadium: Stadium) => void;
+  clearSelectedStadium : () => void; 
 };
 
 export const useStadiumStore = create(
@@ -14,6 +15,7 @@ export const useStadiumStore = create(
     (set) => ({
       selectedStadium: null,
       setSelectedStadium: (stadium) => set({ selectedStadium: stadium }),
+      clearSelectedStadium: () => set({selectedStadium:null})
     }),
     {
       name: 'stadium-storage',
