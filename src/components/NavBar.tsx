@@ -50,10 +50,10 @@ export default function NavBar() {
           </button>
         ))}
       </nav>
-      <div className="lg:hidden relative">
-        <nav className="fixed w-[100%] mt-[90px] flex flex-row items-center justify-center bg-white  pb-[10px] z-10">
+      <div className="lg:hidden relative flex flex-row justify-center">
+        <nav className="fixed w-[90%] mt-[90px] flex flex-row items-center justify-between bg-white  pb-[10px] z-10">
           <div
-            className=" flex flex-col justify-center items-center mx-[10px] text-[12px] font-paper_logy"
+            className=" flex flex-col justify-center items-center text-[12px] font-paper_logy"
             onClick={handleOpenSideBar}
           >
             <TbBuildingStadium size={30} className="cursor-pointer" />
