@@ -1,7 +1,9 @@
 "use client";
+import "regenerator-runtime/runtime";
 import { Dispatch } from "react";
 import { MdKeyboardVoice } from "react-icons/md";
-import { RiVoiceprintFill } from "react-icons/ri";
+// import { RiVoiceprintFill } from "react-icons/ri";
+import { FaRegStopCircle } from "react-icons/fa";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -24,26 +26,21 @@ export default function Record({ setTerms }: Props) {
     setTerms(transcript);
   };
 
-  if (browserSupportsSpeechRecognition)
+  const onClickStopVoice = () => {
+    SpeechRecognition.stopListening();
+    resetTranscript();
+  };
+
+  if (!browserSupportsSpeechRecognition)
     return <div>지원하지 않는 브라우저입니다.</div>;
-  // const SpeechRecognition =
-  //   window.SpeechRecognition || window.webkitSpeechRecognition;
-  // const recognition = new SpeechRecognition();
-
-  // recognition.lang = "ko-KR";
-
-  // const onClickVoice = () => {
-  //   recognition.start();
-  //   recognition.onresult = async (e: SpeechRecognitionEvent) => {
-  //     const transcript = e.results[0][0].transcript;
-  //     setTerms(transcript);
-  //   };
-  // };
 
   return (
     <div>
       {listening ? (
-        <RiVoiceprintFill />
+        <FaRegStopCircle
+          onClick={onClickStopVoice}
+          className="cursor-pointer mr-[5px] lg:text-[30px] text-[24px] text-gray-400"
+        />
       ) : (
         <MdKeyboardVoice
           onClick={onClickVoice}

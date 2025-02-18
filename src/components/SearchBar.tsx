@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
-const VoiceSearch = dynamic(() => import("./VoiceSearch"));
+const VoiceSearch = dynamic(() => import("./VoiceSearch"), { ssr: false });
 
 export default function SearchBar() {
   const router = useRouter();
