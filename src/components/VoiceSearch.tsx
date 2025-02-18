@@ -1,6 +1,6 @@
 "use client";
 import "regenerator-runtime/runtime";
-import { Dispatch } from "react";
+import { Dispatch, useEffect } from "react";
 import { MdKeyboardVoice } from "react-icons/md";
 // import { RiVoiceprintFill } from "react-icons/ri";
 import { FaRegStopCircle } from "react-icons/fa";
@@ -23,13 +23,24 @@ export default function Record({ setTerms }: Props) {
   const onClickVoice = () => {
     resetTranscript();
     SpeechRecognition.startListening({ continuous: true, language: "ko" });
-    setTerms(transcript);
   };
 
   const onClickStopVoice = () => {
     SpeechRecognition.stopListening();
     resetTranscript();
   };
+
+  useEffect(() => {
+    if (transcript) {
+      setTerms(transcript);
+      // 말이 끊기면 1초 후 종료
+      const stopAfterSpeech = setTimeout(() => {
+        SpeechRecognition.stopListening();
+      }, 1000);
+
+      return () => clearTimeout(stopAfterSpeech);
+    }
+  }, [transcript, setTerms]);
 
   if (!browserSupportsSpeechRecognition)
     return <div>지원하지 않는 브라우저입니다.</div>;
