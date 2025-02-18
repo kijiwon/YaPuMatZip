@@ -30,19 +30,21 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center lg:w-[50%] w-[85%] border-[3px] rounded-lg py-[2px]">
+    <div className="flex flex-row items-center justify-between lg:w-[50%] w-[85%] border-[3px] rounded-lg py-[2px]">
       <input
         ref={searchRef}
         value={terms}
         onChange={(e) => setTerms(e.target.value)}
         onKeyDown={submitOnEnter}
-        className="h-[30px] lg:h-[40px] outline-none flex-1 focus:outline-none pl-[10px] lg:text-[20px] text-[16px] font-kyobo tracking-widest"
+        className="flex-1 h-[30px] lg:h-[40px] outline-none focus:outline-none pl-[10px] lg:text-[20px] text-[16px] font-kyobo tracking-widest"
       />
-      <VoiceSearch setTerms={setTerms} />
-      <IoSearch
-        onClick={onClickSearch}
-        className="cursor-pointer pr-[5px] lg:text-[40px] text-[28px]"
-      />
+      <div className="flex flex-row items-center justify-between mx-[10px] gap-2">
+        <VoiceSearch setTerms={setTerms} />
+        <IoSearch
+          onClick={onClickSearch}
+          className="cursor-pointer lg:text-[36px] text-[28px]"
+        />
+      </div>
     </div>
   );
 }
