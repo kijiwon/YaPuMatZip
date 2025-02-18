@@ -46,17 +46,14 @@ export default function Record({ setTerms }: Props) {
     return <div>지원하지 않는 브라우저입니다.</div>;
 
   return (
-    <div>
+    <div className="lg:text-[30px] text-[24px] lg:mr-[5px] mr-[10px]">
       {listening ? (
         <FaRegStopCircle
           onClick={onClickStopVoice}
-          className="cursor-pointer mr-[5px] lg:text-[30px] text-[24px] text-gray-400"
+          className="cursor-pointer  text-gray-400"
         />
       ) : (
-        <MdKeyboardVoice
-          onClick={onClickVoice}
-          className="cursor-pointer mr-[5px] lg:text-[30px] text-[24px]"
-        />
+        <MdKeyboardVoice onClick={onClickVoice} className="cursor-pointer" />
       )}
     </div>
   );
