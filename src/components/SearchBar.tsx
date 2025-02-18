@@ -38,7 +38,7 @@ export default function SearchBar() {
         onKeyDown={submitOnEnter}
         className="flex-1 h-[30px] lg:h-[40px] outline-none focus:outline-none pl-[10px] lg:text-[20px] text-[16px] font-kyobo tracking-widest"
       />
-      <div className="flex flex-row items-center justify-between mx-[10px] gap-2">
+      <div className="flex flex-row items-center justify-center lg:mx-[10px] mx-[3px] lg:gap-2 gap-1">
         <VoiceSearch setTerms={setTerms} />
         <IoSearch
           onClick={onClickSearch}
