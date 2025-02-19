@@ -41,11 +41,11 @@ export default function UserCommentListItem({
       className="font-kyobo mb-[16px] border-b-[1px] lg:text-[16px] text-[14px] cursor-pointer flex flex-row justify-between items-center"
     >
       <p className="text-main-blue lg:mr-[20px] mr-[8px]">[{comment.place}]</p>
-      <p className="flex-1">
-        {slicedContent}
-        {comment.updated_at && <span>(수정됨)</span>}
+      <p className="flex-1">{slicedContent}</p>
+      <p>
+        {comment.updated_at && <span className="mr-2">(수정됨)</span>}
+        {elapsedText}
       </p>
-      <p>{elapsedText}</p>
     </li>
   );
 }

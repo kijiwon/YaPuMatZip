@@ -71,11 +71,11 @@ export default function CommentListItem({
           />
         ) : (
           <div>
-            <p className="pt-[10px]">
-              {i.content}
-              {i.updated_at && <span className="ml-[6px]">(수정)</span>}
+            <p className="pt-[10px]">{i.content}</p>
+            <p className="text-[13px] text-gray-500">
+              {elapsedText}
+              {i.updated_at && <span className="ml-[6px]">(수정됨)</span>}
             </p>
-            <p className="text-[13px] text-gray-500">{elapsedText}</p>
           </div>
         )}
       </div>
