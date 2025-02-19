@@ -22,34 +22,34 @@ export default function UserButton({ userName }: { userName: string }) {
   return (
     <div className="flex flex-row items-center">
       <div className="relative flex flex-col items-center">
-        <p className="flex flex-row items-center text-[16px] font-paper_logy mr-[10px]">
+        <p className="flex flex-row items-center text-[18px] font-paper_logy mr-[10px]">
           {userName}님
           {isClicked ? (
             <IoIosArrowUp
               onClick={handleOpen}
-              size={16}
-              className="cursor-pointer"
+              size={20}
+              className="cursor-pointer mb-[5px] ml-[4px]"
             />
           ) : (
             <IoIosArrowDown
               onClick={handleOpen}
-              size={16}
-              className="cursor-pointer"
+              size={20}
+              className="cursor-pointer ml-[4px]"
             />
           )}
         </p>
         {isClicked && (
-          <div className="z-50 lg:px-[10px] px-2 h-fit py-[10px] bg-white  absolute mt-[30px] border-[1px] lg:text-[16px] text-[14px] font-s_core">
+          <div className="z-50 lg:px-[10px] px-2 h-fit py-[10px] bg-white absolute mt-[30px] border-[1px] lg:text-[16px] text-[14px] font-s_core">
             <button
               onClick={onClickButton}
-              className="border-b-[1px] border-dashed"
+              className="w-full border-b-[1px] border-dashed mb-[10px] text-start pl-1"
             >
               마이페이지
             </button>
+            <HeaderLogoutButton />
           </div>
         )}
       </div>
-      <HeaderLogoutButton />
     </div>
   );
 }
