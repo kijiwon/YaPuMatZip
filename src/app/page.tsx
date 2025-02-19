@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     description: "구장 별 야푸 맛집을 만나보세요!",
     images: ["/logo.png"],
   },
+  icons:{
+    
+  }
 };
 
 export default function Home() {
