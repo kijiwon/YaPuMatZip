@@ -6,7 +6,8 @@ export const getYapuPlaceInfo = async(id:string)=>{
     const supabase = createSupabaseBrowserClient();
     const result = await supabase.from('yapu-place')
     .select('*')
-    .eq('stadium_id',id);
+    .eq('stadium_id',id)
+    .order('id', {ascending:false}); // id를 기준으로 내림차순 정렬
 
     return result.data
 }
