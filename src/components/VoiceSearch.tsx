@@ -40,6 +40,9 @@ export default function Record({ setTerms }: Props) {
 
       return () => clearTimeout(stopAfterSpeech);
     }
+    setTimeout(() => {
+      SpeechRecognition.stopListening();
+    }, 2000);
   }, [transcript, setTerms]);
 
   if (!browserSupportsSpeechRecognition)

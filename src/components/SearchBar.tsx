@@ -30,7 +30,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-between lg:w-[50%] w-[85%] border-[3px] rounded-lg py-[2px]">
+    <div className="flex flex-row items-center lg:justify-between justify-start lg:w-[50%] w-[85%] border-[3px] rounded-lg py-[2px]">
       <input
         ref={searchRef}
         value={terms}
