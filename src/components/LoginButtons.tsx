@@ -17,7 +17,7 @@ export function HeaderLoginButton() {
   return (
     <button
       onClick={() => router.push("/auth")}
-      className="lg:w-[100px] lg:h-[45px] rounded-[10px] bg-main-blue text-white font-paper_logy lg:text-[18px] text-[16px] text-center hover:bg-main-light-blue"
+      className="lg:w-[100px] lg:h-[45px] w-[110px] h-[40px] px-4 py-2 lg:p-0 rounded-[10px] bg-main-blue text-white font-paper_logy lg:text-[18px] text-[16px] text-center hover:bg-main-light-blue"
     >
       로그인
     </button>
