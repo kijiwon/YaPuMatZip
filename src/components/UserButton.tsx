@@ -27,19 +27,19 @@ export default function UserButton({ userName }: { userName: string }) {
           {isClicked ? (
             <IoIosArrowUp
               onClick={handleOpen}
-              size={20}
-              className="cursor-pointer mb-[5px] ml-[4px]"
+              size={22}
+              className="cursor-pointer ml-[4px]"
             />
           ) : (
             <IoIosArrowDown
               onClick={handleOpen}
-              size={20}
+              size={22}
               className="cursor-pointer ml-[4px]"
             />
           )}
         </p>
         {isClicked && (
-          <div className="z-50 lg:px-[10px] px-2 h-fit py-[10px] bg-white absolute mt-[30px] border-[1px] lg:text-[16px] text-[14px] font-s_core">
+          <div className="z-50 lg:px-[10px] w-[120px] right-3 px-2 h-fit py-[10px] bg-white absolute mt-[25px] border-[1px] lg:text-[16px] text-[14px] font-s_core">
             <button
               onClick={onClickButton}
               className="w-full border-b-[1px] border-dashed mb-[10px] text-start pl-1"
