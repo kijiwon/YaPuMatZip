@@ -52,7 +52,7 @@ export default function Record({ setTerms }: Props) {
       {listening ? (
         <FaStop
           onClick={onClickStopVoice}
-          className="cursor-pointer lg:text-[25px] text-[18px] "
+          className="cursor-pointer lg:text-[25px] text-[16px] "
         />
       ) : (
         <MdKeyboardVoice
