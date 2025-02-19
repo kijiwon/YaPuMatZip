@@ -30,21 +30,21 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex flex-row items-center lg:justify-between justify-start lg:w-[50%] w-[85%] border-[3px] rounded-lg py-[2px]">
-      <input
-        ref={searchRef}
-        value={terms}
-        onChange={(e) => setTerms(e.target.value)}
-        onKeyDown={submitOnEnter}
-        className="flex-1 h-[30px] lg:h-[40px] outline-none focus:outline-none pl-[10px] lg:text-[20px] text-[16px] font-kyobo tracking-widest"
-      />
-      <div className="flex flex-row items-center justify-center lg:mx-[10px] mx-[3px] lg:gap-2 gap-1">
-        <VoiceSearch setTerms={setTerms} />
+    <div className="lg:w-[60%] w-[85%] flex flex-row items-center">
+      <div className="flex flex-row items-center lg:justify-between justify-start flex-1 border-[3px] rounded-lg py-[2px]">
+        <input
+          ref={searchRef}
+          value={terms}
+          onChange={(e) => setTerms(e.target.value)}
+          onKeyDown={submitOnEnter}
+          className="flex-1 h-[30px] lg:h-[40px] outline-none focus:outline-none lg:pl-[10px] pl-[5px] lg:text-[20px] text-[16px] font-kyobo tracking-widest"
+        />
         <IoSearch
           onClick={onClickSearch}
-          className="cursor-pointer lg:text-[36px] text-[28px]"
+          className="cursor-pointer lg:text-[36px] text-[28px] lg:mx-[10px] mx-[5px]"
         />
       </div>
+      <VoiceSearch setTerms={setTerms} />
     </div>
   );
 }

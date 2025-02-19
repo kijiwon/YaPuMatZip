@@ -2,8 +2,7 @@
 import "regenerator-runtime/runtime";
 import { Dispatch, useEffect } from "react";
 import { MdKeyboardVoice } from "react-icons/md";
-// import { RiVoiceprintFill } from "react-icons/ri";
-import { FaRegStopCircle } from "react-icons/fa";
+import { FaStop } from "react-icons/fa";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -49,14 +48,17 @@ export default function Record({ setTerms }: Props) {
     return <div>지원하지 않는 브라우저입니다.</div>;
 
   return (
-    <div className="lg:text-[32px] text-[24px]">
+    <div className="lg:w-[50px] lg:h-[50px] w-[40px] h-[40px] flex justify-center items-center border-[3px] text-main-blue rounded-full lg:ml-[12px] ml-[5px]">
       {listening ? (
-        <FaRegStopCircle
+        <FaStop
           onClick={onClickStopVoice}
-          className="cursor-pointer  text-gray-400"
+          className="cursor-pointer lg:text-[25px] text-[18px] "
         />
       ) : (
-        <MdKeyboardVoice onClick={onClickVoice} className="cursor-pointer" />
+        <MdKeyboardVoice
+          onClick={onClickVoice}
+          className="cursor-pointer lg:text-[36px] text-[30px]"
+        />
       )}
     </div>
   );
