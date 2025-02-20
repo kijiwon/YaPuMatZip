@@ -51,7 +51,7 @@ export default function NavBar() {
         ))}
       </nav>
       <div className="lg:hidden relative flex flex-row justify-center">
-        <nav className="fixed w-full mt-[90px] pl-1 flex flex-row items-center justify-start gap-2 bg-white  pb-[10px] z-10">
+        <nav className="fixed w-full mt-[90px] pl-4 flex flex-row items-center justify-start gap-2 bg-white  pb-[10px] z-10">
           <div
             className=" flex flex-col justify-center items-center text-[12px] font-paper_logy"
             onClick={handleOpenSideBar}

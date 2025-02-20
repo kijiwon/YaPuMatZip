@@ -48,7 +48,7 @@ export default function Record({ setTerms }: Props) {
     return <div>지원하지 않는 브라우저입니다.</div>;
 
   return (
-    <div className="lg:w-[50px] lg:h-[50px] w-[36px] h-[36px] flex justify-center items-center border-[3px] text-main-blue rounded-full lg:ml-[12px] ml-[5px]">
+    <div className="lg:w-[50px] lg:h-[50px] w-[32px] h-[38px] flex justify-center items-center lg:border-[3px] bg-gray-200 text-main-blue rounded-md lg:ml-[12px] ml-[5px]">
       {listening ? (
         <FaStop
           onClick={onClickStopVoice}
