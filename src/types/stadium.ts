@@ -13,5 +13,5 @@ export type StadiumType = {
 
 export type TipsType = {
     tip?:string,
-    delivery_zone?: string
+    delivery_zone?: string[]
 }
