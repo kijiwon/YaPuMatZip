@@ -8,4 +8,10 @@ export type StadiumType = {
         lat: number,
         lng:number
     }
+    tips?: TipsType[] 
+}
+
+export type TipsType = {
+    tip?:string,
+    delivery_zone?: string
 }

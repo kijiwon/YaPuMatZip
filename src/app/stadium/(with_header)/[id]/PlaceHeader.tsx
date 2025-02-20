@@ -30,6 +30,11 @@ export default function PlaceHeader() {
       <p className="mt-[10px] lg:text-[18px] text-[16px]">
         구장: {selectedStadium?.name}
       </p>
+      <div>
+        {selectedStadium.tips?.map((tip, idx) => (
+          <p key={idx}>{tip.delivery_zone}</p>
+        ))}
+      </div>
     </div>
   );
 }
