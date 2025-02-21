@@ -12,7 +12,7 @@ export default function PlaceHeader() {
   }
 
   return (
-    <div className="lg:w-[800px] font-kbo mb-[30px] flex lg:flex-row flex-col lg:justify-between border-b-2 border-dashed">
+    <div className="lg:w-[800px] font-kbo mb-[6px] flex lg:flex-row flex-col lg:justify-between border-b-2 border-dashed">
       <div>
         <p
           className={`lg:text-[26px] text-[20px] tracking-wider text-${selectedStadium?.team_short_color[0]}-main`}

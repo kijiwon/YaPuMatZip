@@ -17,6 +17,7 @@ export type Database = {
           stadium: string
           stadium_id: string
           team: string
+          tips: Json | null
         }
         Insert: {
           id?: number
@@ -25,6 +26,7 @@ export type Database = {
           stadium: string
           stadium_id: string
           team: string
+          tips?: Json | null
         }
         Update: {
           id?: number
@@ -33,6 +35,7 @@ export type Database = {
           stadium?: string
           stadium_id?: string
           team?: string
+          tips?: Json | null
         }
         Relationships: []
       }
@@ -135,6 +138,7 @@ export type Database = {
       }
       "yapu-place": {
         Row: {
+          category: string | null
           food_type: string
           id: number
           info: string | null
@@ -148,6 +152,7 @@ export type Database = {
           stadium_id: string
         }
         Insert: {
+          category?: string | null
           food_type: string
           id?: number
           info?: string | null
@@ -161,6 +166,7 @@ export type Database = {
           stadium_id: string
         }
         Update: {
+          category?: string | null
           food_type?: string
           id?: number
           info?: string | null
