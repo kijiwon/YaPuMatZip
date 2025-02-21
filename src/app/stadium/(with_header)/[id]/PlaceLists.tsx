@@ -54,7 +54,7 @@ export default function PlaceLists({ userId }: { userId: string }) {
       <select
         onChange={onChangeCategory}
         defaultValue={"all"}
-        className="cursor-pointer lg:self-end lg:border-0 lg:border-b-4 border-2 lg:rounded-none rounded-md border-blue-200 pl-2 pb-[2px] my-[14px] lg:w-fit outline-none lg:text-[16px] text-[14px] font-s_core_bold"
+        className="bg-white cursor-pointer lg:self-end lg:border-0 lg:border-b-4 border-2 lg:rounded-none rounded-md border-blue-200 pl-2 py-[2px] my-[14px] lg:w-fit outline-none lg:text-[16px] text-[14px] font-s_core_bold"
       >
         <option value="all">🍽️ 전체보기</option>
         <option value="KOR">🍚 한식(분식/육류 등)</option>
@@ -77,7 +77,7 @@ export default function PlaceLists({ userId }: { userId: string }) {
       ) : (
         <>
           {filteredPlace.length === 0 && (
-            <p className="text-[20px] font-s_core">
+            <p className="lg:text-[20px] text-[14px] font-s_core">
               해당 카테고리에 대한 장소가 없습니다 ˃̣̣̥ ᯅ ˂̣̣̥
             </p>
           )}
