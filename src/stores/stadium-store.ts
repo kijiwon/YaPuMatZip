@@ -15,7 +15,10 @@ export const useStadiumStore = create(
     (set) => ({
       selectedStadium: null,
       setSelectedStadium: (stadium) => set({ selectedStadium: stadium }),
-      clearSelectedStadium: () => set({selectedStadium:null})
+      clearSelectedStadium: () => set((state) => {
+        if (!state.selectedStadium) return state; // selectedStadium이 null이면 그대로 반환
+        return { selectedStadium: null };
+      })
     }),
     {
       name: 'stadium-storage',
