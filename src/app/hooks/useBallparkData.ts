@@ -6,11 +6,11 @@ import { useEffect } from "react"
 
 type TypeBallpark = Database['public']['Tables']['ballpark-info']['Row']
 
-export const useBallparkData =(id:string) =>{
+export const useBallparkData =(id:number) =>{
     const [isLoading, setIsLoading] = useState(true);
     const [ballparkData, setBallparkData] = useState<TypeBallpark[]>([]);
 
-    const onGetData = useCallback(async (id: string) => {
+    const onGetData = useCallback(async (id: number) => {
         setIsLoading(true);
         try {
           const ballparkInfoData = await getBallparkInfo(id);
