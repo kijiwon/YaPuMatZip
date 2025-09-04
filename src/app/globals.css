@@ -42,3 +42,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
+body {
+  list-style: none;
+}
