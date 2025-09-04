@@ -65,34 +65,21 @@ export default function PlaceLists({ userId }: { userId: string }) {
         <option value="BEV">🥤 음료</option>
       </select>
 
-      {selectedStadium?.id === "baseball-dream-park" ? (
-        <div className="font-paper_logy text-center tracking-wider">
-          <h1 className="text-[30px] text-main-red mb-[20px]">
-            2025년 신구장 오픈 예정으로 데이터가 존재하지 않습니다.
-          </h1>
-          <p className=" text-[16px]  ">
-            개막 후 빠르게 업데이트 할 예정이니 조금만 기다려 주세요🙏
-          </p>
-        </div>
-      ) : (
-        <>
-          {filteredPlace.length === 0 && (
-            <p className="lg:text-[20px] text-[14px] font-s_core">
-              해당 카테고리에 대한 장소가 없습니다 ˃̣̣̥ ᯅ ˂̣̣̥
-            </p>
-          )}
-          <ul>
-            {filteredPlace.map((place) => (
-              <PlaceItem
-                key={place.id}
-                place={place}
-                stadium_id={selectedStadium.id}
-                likedPlace={likedPlace}
-              />
-            ))}
-          </ul>
-        </>
+      {filteredPlace.length === 0 && (
+        <p className="lg:text-[20px] text-[14px] font-s_core">
+          해당 카테고리에 대한 장소가 없습니다 ˃̣̣̥ ᯅ ˂̣̣̥
+        </p>
       )}
+      <ul>
+        {filteredPlace.map((place) => (
+          <PlaceItem
+            key={place.id}
+            place={place}
+            stadium_id={selectedStadium.id}
+            likedPlace={likedPlace}
+          />
+        ))}
+      </ul>
     </div>
   );
 }
