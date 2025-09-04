@@ -33,6 +33,7 @@ export default function SearchBar() {
     <div className="lg:w-[50%] w-[70%] flex flex-row items-center lg:mx-auto">
       <div className="flex flex-row items-center lg:justify-between justify-start flex-1 border-[3px] rounded-lg py-[2px]">
         <input
+          aria-label="search-bar"
           ref={searchRef}
           value={terms}
           onChange={(e) => setTerms(e.target.value)}
